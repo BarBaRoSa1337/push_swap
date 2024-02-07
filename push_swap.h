@@ -5,32 +5,44 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/31 11:57:05 by achakour          #+#    #+#             */
-/*   Updated: 2024/02/01 15:29:34 by achakour         ###   ########.fr       */
+/*   Created: 2024/02/02 18:07:56 by achakour          #+#    #+#             */
+/*   Updated: 2024/02/05 12:58:35 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 #define PUSH_SWAP_H
 
-#include <stdio.h>
-#include <limits.h>
-#include <stdlib.h>
+ #include <stdio.h>
+ #include <limits.h>
+ #include <unistd.h>
+ #include <stdlib.h>
+ #include <string.h>
 
-typedef struct  push
+typedef struct push
 {
-    int data;
-    struct push* next;
-} push;
+    int            data;
+    struct  push   *next;
+}           push;
 
-push	*ft_lstnew(int content);
-int     ft_atoi(const char *str);
-int	    ft_lstsize(push *lst);
-int	    ft_printf(const char *format, ...);
+void    ra_rb_rr(push *stack, char *flag);
+void    sa_sb_ss(push *stack, char *flag);
+push    *pa_pb(push *a, push *b, char *flag);
+
+int     ft_double_numbers(int *arr, int n, unsigned int len);
+int     ft_is_all_digit(int ac, char **ar);
+int     ft_check_dobles_limits(int ac, char **ar);
+push    *get_args(int ac, char **ar);
 void	ft_lstclear(push **lst);
+
 void	ft_lstadd_front(push **lst, push *new);
 void	ft_lstdelone(push *lst);
 int	    ft_lstsize(push *lst);
 push	*ft_lstnew(int content);
+// ah torta9 lbarod
+int *ft_count_sort_indexes(push *stack, int n);
+char	**ft_split(char const *s, char c);
+int     ft_is_ascending(push *stack);
+int ft_is_descending(push *stack);
 
 #endif

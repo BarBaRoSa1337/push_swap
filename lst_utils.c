@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/01 11:27:12 by achakour          #+#    #+#             */
-/*   Updated: 2024/02/01 15:30:57 by achakour         ###   ########.fr       */
+/*   Created: 2024/02/01 15:44:38 by achakour          #+#    #+#             */
+/*   Updated: 2024/02/05 18:21:40 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,3 @@ push	*ft_lstnew(int content)
 	node->next = NULL;
 	return (node);
 }
-

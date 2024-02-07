@@ -5,32 +5,45 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/01 11:11:09 by achakour          #+#    #+#             */
-/*   Updated: 2024/02/01 15:25:51 by achakour         ###   ########.fr       */
+/*   Created: 2024/02/01 15:44:14 by achakour          #+#    #+#             */
+/*   Updated: 2024/02/05 17:38:31 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void    put_swap_type(char flag)
+void    rra_rrb_rrr(push *stack, size_t stack_len, char *flag)
 {
-    if (flag == 'a')
-        ft_printf("ra ");
-    else if (flag == 'b')
-        ft_printf("rb ");
-    else if (flag == 'r')
-        ft_printf("rr ");
-    else if (flag == 'A')
-        ft_printf("rra ");
-    else if (flag == 'B')
-        ft_printf("rrb ");
-    else if (flag == 'R')
-        ft_printf("rrr ");
+    push    *p;
+    int     *tmp;
+    size_t  i;
+
+    i = 0;
+    tmp = (int *)malloc(sizeof(int) * stack_len);
+    if (!tmp)
+        return ;
+    p = stack;
+    while (i < stack_len)
+    {
+        tmp[i++] = stack->data;
+        stack = stack->next;
+    }
+    p->data = tmp[i - 1];
+    p = p->next;
+    i = 0;
+    while (i < stack_len - 1)
+    {
+        p->data = tmp[i++];
+        p = p->next;
+    }
+    printf ("%s \n", flag);
+    free (tmp);
 }
 
-void    ra_rb_rr_rra_rrb_rrr(push *stack, char flag)
+void    ra_rb_rr(push *stack, char *flag)
 {
     size_t  stack_len;
+    push    *p;
     int     *tmp;
     size_t  i;
 
@@ -38,59 +51,61 @@ void    ra_rb_rr_rra_rrb_rrr(push *stack, char flag)
     stack_len = ft_lstsize(stack);
     tmp = (int *)malloc(sizeof(int) * stack_len);
     if (!tmp)
-        return (NULL);
+        return ;
+    p = stack;
     while (i < stack_len)
     {
-        tmp[i] = stack->data;
+        tmp[i++] = stack->data;
         stack = stack->next;
-        ++i;
     }
-    while (stack_len--)
+    i = 1;
+    while (i < stack_len)
     {
-        stack->data = tmp[stack_len];
-        stack = stack->next;
+        p->data = tmp[i++];
+        p = p->next;
     }
-    put_swap_type(flag);
+    p->data = tmp[0];
+    printf ("%s \n", flag);
     free (tmp);
 }
 
-push    *pa_pb(push *a, push *b, char flag)
+push    *pa_pb(push *a, push *b, char *flag)
 {
+    // not tested yet!!
     int     tmp;
     push    *head;
 
-    if (flag == 'a')
+    if (flag[1] == 'a')
     {
         tmp = b->data;
         head = b->next;
         ft_lstadd_front(&a, ft_lstnew(tmp));
         ft_lstdelone(b);
-        ft_printf("pa ");
     }
-    else if (flag == 'b')
+    else if (flag[1] == 'b')
     {
         tmp = a->data;
         head = a->next;
         ft_lstadd_front(&b, ft_lstnew(tmp));
         ft_lstdelone(a);
-        ft_printf("pb ");
     }
+    printf ("%s \n", flag);
     return (head);
 }
 
-void    sa_sb_ss(push *stack, char flag)
+void    sa_sb_ss(push *stack, char *flag)
 {
     int tmp;
 
-    if (!stack || !stack->next)
+    if (!stack->next)
         return ;
-    tmp = stack->data;
-    stack->next->data = tmp;
+    while (stack->next->next)
+        stack = stack->next;
+    if (!stack->next)
+        return ;
+    tmp = stack->next->data;
+    stack->next->data = stack->data;
     stack->data = tmp;
-    if (flag == 'a')
-        ft_printf("sa ");
-    else if(flag == 'b')
-        ft_printf("sb ");
-    else if (flag == 's')
-        ft_printf("ss");
+    printf ("%s \n", flag);
 }
+

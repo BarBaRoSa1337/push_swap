@@ -5,113 +5,91 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/31 11:56:42 by achakour          #+#    #+#             */
-/*   Updated: 2024/02/01 15:28:58 by achakour         ###   ########.fr       */
+/*   Created: 2024/02/03 18:07:51 by achakour          #+#    #+#             */
+/*   Updated: 2024/02/06 13:26:48 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int ft_isdigit(int c)
-{
-    if (c >= '0' && c <= '9')
-        return (1);
-    return (0);
-}
-
-int ft_double_numbers(int *arr, int n, unsigned int len)
-{
-    size_t i;
-    int flag;
-
-    i = 0;
-    flag = 0;
-    while (i < len)
-    {
-        if (arr[i] == n && flag)
-            return (0);
-        else if (arr[i] == n)
-            ++flag;
-        ++i;
-    }
-    return (1);
-}
-
-int ft_is_all_digit(int ac, char **ar)
-{
-    size_t i;
-    size_t j;
-
-    i = 1;
-    if (ac == 1)
-        return (0);
-    while (i < ac)
-    {
-        j = 0;
-        while (ar[i][j])
-        {
-            if (!ft_isdigit(ar[i][j]))
-                return (0);
-            ++j;
-        }
-        ++i;
-    }
-    return (1);
-}
-
-int ft_check_dobles_limits(int ac, char **ar)
-{
-    size_t i;
-    int *tmp;
-
-    tmp = (int *)malloc(sizeof(int) * ac - 1);
-    if (!tmp || ac == 1)
-        return (0);
-    i = 0;
-    while (i < ac)
-    {
-        tmp[i] = ft_atoi(ar[i + 1]);
-        if (tmp[i] > INT_MAX || tmp[i] < INT_MIN || ft_doubles(tmp, tmp[i]) == 0)
-            return (0);
-        ++i;
-    }
-    return (1);
-}
-
-push *get_args(int ac, char **ar)
+char    *ft_strcmp(char *s1, char *s2)
 {
     int i;
-    int *tmp;
-    push *lst;
-    push *node;
 
-    tmp = (int *)malloc(sizeof(int) * ac - 1);
-    if (!tmp || ac <= 1)
-        return (NULL);
     i = 0;
-    while (i < ac - 1)
-        tmp[i++] = ft_atoi(ar[i + 1]);
-    i = 0;
-    lst = ft_lstnew(tmp[i++]);
-    node = lst;
-    while (i < ac - 1)
+    while (s1[i] == s2[i])
     {
-        node->next = ft_lstnew(tmp[i]);
-        node = node->next;
+        if (s1[i] != s2[i])
+            return (0);
         ++i;
     }
-    free(tmp);
-    return (lst);
+    return (1);
 }
 
-int main(int ac, char **ar)
+int    *ft_fill_arr(push *lst)
 {
-    push *lst =  get_args(ac, ar);
-    while (lst != NULL)
+    size_t  i;
+    int    *arr = malloc(sizeof(int) * ft_lstsize(lst));
+    i = 0;
+    while (lst)
     {
-        printf("%d\n", lst->data);
+        arr[i] = lst->data;
         lst = lst->next;
+        ++i;
     }
-    printf("%d", ft_lstsize(lst));
-    return (0);
+    return (arr);
 }
+
+// void    ft_find_sorted_numbers(push *lst, size_t len)
+// {
+//     int arr[len];
+//     int length[len];
+//     int  i;
+//     int  j;
+
+//     i = 0;
+//     while (i < len)
+//         length[i++] = 1;
+//     arr = ft_fill_arr(lst);
+//     i = 1;
+//     while (i < len)
+//     {
+//         j = 0;
+//         while (j < i)
+//         {
+//             if (arr[j] < arr[i] && length[j] + 1 >= length[i])
+//             {
+//                 length[i] = length[j] + 1;
+//                 printf ("%d\n", length[j]);
+//                 lic[i - 1] = j;
+//             }
+//             ++j;
+//         }
+//         ++i;
+//     }
+// }
+
+// int *ft_lst_weigth(push *stack, size_t len)
+// {
+//     size_t  i;
+//     int  *weight;
+
+//     weight = malloc (sizeof(int) * 2);
+//     if (!weight)
+//         return (NULL);
+//     i = 0;
+//     while (i < len / 2)
+//     {
+//         weight[0] += stack->data;
+//         stack = stack->next;
+//         ++i;
+//     }
+//     if (((len / 2) % 2) != 0 && len != 2)
+//         stack = stack->next;
+//     while (stack)
+//     {
+//         weight[1] += stack->data;
+//         stack = stack->next;
+//     }
+//     return (weight);
+// }
