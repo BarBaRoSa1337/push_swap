@@ -1,16 +1,54 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   new_push_swap.c                                    :+:      :+:    :+:   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 08:58:13 by achakour          #+#    #+#             */
-/*   Updated: 2024/02/05 18:17:26 by achakour         ###   ########.fr       */
+/*   Updated: 2024/02/09 05:22:39 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int is_lis(int *arr, int n)
+{
+    int i;
+
+    i = 0;
+    while (arr[i])
+    {
+        if (arr[i] == n)
+            return (1);
+        ++i;
+    }
+    return (0);
+}
+
+void    filter_lst(push *stack_a, push *stack_b, int *lis)
+{
+    int     stack_len;
+    push    *Last;
+    push    *first;
+    int     i;
+
+    i = 0;
+    first = stack_a;
+    stack_len = ft_lstsize(stack_a);
+    while (stack_a)
+        stack_a = stack_a->next;
+    Last = stack_a;
+    stack_a = first;
+    while (i < stack_len)
+    {
+        if (is_lis(Last->data))
+            pa_pb(first, stack_b, "pa");
+        ra_rb_rr(first, "ra");
+        stack_a = stack_a->next;
+        stack_len--;
+    }
+}
 
 void    *ft_lst_sort(push *stack_a, push *stack_b)
 {
@@ -20,20 +58,7 @@ void    *ft_lst_sort(push *stack_a, push *stack_b)
 
     i = 0;
     seq = ft_lsi(stack_a);
-    while (stack_a)
-    {
-        if (seq[i] == stack_a->data)
-            ++i;
-        else
-        {
-            up_down = ft_count_sort_indexes(stack_a, stack_a->data);
-            if (up_down[0] > up_down[1])
-                move_down_and_push(stack_a, stack_a->data);
-            else
-                move_up_and_push(stack_a, stack_a->data);
-        }
-        stack_a = stack_a->next;
-    }
+    filter_lst(stack_a, stack_b, seq);
     return (free (seq), free (up_down), 0);
 }
 
@@ -47,7 +72,7 @@ void    *push_swap(push *stack_a, push *stack_b)
     else if (stack_len == 3 || stack_len == 5)
         
     else if (stack_len == 2)
-        // reverse the list
+        ra_rb_rr(stack_a, "ra");
     else
         ft_lst_sort(stack_a, stack_b, stack_len);
     // ft_lstclear(stack_a);

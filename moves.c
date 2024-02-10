@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 15:44:14 by achakour          #+#    #+#             */
-/*   Updated: 2024/02/05 17:38:31 by achakour         ###   ########.fr       */
+/*   Updated: 2024/02/09 04:14:55 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,57 +40,59 @@ void    rra_rrb_rrr(push *stack, size_t stack_len, char *flag)
     free (tmp);
 }
 
-void    ra_rb_rr(push *stack, char *flag)
-{
-    size_t  stack_len;
-    push    *p;
-    int     *tmp;
-    size_t  i;
+// void    ra_rb_rr(push *stack, char *flag)
+// {
+//     size_t  stack_len;
+//     push    *p;
+//     int     *tmp;
+//     size_t  i;
 
-    i = 0;
-    stack_len = ft_lstsize(stack);
-    tmp = (int *)malloc(sizeof(int) * stack_len);
-    if (!tmp)
-        return ;
-    p = stack;
-    while (i < stack_len)
-    {
-        tmp[i++] = stack->data;
-        stack = stack->next;
-    }
-    i = 1;
-    while (i < stack_len)
-    {
-        p->data = tmp[i++];
-        p = p->next;
-    }
-    p->data = tmp[0];
-    printf ("%s \n", flag);
-    free (tmp);
-}
+//     i = 0;
+//     stack_len = ft_lstsize(stack);
+//     tmp = (int *)malloc(sizeof(int) * stack_len);
+//     if (!tmp)
+//         return ;
+//     p = stack;
+//     while (i < stack_len)
+//     {
+//         tmp[i++] = stack->data;
+//         stack = stack->next;
+//     }
+//     i = 1;
+//     while (i < stack_len)
+//     {
+//         p->data = tmp[i++];
+//         p = p->next;
+//     }
+//     p->data = tmp[0];
+//     printf ("%s \n", flag);
+//     free (tmp);
+// }
 
-push    *pa_pb(push *a, push *b, char *flag)
+void    pa_pb(push *stack_a, push *stack_b, char *flag)
 {
     // not tested yet!!
+    //needs double pointers because it updates the pointer if there 
+    // the list still empty
     int     tmp;
-    push    *head;
 
     if (flag[1] == 'a')
     {
-        tmp = b->data;
-        head = b->next;
-        ft_lstadd_front(&a, ft_lstnew(tmp));
-        ft_lstdelone(b);
+        while (stack_a)
+            stack_a = stack_a->next;
+        tmp = stack_a->data;
+        ft_lstadd_back(b, ft_lstnew(tmp));
+        ft_lstdelone(stack_a);
     }
     else if (flag[1] == 'b')
     {
-        tmp = a->data;
-        head = a->next;
-        ft_lstadd_front(&b, ft_lstnew(tmp));
-        ft_lstdelone(a);
+        while (stack_a)
+            stack_a = stack_a->next;
+        tmp = stack_a->data;
+        ft_lstadd_back(a, ft_lstnew(tmp));
+        ft_lstdelone(stack_b);
     }
     printf ("%s \n", flag);
-    return (head);
 }
 
 void    sa_sb_ss(push *stack, char *flag)

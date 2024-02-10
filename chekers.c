@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 19:16:50 by achakour          #+#    #+#             */
-/*   Updated: 2024/02/07 08:06:28 by achakour         ###   ########.fr       */
+/*   Updated: 2024/02/08 12:48:55 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,10 +105,4 @@ push *get_args(int ac, char **ar)
     }
     free(tmp);
     return (lst);
-}
-
-int main(int ac, char **ar)
-{
-     
-    // push    *head = get_args(ac, ar);
 }
