@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 15:44:38 by achakour          #+#    #+#             */
-/*   Updated: 2024/02/08 12:45:34 by achakour         ###   ########.fr       */
+/*   Updated: 2024/02/10 18:18:56 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,19 +44,6 @@ void	ft_lstclear(push **lst)
 	*lst = NULL;
 }
 
-void	ft_lstadd_front(push **lst, push *new)
-{
-	if (!new || lst == NULL)
-		return ;
-	if (*lst == NULL)
-	{
-		*lst = new;
-		return ;
-	}
-	new->next = *(lst);
-	*lst = new;
-}
-
 void	ft_lstdelone(push *lst)
 {
 	if (lst == NULL)
@@ -90,4 +77,11 @@ push	*ft_lstnew(int content)
 	node->data = content;
 	node->next = NULL;
 	return (node);
+}
+
+push    *find_last_node(push *stack)
+{
+    while (stack->next)
+        stack = stack->next;
+    return(stack);
 }

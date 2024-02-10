@@ -6,24 +6,38 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 18:07:51 by achakour          #+#    #+#             */
-/*   Updated: 2024/02/06 13:26:48 by achakour         ###   ########.fr       */
+/*   Updated: 2024/02/10 18:13:59 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-char    *ft_strcmp(char *s1, char *s2)
+int *ft_count_sort_indexes(push *stack, int n)
 {
-    int i;
-
-    i = 0;
-    while (s1[i] == s2[i])
+    int  *i;
+    // this funtion dont count the push time
+    // index 0 for indexes befor the n
+    // index 1 for indexes after the n
+    //return 0 if the number in place to swap to top or push
+    i = malloc(sizeof(int) * 2);
+    if (!i)
+        return (NULL);
+    while (stack && stack->data != n)
     {
-        if (s1[i] != s2[i])
-            return (0);
-        ++i;
+        i[0] += 1;
+        stack = stack->next;
     }
-    return (1);
+    if (stack->data == n)
+    {
+        stack = stack->next;
+        i[0] += 1;
+    }
+    while (stack)
+    {
+        i[1] += 1;
+        stack = stack->next;
+    }
+    return (i);
 }
 
 int    *ft_fill_arr(push *lst)
@@ -40,56 +54,3 @@ int    *ft_fill_arr(push *lst)
     return (arr);
 }
 
-// void    ft_find_sorted_numbers(push *lst, size_t len)
-// {
-//     int arr[len];
-//     int length[len];
-//     int  i;
-//     int  j;
-
-//     i = 0;
-//     while (i < len)
-//         length[i++] = 1;
-//     arr = ft_fill_arr(lst);
-//     i = 1;
-//     while (i < len)
-//     {
-//         j = 0;
-//         while (j < i)
-//         {
-//             if (arr[j] < arr[i] && length[j] + 1 >= length[i])
-//             {
-//                 length[i] = length[j] + 1;
-//                 printf ("%d\n", length[j]);
-//                 lic[i - 1] = j;
-//             }
-//             ++j;
-//         }
-//         ++i;
-//     }
-// }
-
-// int *ft_lst_weigth(push *stack, size_t len)
-// {
-//     size_t  i;
-//     int  *weight;
-
-//     weight = malloc (sizeof(int) * 2);
-//     if (!weight)
-//         return (NULL);
-//     i = 0;
-//     while (i < len / 2)
-//     {
-//         weight[0] += stack->data;
-//         stack = stack->next;
-//         ++i;
-//     }
-//     if (((len / 2) % 2) != 0 && len != 2)
-//         stack = stack->next;
-//     while (stack)
-//     {
-//         weight[1] += stack->data;
-//         stack = stack->next;
-//     }
-//     return (weight);
-// }

@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 08:58:13 by achakour          #+#    #+#             */
-/*   Updated: 2024/02/09 05:22:39 by achakour         ###   ########.fr       */
+/*   Updated: 2024/02/10 18:31:09 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,40 +26,23 @@ int is_lis(int *arr, int n)
     return (0);
 }
 
-void    filter_lst(push *stack_a, push *stack_b, int *lis)
+void    filter_lst(push **stack_a, push **stack_b)
 {
     int     stack_len;
-    push    *Last;
-    push    *first;
-    int     i;
+    push    *last;
+    int     *lis;
 
-    i = 0;
-    first = stack_a;
-    stack_len = ft_lstsize(stack_a);
-    while (stack_a)
-        stack_a = stack_a->next;
-    Last = stack_a;
-    stack_a = first;
-    while (i < stack_len)
+    lis = ft_lis(*stack_a);
+    stack_len = ft_lstsize(*stack_a);
+    last = find_last_node(*stack_a);
+    while (stack_len--)
     {
-        if (is_lis(Last->data))
-            pa_pb(first, stack_b, "pa");
-        ra_rb_rr(first, "ra");
-        stack_a = stack_a->next;
-        stack_len--;
+        if (is_lis(lis, last->data))
+        {
+            pa_pb(&stack_a, &stack_b, "pa");      
+        }
+        ra_rb_rr(*stack_a, "ra");
     }
-}
-
-void    *ft_lst_sort(push *stack_a, push *stack_b)
-{
-    int i;
-    int *seq;
-    int *up_down;
-
-    i = 0;
-    seq = ft_lsi(stack_a);
-    filter_lst(stack_a, stack_b, seq);
-    return (free (seq), free (up_down), 0);
 }
 
 void    *push_swap(push *stack_a, push *stack_b)
@@ -75,7 +58,6 @@ void    *push_swap(push *stack_a, push *stack_b)
         ra_rb_rr(stack_a, "ra");
     else
         ft_lst_sort(stack_a, stack_b, stack_len);
-    // ft_lstclear(stack_a);
 }
 
 int main(int ac, char **ar)
@@ -91,4 +73,6 @@ int main(int ac, char **ar)
     if (ac == 2)
         free_buff(ar);
     push_swap(stack_a, stack_b);
+    // ft_lstclear(stack_a);
+    // ft_lstclear(stack_b);
 }

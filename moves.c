@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 15:44:14 by achakour          #+#    #+#             */
-/*   Updated: 2024/02/09 04:14:55 by achakour         ###   ########.fr       */
+/*   Updated: 2024/02/10 18:23:54 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,59 +40,59 @@ void    rra_rrb_rrr(push *stack, size_t stack_len, char *flag)
     free (tmp);
 }
 
-// void    ra_rb_rr(push *stack, char *flag)
-// {
-//     size_t  stack_len;
-//     push    *p;
-//     int     *tmp;
-//     size_t  i;
-
-//     i = 0;
-//     stack_len = ft_lstsize(stack);
-//     tmp = (int *)malloc(sizeof(int) * stack_len);
-//     if (!tmp)
-//         return ;
-//     p = stack;
-//     while (i < stack_len)
-//     {
-//         tmp[i++] = stack->data;
-//         stack = stack->next;
-//     }
-//     i = 1;
-//     while (i < stack_len)
-//     {
-//         p->data = tmp[i++];
-//         p = p->next;
-//     }
-//     p->data = tmp[0];
-//     printf ("%s \n", flag);
-//     free (tmp);
-// }
-
-void    pa_pb(push *stack_a, push *stack_b, char *flag)
+void    ra_rb_rr(push *stack, char *flag)
 {
-    // not tested yet!!
-    //needs double pointers because it updates the pointer if there 
-    // the list still empty
+    int     stack_len;
+    int     *tmp;
+    push    *p;
+    int     i;
+
+    i = 0;
+    stack_len = ft_lstsize(stack);
+    tmp = (int *)malloc(sizeof(int) * stack_len);
+    if (!tmp)
+        return ;
+    p = stack;
+    while (i < stack_len)
+    {
+        tmp[i++] = stack->data;
+        stack = stack->next;
+    }
+    i = 1;
+    while (i < stack_len)
+    {
+        p->data = tmp[i++];
+        p = p->next;
+    }
+    p->data = tmp[0];
+    printf ("%s \n", flag);
+    free (tmp);
+}
+
+void    pa_pb(push **stack_a, push **stack_b, char *flag)
+{
     int     tmp;
+    push    *head;
 
     if (flag[1] == 'a')
     {
-        while (stack_a)
-            stack_a = stack_a->next;
-        tmp = stack_a->data;
-        ft_lstadd_back(b, ft_lstnew(tmp));
-        ft_lstdelone(stack_a);
+        head = *stack_a;
+        while (head->next)
+            head = head->next;
+        tmp = head->data;
+        ft_lstadd_back(&stack_b, ft_lstnew(tmp));
+        ft_lstdelone(head);
     }
     else if (flag[1] == 'b')
     {
-        while (stack_a)
-            stack_a = stack_a->next;
-        tmp = stack_a->data;
-        ft_lstadd_back(a, ft_lstnew(tmp));
-        ft_lstdelone(stack_b);
+        head = *stack_b;
+        while (head->next)
+            head = head->next;
+        tmp = head->data;
+        ft_lstadd_back(&stack_a, ft_lstnew(tmp));
+        ft_lstdelone(head);
     }
-    printf ("%s \n", flag);
+    printf ("%s \n", flag);//aba!
 }
 
 void    sa_sb_ss(push *stack, char *flag)

@@ -1,10 +1,33 @@
 #include "push_swap.h"
 
+// void    filter_lst(push **stack_a, push **stack_b, int *lis)
+// {
+//     int     stack_len;
+//     push    *last;
+//     push    *tmp;
+
+//     last = *stack_a;
+//     while (last->next->next)
+//     {
+//         last = last->next->next;
+//         tmp = last->next;
+//     }
+//     stack_len = ft_lstsize(*stack_a);
+//     while (stack_len--)
+//     {
+//         if (is_not_lis(lis, last->data))
+//             pa_pb(stack_a, stack_b, "pa");
+//         ra_rb_rr(stack_a, "ra");
+//     }
+// }
+
 // rra (reverse rotate a): Shift down all elements of stack a by 1.
 //  The last element becomes the first one.
 // rrb (reverse rotate b): Shift down all elements of stack b by 1.
 //  The last element becomes the first one.
 // rrr : rra and rrb at the same time.
+
+int    *ft_find_sequence(int *arr, int *lis, int max, int len);
 
 int ft_max(int *arr)
 {
@@ -39,37 +62,17 @@ int    *ft_fill_arr(push *lst)
     }
     return (arr);
 }
-int is_valid(int *arr, int n, int index)
+
+int is_valid(int *arr, int n, int len)
 {
     int i =  0;
-    while (i < index)
+    while (i < len)
     {
         if (arr[i] == n)
             return (0);
         ++i;
     }
     return (1);
-}
-int    *ft_find_sequence(int *arr, int *lis, int max)
-{
-    int *seq;
-    int i = 0;
-    
-    seq = malloc(sizeof(int) * max);
-    memset(seq, 0, max);
-    if (!seq)
-        return (NULL);
-    while (max)
-    {
-       if (is_valid(seq, arr[lis[max]], i))
-       {
-            seq[i] = arr[lis[max]];
-            ++i;
-       }
-       --max;
-    }
-    free (lis);
-    return (seq);
 }
 
 int    *ft_lis(push *lst, int len)
@@ -98,31 +101,61 @@ int    *ft_lis(push *lst, int len)
         }
         ++i;
     }
-    return (ft_find_sequence(arr, lis, ft_max(lis)));
+    return (ft_find_sequence(arr, lis, ft_max(lis), len));
 }
 
-// void    filter_lst(push **stack_a, push **stack_b, int *lis)
-// {
-//     int     stack_len;
-//     push    *last;
-//     push    *tmp;
-
-//     last = *stack_a;
-//     while (last->next->next)
-//     {
-//         last = last->next->next;
-//         tmp = last->next;
-//     }
-//     stack_len = ft_lstsize(*stack_a);
-//     while (stack_len--)
-//     {
-//         if (is_not_lis(lis, last->data))
-//             pa_pb(stack_a, stack_b, "pa");
-//         ra_rb_rr(stack_a, "ra");
-//     }
-// }
-
 #include <stdio.h>
+
+int    *ft_find_sequence(int *arr, int *lis, int max, int len)
+{
+    int *seq;
+    int i;
+
+    i = 0;
+    seq = malloc(sizeof(int) * max);
+    if (!seq)
+        return (NULL);
+    while (len)
+    {
+        if (lis[len - 1] == max)
+        {
+            seq[i] = arr[len - 1];
+            // printf ("%d\n", seq[i]);
+            max--;
+            ++i;
+        }
+        len--;
+    }
+    free (lis);
+    free(arr);
+    return (seq);
+}
+
+push    *find_last_node(push *stack)
+{
+    while (stack->next)
+        stack = stack->next;
+    return(stack);
+}
+
+void    filter_lst(push **stack_a, push **stack_b)
+{
+    int     stack_len;
+    push    *last;
+    int     *lis;
+
+    lis = ft_lis(*stack_a);
+    stack_len = ft_lstsize(*stack_a);
+    last = find_last_node(*stack_a);
+    while (stack_len--)
+    {
+        if (is_lis(lis, last->data))
+        {
+            pa_pb(&stack_a, &stack_b, "pa");      
+        }
+        ra_rb_rr(*stack_a, "ra");
+    }
+}
 
 int main(void)
 {
@@ -139,13 +172,12 @@ int main(void)
 
     int max;
     int *arr = ft_lis(head, ft_lstsize(head));
-    for (int i = 0; i < max; i++)
+    for (int i = 0; i < 4; i++)
+    {
         printf("%d\n", arr[i]);
-    // // sa_sb_ss(head, "sa");
-    // while (n)
-    // {
-    //     printf ("%d\n", n->data);
-    //     n = n->next;
-    // }
+    }
+    head = find_last_node(n);
+    printf("aba == %d\n", head->data);
     free (arr);
+    ft_lstclear(&n);
 }
