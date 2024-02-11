@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:07:56 by achakour          #+#    #+#             */
-/*   Updated: 2024/02/09 03:49:25 by achakour         ###   ########.fr       */
+/*   Updated: 2024/02/11 18:44:06 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 typedef struct push
 {
     int            data;
-    struct  push   *next;
+    struct  push  *next;
 }           push;
 
 void    ra_rb_rr(push *stack, char *flag);
@@ -42,7 +42,9 @@ push	*ft_lstnew(int content);
 // ah torta9 lbarod
 int *ft_count_sort_indexes(push *stack, int n);
 char	**ft_split(char const *s, char c);
-int     ft_is_ascending(push *stack);
-int ft_is_descending(push *stack);
+void    filter_lst(push **stack_a, push **stack_b);
+push    *find_last_node(push *stack);
+int    *ft_lis(push *lst, int len);
+int    *ft_fill_arr(push *lst);
 
 #endif
