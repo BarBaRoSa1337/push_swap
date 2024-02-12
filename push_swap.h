@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:07:56 by achakour          #+#    #+#             */
-/*   Updated: 2024/02/11 18:44:06 by achakour         ###   ########.fr       */
+/*   Updated: 2024/02/12 09:47:24 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ typedef struct push
     struct  push  *next;
 }           push;
 
-void    ra_rb_rr(push *stack, char *flag);
 void    sa_sb_ss(push *stack, char *flag);
 void    pa_pb(push **a, push **b, char *flag);
 

@@ -6,23 +6,36 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 08:58:13 by achakour          #+#    #+#             */
-/*   Updated: 2024/02/11 19:05:44 by achakour         ###   ########.fr       */
+/*   Updated: 2024/02/12 08:49:55 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void    move_down_and_push(push **stack_a, push **stack_b)
+void    move_up_down_push(push **stack_a, push **stack_b, char flag)
 {
     int pos;
+    int len;
     int i;
 
     i = 0;
+    len = ft_lstsize(*stack_b);
     pos = find_node(*stack_b);
-    while (i < pos + 1)
+    if (flag == 'u')
     {
-        ra_rb_rr(stack_a, "rb");
-        pa_pb(&stack_a, &stack_b, "pb");
+        while (i < len - pos)
+        {
+            rra_rrb_rrr(stack_b, ft_lstsize(stack_b), "rrb");
+            pa_pb(&stack_a, &stack_b, "pb");
+        }
+    }
+    if (flag == 'd')
+    {
+        while (i < pos + 1)
+        {
+            ra_rb_rr(stack_a, "rb");
+            pa_pb(&stack_a, &stack_b, "pb");
+        }
     }
 }
 

@@ -157,6 +157,17 @@ void    filter_lst(push **stack_a, push **stack_b)
     }
 }
 
+void    rra_rrb_rrr(push **stack, push **last,char *flag)
+{
+    push    head;
+
+    head = *stack;
+    while (head->next->next)
+        head = head->next;
+    *last = head;
+    *stack = head->next;
+    head->next = NULL;
+}
 int main(void)
 {
     push *n = ft_lstnew(2);
@@ -169,15 +180,12 @@ int main(void)
     n2->next = n3;
     n3->next = n4;
     push *head = n;
-
-    int max;
-    int *arr = ft_lis(head, ft_lstsize(head));
-    for (int i = 0; i < 4; i++)
+    push *last;
+    rra_rrb_rrr(&head, &head, "ra");
+    for (int i = 0;i < 5; i++)
     {
-        printf("%d\n", arr[i]);
+        printf ("%d\n", n->data);
+        n = n->next;
     }
-    head = find_last_node(n);
-    printf("aba == %d\n", head->data);
-    free (arr);
-    ft_lstclear(&n);
+    // ft_lstclear(&n);
 }

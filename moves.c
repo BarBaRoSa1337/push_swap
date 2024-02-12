@@ -6,38 +6,25 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 15:44:14 by achakour          #+#    #+#             */
-/*   Updated: 2024/02/10 18:23:54 by achakour         ###   ########.fr       */
+/*   Updated: 2024/02/12 09:36:07 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void    rra_rrb_rrr(push *stack, size_t stack_len, char *flag)
+void    rra_rrb_rrr(push **stack, push **last,char *flag)
 {
-    push    *p;
-    int     *tmp;
-    size_t  i;
+    push    *head;
+    push    *tmp;
 
-    i = 0;
-    tmp = (int *)malloc(sizeof(int) * stack_len);
-    if (!tmp)
-        return ;
-    p = stack;
-    while (i < stack_len)
-    {
-        tmp[i++] = stack->data;
-        stack = stack->next;
-    }
-    p->data = tmp[i - 1];
-    p = p->next;
-    i = 0;
-    while (i < stack_len - 1)
-    {
-        p->data = tmp[i++];
-        p = p->next;
-    }
-    printf ("%s \n", flag);
-    free (tmp);
+    head = *stack;
+    while (head->next->next)
+        head = head->next;
+   tmp = head;
+   *last = tmp;
+   head->next->next = *stack;
+   *stack = tmp->next;
+   tmp->next = NULL;
 }
 
 void    ra_rb_rr(push *stack, char *flag)
