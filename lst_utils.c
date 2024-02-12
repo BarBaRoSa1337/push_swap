@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 15:44:38 by achakour          #+#    #+#             */
-/*   Updated: 2024/02/10 18:18:56 by achakour         ###   ########.fr       */
+/*   Updated: 2024/02/12 13:41:57 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,11 @@ void	ft_lstclear(push **lst)
 	*lst = NULL;
 }
 
-void	ft_lstdelone(push *lst)
+void	ft_lstdelone(push **lst)
 {
 	if (lst == NULL)
 		return ;
-	free(lst);
+	free (*lst);
 	lst = NULL;
 }
 

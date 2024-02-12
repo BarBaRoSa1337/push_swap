@@ -1,34 +1,54 @@
 #include "push_swap.h"
 
-void    rra_rrb_rrr(push **stack, push **last,char *flag)
+void	ft_lstadd_back1(push **lst, push *new)
 {
-    push    *head;
-    push    *tmp;
+	push	*head;
 
-    head = *stack;
-    while (head->next->next)
-        head = head->next;
-   tmp = head;
-   *last = tmp;
-   head->next->next = *stack;
-   *stack = tmp->next;
-   tmp->next = NULL;
+	if (!new || lst == NULL)
+		return ;
+	head = *lst;
+	if (!head)
+	{
+		*lst = new;
+		return ;
+	}
+	while (head->next)
+		head = head->next;
+	head->next = new;
 }
 
-void    ra_rb_rr(push **stack, push **last,char *flag)
+void	ft_lstdelone1(push **lst)
 {
-    push    *head;
-    push    *tmp;
-
-    head = *stack;
-    tmp = head->next;
-    while (head)
-        head = head->next;
-    head->next = *stack;
-    head->next->next = NULL;
-    *stack = tmp;
+	if (lst == NULL)
+		return ;
+	free (*lst);
+	lst = NULL;
 }
+void    pa_pb(push **stack_a, push **stack_b, char *flag)
+{
+    int     tmp;
+    push    *head;
 
+    if (flag[1] == 'a')
+    {
+        head = *stack_a;
+        while (head->next->next)
+            head = head->next;
+        tmp = head->next->data;
+        ft_lstadd_back1(stack_b, ft_lstnew(tmp));
+        ft_lstclear(&head->next);
+    }
+    // else if (flag[1] == 'b')
+    // {
+    //     head = *stack_b;
+    //     while (head->next)
+    //         head = head->next;
+    //     tmp = head->data;
+    //     ft_lstadd_back1(stack_a, ft_lstnew(tmp));
+    //     ft_lstdelone(head);
+    // }
+    printf ("%s \n", flag);//aba!
+}
 int main(void)
 {
     push *n = ft_lstnew(2);
@@ -41,13 +61,14 @@ int main(void)
     n2->next = n3;
     n3->next = n4;
     push *head = n;
-    push *last;
-    push *aba;
-    ra_rb_rr(&head, &last, "rn");
+    push *b = NULL;
+    pa_pb(&head, &b, "pa");
     while (head)
     {
         printf("%d\n", head->data);
         head = head->next;
     }
-    // ft_lstclear(&last);
+    printf(" ah %d\n", b->data);
+    ft_lstclear(&n);
+    ft_lstclear(&b);
 }

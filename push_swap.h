@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:07:56 by achakour          #+#    #+#             */
-/*   Updated: 2024/02/12 09:47:24 by achakour         ###   ########.fr       */
+/*   Updated: 2024/02/12 13:42:45 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ typedef struct push
     struct  push  *next;
 }           push;
 
+void    rra_rrb_rrr(push **stack, push **last,char *flag);
+void    ra_rb_rr(push **stack, push **last,char *flag);
 void    sa_sb_ss(push *stack, char *flag);
 void    pa_pb(push **a, push **b, char *flag);
 
@@ -35,7 +37,7 @@ push    *get_args(int ac, char **ar);
 void	ft_lstclear(push **lst);
 
 void	ft_lstadd_back(push **lst, push *new);
-void	ft_lstdelone(push *lst);
+// void	ft_lstdelone(push *lst);
 int	    ft_lstsize(push *lst);
 push	*ft_lstnew(int content);
 // ah torta9 lbarod

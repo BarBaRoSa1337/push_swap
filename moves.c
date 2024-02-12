@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 15:44:14 by achakour          #+#    #+#             */
-/*   Updated: 2024/02/12 09:36:07 by achakour         ###   ########.fr       */
+/*   Updated: 2024/02/12 13:13:58 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,33 +27,21 @@ void    rra_rrb_rrr(push **stack, push **last,char *flag)
    tmp->next = NULL;
 }
 
-void    ra_rb_rr(push *stack, char *flag)
+void    ra_rb_rr(push **stack, push **last,char *flag)
 {
-    int     stack_len;
-    int     *tmp;
-    push    *p;
-    int     i;
+    push    *head;
+    push    *tmp;
 
-    i = 0;
-    stack_len = ft_lstsize(stack);
-    tmp = (int *)malloc(sizeof(int) * stack_len);
-    if (!tmp)
-        return ;
-    p = stack;
-    while (i < stack_len)
+    head = *stack;
+    tmp = head->next;
+    while (head->next)
     {
-        tmp[i++] = stack->data;
-        stack = stack->next;
+        head = head->next;
     }
-    i = 1;
-    while (i < stack_len)
-    {
-        p->data = tmp[i++];
-        p = p->next;
-    }
-    p->data = tmp[0];
-    printf ("%s \n", flag);
-    free (tmp);
+    head->next = *stack;
+    *last = head->next;
+    *stack = tmp;
+    head->next->next = NULL;
 }
 
 void    pa_pb(push **stack_a, push **stack_b, char *flag)

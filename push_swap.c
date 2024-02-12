@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 08:58:13 by achakour          #+#    #+#             */
-/*   Updated: 2024/02/12 08:49:55 by achakour         ###   ########.fr       */
+/*   Updated: 2024/02/12 13:16:26 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void    move_up_down_push(push **stack_a, push **stack_b, char flag)
     {
         while (i < len - pos)
         {
-            rra_rrb_rrr(stack_b, ft_lstsize(stack_b), "rrb");
+            rra_rrb_rrr(stack_a,);
             pa_pb(&stack_a, &stack_b, "pb");
         }
     }
@@ -61,7 +61,6 @@ void    filter_lst(push **stack_a, push **stack_b)
 
     lis = ft_lis(*stack_a);
     stack_len = ft_lstsize(*stack_a);
-    last = find_last_node(*stack_a);
     while (stack_len--)
     {
         if (!is_lis(lis, last->data))
