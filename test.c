@@ -131,61 +131,61 @@ int    *ft_find_sequence(int *arr, int *lis, int max, int len)
     return (seq);
 }
 
-push    *find_last_node(push *stack)
-{
-    while (stack->next)
-        stack = stack->next;
-    return(stack);
-}
+// push    *find_last_node(push *stack)
+// {
+//     while (stack->next)
+//         stack = stack->next;
+//     return(stack);
+// }
 
-void    filter_lst(push **stack_a, push **stack_b)
-{
-    int     stack_len;
-    push    *last;
-    int     *lis;
+// void    filter_lst(push **stack_a, push **stack_b)
+// {
+//     int     stack_len;
+//     push    *last;
+//     int     *lis;
 
-    lis = ft_lis(*stack_a);
-    stack_len = ft_lstsize(*stack_a);
-    last = find_last_node(*stack_a);
-    while (stack_len--)
-    {
-        if (is_lis(lis, last->data))
-        {
-            pa_pb(&stack_a, &stack_b, "pa");      
-        }
-        ra_rb_rr(*stack_a, "ra");
-    }
-}
+//     lis = ft_lis(*stack_a);
+//     stack_len = ft_lstsize(*stack_a);
+//     last = find_last_node(*stack_a);
+//     while (stack_len--)
+//     {
+//         if (is_lis(lis, last->data))
+//         {
+//             pa_pb(&stack_a, &stack_b, "pa");      
+//         }
+//         ra_rb_rr(*stack_a, "ra");
+//     }
+// }
 
-void    rra_rrb_rrr(push **stack, push **last,char *flag)
-{
-    push    head;
+// void    rra_rrb_rrr(push **stack, push **last,char *flag)
+// {
+//     push    head;
 
-    head = *stack;
-    while (head->next->next)
-        head = head->next;
-    *last = head;
-    *stack = head->next;
-    head->next = NULL;
-}
-int main(void)
-{
-    push *n = ft_lstnew(2);
-    push    *n1 = ft_lstnew(3);
-    push        *n2 = ft_lstnew(5);
-    push            *n3 = ft_lstnew(4);
-    push                *n4 = ft_lstnew(8);
-    n->next = n1;
-    n1->next = n2;
-    n2->next = n3;
-    n3->next = n4;
-    push *head = n;
-    push *last;
-    rra_rrb_rrr(&head, &head, "ra");
-    for (int i = 0;i < 5; i++)
-    {
-        printf ("%d\n", n->data);
-        n = n->next;
-    }
-    // ft_lstclear(&n);
-}
+//     head = *stack;
+//     while (head->next->next)
+//         head = head->next;
+//     *last = head;
+//     *stack = head->next;
+//     head->next = NULL;
+// }
+// int main(void)
+// {
+//     push *n = ft_lstnew(2);
+//     push    *n1 = ft_lstnew(3);
+//     push        *n2 = ft_lstnew(5);
+//     push            *n3 = ft_lstnew(4);
+//     push                *n4 = ft_lstnew(8);
+//     n->next = n1;
+//     n1->next = n2;
+//     n2->next = n3;
+//     n3->next = n4;
+//     push *head = n;
+//     push *last;
+//     rra_rrb_rrr(&head, &head, "ra");
+//     for (int i = 0;i < 5; i++)
+//     {
+//         printf ("%d\n", n->data);
+//         n = n->next;
+//     }
+//     // ft_lstclear(&n);
+// }

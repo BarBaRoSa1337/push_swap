@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 15:44:14 by achakour          #+#    #+#             */
-/*   Updated: 2024/02/12 13:13:58 by achakour         ###   ########.fr       */
+/*   Updated: 2024/02/12 19:03:44 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,30 +44,32 @@ void    ra_rb_rr(push **stack, push **last,char *flag)
     head->next->next = NULL;
 }
 
-void    pa_pb(push **stack_a, push **stack_b, char *flag)
+void    pa_pb(push **stack_a, push **stack_b, push **last,char *flag)
 {
-    int     tmp;
+    int     tmp;//thid function dont handle lstsize == 1//
     push    *head;
 
     if (flag[1] == 'a')
     {
         head = *stack_a;
-        while (head->next)
+        while (head->next->next)
             head = head->next;
-        tmp = head->data;
-        ft_lstadd_back(&stack_b, ft_lstnew(tmp));
-        ft_lstdelone(head);
+        *last = head;
+        tmp = head->next->data;
+        ft_lstadd_back(stack_b, ft_lstnew(tmp));
+        ft_lstclear(&head->next);
     }
     else if (flag[1] == 'b')
     {
         head = *stack_b;
-        while (head->next)
+        while (head->next->next)
             head = head->next;
-        tmp = head->data;
-        ft_lstadd_back(&stack_a, ft_lstnew(tmp));
-        ft_lstdelone(head);
+        *last = head;
+        tmp = head->next->data;
+        ft_lstadd_back(stack_a, ft_lstnew(tmp));
+        ft_lstclear(&head->next);
     }
-    printf ("%s \n", flag);//aba!
+    printf ("%s \n", flag);
 }
 
 void    sa_sb_ss(push *stack, char *flag)

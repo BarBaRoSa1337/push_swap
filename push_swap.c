@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 08:58:13 by achakour          #+#    #+#             */
-/*   Updated: 2024/02/12 13:16:26 by achakour         ###   ########.fr       */
+/*   Updated: 2024/02/12 15:50:58 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@ void    filter_lst(push **stack_a, push **stack_b)
     int     *lis;
 
     lis = ft_lis(*stack_a);
-    stack_len = ft_lstsize(*stack_a);
-    while (stack_len--)
+    stack_len = ft_lstsize(*stack_a) + 1;
+    while (--stack_len)
     {
         if (!is_lis(lis, last->data))
             pa_pb(&stack_a, &stack_b, "pa");
