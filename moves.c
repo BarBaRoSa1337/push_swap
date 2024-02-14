@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 15:44:14 by achakour          #+#    #+#             */
-/*   Updated: 2024/02/13 11:13:06 by achakour         ###   ########.fr       */
+/*   Updated: 2024/02/14 14:57:29 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void    rra_rrb_rrr(push **stack, push **last,char *flag)
    tmp->next = NULL;
 }
 
-void    ra_rb_rr(push **stack, push **last,char *flag)
+void    ra_rb_rr(push **stack, char *flag)
 {
     push    *head;
     push    *tmp;
@@ -39,9 +39,9 @@ void    ra_rb_rr(push **stack, push **last,char *flag)
         head = head->next;
     }
     head->next = *stack;
-    *last = head->next;
     *stack = tmp;
     head->next->next = NULL;
+    printf("%s\n", flag);
 }
 
 void    sa_sb_ss(push *stack, char *flag)
@@ -111,31 +111,3 @@ void    pa_pb(push **stack_a, push **stack_b ,char *flag)
     }
     printf ("%s \n", flag);
 }
-
-// void    pa_pb(push **stack_a, push **stack_b,char *flag)
-// {
-//     int     tmp;//thid function dont handle lstsize == 1//
-//     push    *head;
-
-//     if (flag[1] == 'a')
-//     {
-//         head = *stack_a;
-//         while (head->next->next)
-//             head = head->next;
-//         // *last = head;
-//         tmp = head->next->data;
-//         ft_lstadd_back(stack_b, ft_lstnew(tmp));
-//         ft_lstclear(&head->next);
-//     }
-//     else if (flag[1] == 'b')
-//     {
-//         head = *stack_b;
-//         while (head->next->next)
-//             head = head->next;
-//         // *last = head;
-//         tmp = head->next->data;
-//         ft_lstadd_back(stack_a, ft_lstnew(tmp));
-//         ft_lstclear(&head->next);
-//     }
-//     printf ("%s \n", flag);
-// }

@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:07:56 by achakour          #+#    #+#             */
-/*   Updated: 2024/02/14 10:13:46 by achakour         ###   ########.fr       */
+/*   Updated: 2024/02/14 12:36:14 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef struct push
 }           push;
 
 void    rra_rrb_rrr(push **stack, push **last,char *flag);
-void    ra_rb_rr(push **stack, push **last,char *flag);
+void    ra_rb_rr(push **stack, char *flag);
 void    sa_sb_ss(push *stack, char *flag);
 void    pa_pb(push **a, push **b, char *flag);
 int is_lis(int *arr, int len,int n);

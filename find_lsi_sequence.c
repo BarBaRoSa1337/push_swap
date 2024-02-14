@@ -1,19 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   find_lsi_sequence.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/14 12:08:43 by achakour          #+#    #+#             */
+/*   Updated: 2024/02/14 12:08:51 by achakour         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
-
-// int is_sorted(push *stack)
-// {
-//     int lst_size;
-
-//     lst_size = ft_lstsize(stack);
-//     while(lst_size--)
-//     {
-//         if (stack->data < stack->next->data)
-//             stack = stack->next
-//         else
-//             return (0);
-//     }
-//     return (1);
-// }
 
 int    *ft_find_sequence(int *arr, int *lis, int max, int *len)
 {
@@ -76,6 +73,21 @@ int    *ft_fill_arr(push *lst)
     return (arr);
 }
 
+int locate_fill_buffer(int **buff, int len)
+{
+    int i;
+
+    i = 0;
+    *buff = malloc(sizeof(int) * len);
+    if (!buff)
+        return (0);
+    while (i < len)
+    {
+        *buff[i] = 1;
+        ++i;
+    }
+}
+
 int    *ft_lis(push *lst, int *len)
 {
     int *arr;
@@ -86,11 +98,8 @@ int    *ft_lis(push *lst, int *len)
 
     i = 0;
     tmp = *len;
-    lis = malloc(sizeof(int) * tmp);
-    if (!lis)
-        return (NULL);
-    while (i < tmp)
-        lis[i++] = 1;
+    if (!locate_fill_buffer(&lis, len))
+        return (0);
     arr = ft_fill_arr(lst);
     i = 1;
     while (i < tmp)
