@@ -14,6 +14,7 @@ int is_sorted(push *stack)
     }
     return (1);
 }
+
 int find_node(push *lst, int n)
 {
     int i;
@@ -97,6 +98,7 @@ void    filter_lst(push **stack_a, push **stack_b)
     push    *head;
     int     *lis;
 
+    head = *stack_a;
     stack_len = ft_lstsize(head);
     tmp = stack_len;
     lis = ft_lis(head, &stack_len);
@@ -131,16 +133,16 @@ int main(void)
     // push    *b1 = ft_lstnew(4242);
     // b->next = b1;
     filter_lst(&head, &b);
-    while (head)
-    {
-        printf("1  %d\n", head->data);
-        head = head->next;
-    }
-    while (b)
-    {
-        printf ("2  %d\n", b->data);
-        b = b->next;  
-    }
+    // while (head)
+    // {
+    //     printf("1  %d\n", head->data);
+    //     head = head->next;
+    // }
+    // while (b)
+    // {
+    //     printf ("2  %d\n", b->data);
+    //     b = b->next;  
+    // }
     
     // ft_lstclear(&n);
     ft_lstclear(&head);
