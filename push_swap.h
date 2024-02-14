@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:07:56 by achakour          #+#    #+#             */
-/*   Updated: 2024/02/13 10:34:06 by achakour         ###   ########.fr       */
+/*   Updated: 2024/02/14 10:13:46 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	ft_lstadd_back(push **lst, push *new);
 // void	ft_lstdelone(push *lst);
 int	    ft_lstsize(push *lst);
 push	*ft_lstnew(int content);
-int    *ft_lis(push *lst, int len);
+int    *ft_lis(push *lst, int *len);
 // ah torta9 lbarod
 int *ft_count_sort_indexes(push *stack, int n);
 char	**ft_split(char const *s, char c);

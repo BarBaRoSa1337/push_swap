@@ -1,5 +1,19 @@
 #include "push_swap.h"
 
+int is_sorted(push *stack)
+{
+    int lst_size;
+
+    lst_size = ft_lstsize(stack);
+    while(lst_size--)
+    {
+        if (stack->data < stack->next->data)
+            stack = stack->next;
+        else
+            return (0);
+    }
+    return (1);
+}
 int find_node(push *lst, int n)
 {
     int i;
@@ -57,7 +71,7 @@ int is_lis(int *arr, int len,int n)
 //     }
 // }
 
-void    ra_rb_rrr(push **stack, push **last,char *flag)
+void    ra_rb_rrr(push **stack, char *flag)
 {
     push    *head;
     push    *tmp;
@@ -69,7 +83,7 @@ void    ra_rb_rrr(push **stack, push **last,char *flag)
         head = head->next;
     }
     head->next = *stack;
-    *last = head->next;
+    // *last = head->next;
     *stack = tmp;
     head->next->next = NULL;
     printf("%s\n", flag);
@@ -78,98 +92,50 @@ void    ra_rb_rrr(push **stack, push **last,char *flag)
 void    filter_lst(push **stack_a, push **stack_b)
 {
     int     stack_len;
+    int     tmp;
     push    *last;
     push    *head;
     int     *lis;
 
-    head = *stack_a;
     stack_len = ft_lstsize(head);
-    lis = ft_lis(head, stack_len);
-    while (--stack_len)
+    tmp = stack_len;
+    lis = ft_lis(head, &stack_len);
+    while (tmp--)
     {
-        if (is_lis(lis, stack_len, last->data))
-        {
-            // printf("%d\n", last->data);
-            // pa_pbb(stack_a, stack_b, &last,"pb");
-        }
-        ra_rb_rrr (stack_a,&last, "ra");
+        // head = *stack_a;
+        // last = find_last_node(head);
+        // if (is_lis(lis, stack_len, last->data))
+        // {
+        //     // printf("%d\n", last->data);
+        //     pa_pb(stack_a, stack_b ,"pa");
+        // }
+        // else
+            ra_rb_rrr (stack_a, "ra");
     }
     free (lis);
-}
-
-int    push_node(push **stack_a, push **stack_b, int a_len, int b_len,char *flag)
-{
-    push    *head;
-    int     tmp;
-
-    if (flag[1] == 'a' && a_len == 1)
-    {
-        head = *stack_a;
-        tmp = head->data;
-        ft_lstadd_back(stack_b, ft_lstnew(tmp));
-        ft_lstclear(stack_a);
-        return (1);
-    }
-    else if (flag[1] == 'b' && b_len == 1)
-    {
-        head = *stack_b;
-        tmp = head->data;
-        ft_lstadd_back(stack_a, ft_lstnew(tmp));
-        ft_lstclear(stack_b);
-        return (1);
-    }
-    return (0);
-}
-
-void    pa_pb(push **stack_a, push **stack_b ,char *flag)
-{
-    int     tmp;
-    push    *head;
-
-    if (push_node(stack_a, stack_b, ft_lstsize(*stack_a), ft_lstsize(*stack_b),flag))
-        return ;
-    if (flag[1] == 'a')
-    {
-        head = *stack_a;
-        while (head->next->next)
-            head = head->next;
-        tmp = head->next->data;
-        ft_lstadd_back(stack_b, ft_lstnew(tmp));
-        ft_lstclear(&head->next);
-    }
-    else if (flag[1] == 'b')
-    {
-        head = *stack_b;
-        while (head->next->next)
-            head = head->next;
-        tmp = head->next->data;
-        ft_lstadd_back(stack_a, ft_lstnew(tmp));
-        ft_lstclear(&head->next);
-    }
-    printf ("%s \n", flag);
 }
 
 int main(void)
 {
     push *n = ft_lstnew(2);
-    // push    *n1 = ft_lstnew(3);
-    // push        *n2 = ft_lstnew(5);
-    // push            *n3 = ft_lstnew(4);
-    // push                *n4 = ft_lstnew(8);
-    // n->next = n1;
-    // n1->next = n2;
-    // n2->next = n3;
-    // n3->next = n4;
+    push    *n1 = ft_lstnew(3);
+    push        *n2 = ft_lstnew(9);
+    push            *n3 = ft_lstnew(5);
+    push                *n4 = ft_lstnew(8);
+    n->next = n1;
+    n1->next = n2;
+    n2->next = n3;
+    n3->next = n4;
     push    *b = ft_lstnew(1337);
-    push *head = b;
+    push *head = n;
     // push    *b1 = ft_lstnew(4242);
     // b->next = b1;
-    pa_pbb(&n, &b, "pa");
-    // while (head)
-    // {
-    //     printf("1  %d\n", head->data);
-    //     head = head->next;
-    // }
+    filter_lst(&head, &b);
+    while (head)
+    {
+        printf("1  %d\n", head->data);
+        head = head->next;
+    }
     while (b)
     {
         printf ("2  %d\n", b->data);
