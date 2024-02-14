@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 08:58:13 by achakour          #+#    #+#             */
-/*   Updated: 2024/02/12 15:50:58 by achakour         ###   ########.fr       */
+/*   Updated: 2024/02/13 11:16:41 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,13 +87,14 @@ int main(int ac, char **ar)
 
     if (!ft_check_dobles_limits(ac, ar) || !ft_is_all_digit(ac, ar) || ac == 1)
         ft_perror();
+    stack_b = NULL;
     stack_a = get_args(ac, ar);
     stack_len = ft_lstsize(stack_a);
     if (ft_is_sorted(stack_a))
         return (0);
     else if (is_descending(stack_a))
         //rotate the stack
-    else if (stack_len == 3 || stack_len == 5)
+    else if (stack_len == 3)
         sort_small_stack(&stack_a, &stack_b);
     else if (stack_len == 2)
         ra_rb_rr(stack_a, "ra");
