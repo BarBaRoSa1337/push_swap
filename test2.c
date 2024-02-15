@@ -43,6 +43,8 @@ int ft_max(push *stack)
 {
     int tmp;
 
+    if (!stack)
+        return (0);
     tmp = stack->data;
     while (stack)
     {
@@ -100,9 +102,8 @@ void    move_up_down_push(push **stack_a, push **stack_b, int n, char flag)
     }
 }
 
-void    stack_recovery(push **stack_a, push **stack_b)
+void    stack_recovery(push **stack_a, push **stack_b, int len)
 {
-    int len;
     int max;
     int *pos;
     push    *last;
@@ -119,6 +120,7 @@ void    stack_recovery(push **stack_a, push **stack_b)
                 move_up_down_push(stack_a, stack_b, max,'d');
             else
                 move_up_down_push(stack_a, stack_b, max,'u');
+            free (pos);
             len++;
         }
         else
@@ -140,14 +142,14 @@ int main(void)
     n1->next = n2;
     n2->next = n3;
     n3->next = n4;
-    push    *b = ft_lstnew(10);
-    push    *b1 = ft_lstnew(6);
+    push    *b = ft_lstnew(6);
+    push    *b1 = ft_lstnew(10);
     push    *b2  = ft_lstnew(9);
     b->next = b1;
     b1->next = b2;
-    push *head = n;
 
-    stack_recovery(&n, &b);
+    stack_recovery(&n, &b, ft_lstsize(n));
+    push *head = n;
     // move_up_down_push(&n, &b, 6, 'u');
     push *tmp = b;
     while (head)

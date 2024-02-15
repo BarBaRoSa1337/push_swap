@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 15:44:38 by achakour          #+#    #+#             */
-/*   Updated: 2024/02/12 15:33:49 by achakour         ###   ########.fr       */
+/*   Updated: 2024/02/15 09:47:58 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,8 @@ push	*ft_lstnew(int content)
 
 push    *find_last_node(push *stack)
 {
+	if (!stack)
+		return (NULL);
     while (stack->next)
         stack = stack->next;
     return(stack);
