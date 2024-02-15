@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:07:56 by achakour          #+#    #+#             */
-/*   Updated: 2024/02/14 12:36:14 by achakour         ###   ########.fr       */
+/*   Updated: 2024/02/15 17:46:43 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,21 +29,22 @@ void    rra_rrb_rrr(push **stack, push **last,char *flag);
 void    ra_rb_rr(push **stack, char *flag);
 void    sa_sb_ss(push *stack, char *flag);
 void    pa_pb(push **a, push **b, char *flag);
-int is_lis(int *arr, int len,int n);
+int     is_lis(int *arr, int len,int n);
 
 int     ft_double_numbers(int *arr, int n, unsigned int len);
 int     ft_is_all_digit(int ac, char **ar);
 int     ft_check_dobles_limits(int ac, char **ar);
 push    *get_args(int ac, char **ar);
 void	ft_lstclear(push **lst);
+int ft_max(push *stack);
+int *count_push_price(push *stack, int n);
+void    move_up_down_push(push **stack_a, push **stack_b, int n, char flag);
 
 void	ft_lstadd_back(push **lst, push *new);
-// void	ft_lstdelone(push *lst);
 int	    ft_lstsize(push *lst);
 push	*ft_lstnew(int content);
 int    *ft_lis(push *lst, int *len);
 // ah torta9 lbarod
-int *ft_count_sort_indexes(push *stack, int n);
 char	**ft_split(char const *s, char c);
 void    filter_lst(push **stack_a, push **stack_b);
 push    *find_last_node(push *stack);
