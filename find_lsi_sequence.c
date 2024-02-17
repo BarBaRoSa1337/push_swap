@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 12:08:43 by achakour          #+#    #+#             */
-/*   Updated: 2024/02/15 18:07:19 by achakour         ###   ########.fr       */
+/*   Updated: 2024/02/17 09:00:45 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,10 @@ int find_max(int *arr, int len)
     int tmp;
     int i;
 
+    if (len < 1)
+        return (0);
     i = 0;
-    tmp = arr[i];
+    tmp = arr[i++];
     while (i < len)
     {
         if (arr[i] > tmp)
@@ -73,21 +75,6 @@ int    *ft_fill_arr(push *lst)
     return (arr);
 }
 
-int locate_fill_buffer(int **buff, int len)
-{
-    int i;
-
-    i = 0;
-    *buff = malloc(sizeof(int) * len);
-    if (!buff)
-        return (0);
-    while (i < len)
-    {
-        *buff[i] = 1;
-        ++i;
-    }
-}
-
 int    *ft_lis(push *lst, int *len)
 {
     int *arr;
@@ -98,8 +85,9 @@ int    *ft_lis(push *lst, int *len)
 
     i = 0;
     tmp = *len;
-    if (!locate_fill_buffer(&lis, *len))
-        return (0);
+    lis  = malloc(sizeof(int) * *len);
+    while (i < *len)
+        lis[i++] = 1;
     arr = ft_fill_arr(lst);
     i = 1;
     while (i < tmp)

@@ -6,40 +6,62 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 08:58:13 by achakour          #+#    #+#             */
-/*   Updated: 2024/02/15 18:09:41 by achakour         ###   ########.fr       */
+/*   Updated: 2024/02/17 10:06:45 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+// void    stack_recovery(push **stack_a, push **stack_b, int len)
+// {
+//     int max;
+//     int *pos;
+//     push    *last;
+//     while (len)
+//     {
+//         last = find_last_node(*stack_a);
+//         max = ft_max(*stack_b);
+//         if (last->data < max)
+//         {
+//             pos = count_push_price(*stack_b, max);
+//             if (pos[0] < pos[1])
+//                 move_up_down_push(stack_a, stack_b, max,'d');
+//             else
+//                 move_up_down_push(stack_a, stack_b, max,'u');
+//             free (pos);
+//             len++;
+//         }
+//         else
+//         {
+//             rra_rrb_rrr(stack_a, &last, "rra");
+//             --len;
+//         }
+//     }
+// }
+
 void    stack_recovery(push **stack_a, push **stack_b, int len)
 {
-    int max;
-    int *pos;
-    push    *last;
+    push *a = *stack_a;
+    push *b = *stack_b;
+    push    *a_last;
+    push    *b_last;
+    int a_len = ft_lstsize(a);
+    int b_len = ft_lstsize(b);
 
-    while (len)
+    while (a_len)
     {
-        last = find_last_node(*stack_a);
-        max = ft_max(*stack_b);
-        if (last->data < max)
+        a_last = find_last_node(a);
+        if (a_last->data < b_last->data)
         {
-            pos = count_push_price(*stack_b, max);
-            if (pos[0] < pos[1])
-                move_up_down_push(stack_a, stack_b, max,'d');
-            else
-                move_up_down_push(stack_a, stack_b, max,'u');
-            free (pos);
-            len++;
+            pa_pb(stack_a, stack_b, "pb");
+            a_len++;
         }
-        else
+        else if
         {
-            rra_rrb_rrr(stack_a, &last, "rra");
-            --len;
+            
         }
     }
 }
-
 void    filter_lst(push **stack_a, push **stack_b)
 {
     int     stack_len;
@@ -65,13 +87,6 @@ void    filter_lst(push **stack_a, push **stack_b)
     free (lis);
 }
 
-void    push_swap(push **stack_a, push **stack_b)
-{
-    if (!stack_a || !*stack_a)
-        return ;
-    filter_lst(stack_a, stack_b);
-    stack_recovery(stack_a, stack_b, ft_lstsize(*stack_a));
-}
 int main(int ac, char **ar)
 {
     push    *stack_a;
@@ -83,18 +98,14 @@ int main(int ac, char **ar)
     stack_b = NULL;
     stack_a = get_args(ac, ar);
     stack_len = ft_lstsize(stack_a);
-    while (stack_a)
-    {
-        printf("%d\n", stack_a->data);
-        stack_a = stack_a->next;
-    }
-    
     // if (ft_is_sorted(stack_a))
     //     return (0);
     // else if (stack_len == 2)
     //     ra_rb_rr(stack_a, "ra");
     // else
-    // push_swap(&stack_a, &stack_a);
-    // return (ft_lstclear(&stack_a), ft_lstclear(&stack_b), 0);
+    // push_swap(&stack_a, &stack_b);
+    filter_lst(&stack_a, &stack_b);
+    // stack_recovery(&stack_a, &stack_b, stack_len);
+    return (ft_lstclear(&stack_a), ft_lstclear(&stack_b), 0);
 }
  
