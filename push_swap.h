@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:07:56 by achakour          #+#    #+#             */
-/*   Updated: 2024/02/17 15:00:40 by achakour         ###   ########.fr       */
+/*   Updated: 2024/02/19 11:47:32 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ int     is_lis(int *arr, int len,int n);
 int     ft_double_numbers(int *arr, int n, unsigned int len);
 void    rotate_half_stack(push **stack, int len, char *flag);
 size_t     *lst_weight(push *stack, int len);
+int *find_cheapest(push *stack, int len);
+int ft_min(int *arr, int len);
 int     ft_is_all_digit(int ac, char **ar);
 int     ft_check_dobles_limits(int ac, char **ar);
 push    *get_args(int ac, char **ar);

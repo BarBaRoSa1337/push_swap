@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 18:07:51 by achakour          #+#    #+#             */
-/*   Updated: 2024/02/17 15:13:30 by achakour         ###   ########.fr       */
+/*   Updated: 2024/02/19 12:49:44 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,8 @@ int *count_push_price(push *stack, int n)
     int *pos;
 
     pos = malloc(sizeof(int) * 2);
+    if (!pos)
+        return (NULL);
     while (stack && stack->data != n)
     {
         pos[0] += 1;
@@ -124,4 +126,69 @@ void    move_up_down_push(push **stack_a, push **stack_b, int n, char flag)
         if (last->data == n)
             pa_pb(stack_a, stack_b, "pb");
     }
+}
+
+int ft_min(int *arr, int len)
+{
+    int i;
+    int min;
+
+    i = 0;
+    min = arr[i];
+    while (i < len)
+    {
+        if (arr[i] < min)
+            min = arr[i];
+        ++i;
+    }
+    return (min);
+}
+
+int *find_cheapest_in_a(push *stack, int data, int a_len)
+{
+    int *cheap;
+    int i;
+
+    i = 0;
+    cheap = malloc(sizeof(int) * 2);
+    while (stack && data < stack->data)
+    {
+        cheap[0] += 1;
+        stack = stack->next;
+    }
+    if (stack->data == data)
+    {
+        cheap[0] += 1;
+        stack = stack->next;
+    }
+    cheap[1] = a_len - cheap[0];
+    return (cheap);
+}
+
+int **find_cheapest(push stack_a, push *stack_b, int a_len, int b_len)
+{
+    int *a;
+    int *b;
+    int i;
+
+    i = 0;
+    while (stack_b)
+    {
+        b = count_push_price(stack_b, stack_b->data);
+        a = find_cheapest_in_a(stack_a, stack_b->data, a_len);
+        
+        stack_b = stack_b->next;
+    }
+    free (a);
+    free (b);
+    return ();
+}
+
+void    stack_recovery(push **stack_a, push **stack_b, int *a_moves, int *b_moves, int target)
+{
+    if (a_moves[0] < a_moves[1])
+        move_up_down_push(stack_a, stack_b, target, '');
+    else
+        move_up_down_push(stack_a, stack_b, target, '');
+    put_node_in_place(stack_a, stack_b);
 }

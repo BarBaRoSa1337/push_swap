@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 08:58:13 by achakour          #+#    #+#             */
-/*   Updated: 2024/02/17 15:51:25 by achakour         ###   ########.fr       */
+/*   Updated: 2024/02/19 12:28:52 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,54 +14,15 @@
 
 void    stack_recovery(push **stack_a, push **stack_b, int len)
 {
-    int max;
     int *pos;
+    int cheapest;
     push    *last;
+
     while (len)
     {
-        last = find_last_node(*stack_a);
-        max = ft_max(*stack_b);
-        if (last->data < max)
-        {
-            pos = count_push_price(*stack_b, max);
-            if (pos[0] < pos[1])
-                move_up_down_push(stack_a, stack_b, max,'d');
-            else
-                move_up_down_push(stack_a, stack_b, max,'u');
-            free (pos);
-            len++;
-        }
-        else
-        {
-            rra_rrb_rrr(stack_a, &last, "rra");
-            --len;
-        }
+        
     }
 }
-
-// void    stack_recovery(push **stack_a, push **stack_b, int len)
-// {
-//     push *a = *stack_a;
-//     push *b = *stack_b;
-//     push    *a_last;
-//     push    *b_last;
-//     int a_len = ft_lstsize(a);
-//     int b_len = ft_lstsize(b);
-
-//     while (a_len)
-//     {
-//         a_last = find_last_node(a);
-//         if (a_last->data < b_last->data)
-//         {
-//             pa_pb(stack_a, stack_b, "pb");
-//             a_len++;
-//         }
-//         else if
-//         {
-            
-//         }
-//     }
-// }
 
 void    filter_lst(push **stack_a, push **stack_b)
 {
