@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 15:44:14 by achakour          #+#    #+#             */
-/*   Updated: 2024/02/15 10:30:23 by achakour         ###   ########.fr       */
+/*   Updated: 2024/02/17 14:54:22 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void    rra_rrb_rrr(push **stack, push **last,char *flag)
    head->next->next = *stack;
    *stack = tmp->next;
    tmp->next = NULL;
+   printf ("%s\n", flag);
 }
 
 void    ra_rb_rr(push **stack, char *flag)

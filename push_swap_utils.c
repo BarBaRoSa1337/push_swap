@@ -6,35 +6,48 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 18:07:51 by achakour          #+#    #+#             */
-/*   Updated: 2024/02/15 14:46:38 by achakour         ###   ########.fr       */
+/*   Updated: 2024/02/17 15:13:30 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// int *ft_count_sort_indexes(push *stack, int n)
-// {
-//     int  *i;
-//     i = malloc(sizeof(int) * 2);
-//     if (!i)
-//         return (NULL);
-//     while (stack && stack->data != n)
-//     {
-//         i[0] += 1;
-//         stack = stack->next;
-//     }
-//     if (stack->data == n)
-//     {
-//         stack = stack->next;
-//         i[0] += 1;
-//     }
-//     while (stack)
-//     {
-//         i[1] += 1;
-//         stack = stack->next;
-//     }
-//     return (i);
-// }
+void    rotate_half_stack(push **stack, int len, char *flag)
+{
+    int     i;
+    push    *last;
+
+    i = 0;
+    while (i < (len / 2))
+    {
+        rra_rrb_rrr(stack, &last, flag);
+        ++i;
+    }
+}
+
+size_t *lst_weight(push *stack, int len)
+{
+    size_t *weight;
+    int tmp;
+    int i;
+
+    i = 0;
+    weight = malloc(sizeof(size_t) * 2);
+    if (!weight)
+        return (NULL);
+    while (i < (len / 2) && weight[0] < ULONG_MAX )
+    {
+        weight[0] += stack->data;
+        stack = stack->next;
+        ++i;
+    }
+    while (stack && weight[1] < ULONG_MAX)
+    {
+        weight[1] += stack->data;
+        stack = stack->next;
+    }
+    return (weight);
+}
 
 int is_lis(int *arr, int len,int n)
 {

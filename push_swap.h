@@ -6,18 +6,18 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:07:56 by achakour          #+#    #+#             */
-/*   Updated: 2024/02/15 17:46:43 by achakour         ###   ########.fr       */
+/*   Updated: 2024/02/17 15:00:40 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 #define PUSH_SWAP_H
 
- #include <stdio.h>
  #include <limits.h>
  #include <unistd.h>
  #include <stdlib.h>
  #include <string.h>
+ #include <stdio.h>
 
 typedef struct push
 {
@@ -32,6 +32,8 @@ void    pa_pb(push **a, push **b, char *flag);
 int     is_lis(int *arr, int len,int n);
 
 int     ft_double_numbers(int *arr, int n, unsigned int len);
+void    rotate_half_stack(push **stack, int len, char *flag);
+size_t     *lst_weight(push *stack, int len);
 int     ft_is_all_digit(int ac, char **ar);
 int     ft_check_dobles_limits(int ac, char **ar);
 push    *get_args(int ac, char **ar);
