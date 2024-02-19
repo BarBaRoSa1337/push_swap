@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 08:58:13 by achakour          #+#    #+#             */
-/*   Updated: 2024/02/19 12:28:52 by achakour         ###   ########.fr       */
+/*   Updated: 2024/02/19 13:28:40 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,7 @@ void    stack_recovery(push **stack_a, push **stack_b, int len)
     int cheapest;
     push    *last;
 
-    while (len)
-    {
-        
-    }
+    if (a[])
 }
 
 void    filter_lst(push **stack_a, push **stack_b)

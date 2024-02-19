@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 18:07:51 by achakour          #+#    #+#             */
-/*   Updated: 2024/02/19 12:49:44 by achakour         ###   ########.fr       */
+/*   Updated: 2024/02/19 13:49:45 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,28 +167,25 @@ int *find_cheapest_in_a(push *stack, int data, int a_len)
 
 int **find_cheapest(push stack_a, push *stack_b, int a_len, int b_len)
 {
-    int *a;
-    int *b;
+    int **a;
+    int **b;
+    int tmp;
     int i;
 
     i = 0;
     while (stack_b)
     {
-        b = count_push_price(stack_b, stack_b->data);
-        a = find_cheapest_in_a(stack_a, stack_b->data, a_len);
-        
+        b[i][0] = count_push_price(stack_b, stack_b->data);
+        a[i][1] = find_cheapest_in_a(stack_a, stack_b->data, a_len);
         stack_b = stack_b->next;
+        ++i;
     }
-    free (a);
-    free (b);
+    tmp = ft_min(a[i][1]) + b[i][1];
+    stack_recovery(stack_a, stack_b, a, b, );
     return ();
 }
 
-void    stack_recovery(push **stack_a, push **stack_b, int *a_moves, int *b_moves, int target)
+void    stack_recovery(push **stack_a, push **stack_b, int **a_moves, int **b_moves, int target)
 {
-    if (a_moves[0] < a_moves[1])
-        move_up_down_push(stack_a, stack_b, target, '');
-    else
-        move_up_down_push(stack_a, stack_b, target, '');
-    put_node_in_place(stack_a, stack_b);
+    
 }
