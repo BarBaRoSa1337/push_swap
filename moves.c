@@ -6,22 +6,12 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 15:44:14 by achakour          #+#    #+#             */
-/*   Updated: 2024/02/20 13:26:49 by achakour         ###   ########.fr       */
+/*   Updated: 2024/02/20 13:54:52 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void    fix_lst(push **stack, int first_node)
-{
-    push *head;
-
-    head = *stack;
-    while ()
-    {
-           
-    }
-}
 void    rra_rrb_rrr(push **stack, push **last,char *flag)
 {
     push    *head;
@@ -31,7 +21,8 @@ void    rra_rrb_rrr(push **stack, push **last,char *flag)
     while (head->next->next)
         head = head->next; 
    tmp = head;
-   *last = tmp;
+   if (last && *last)
+    *last = tmp;
    head->next->next = *stack;
    *stack = tmp->next;
    tmp->next = NULL;

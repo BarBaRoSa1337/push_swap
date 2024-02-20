@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:07:56 by achakour          #+#    #+#             */
-/*   Updated: 2024/02/19 11:47:32 by achakour         ###   ########.fr       */
+/*   Updated: 2024/02/20 14:36:27 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,14 @@
  #include <stdlib.h>
  #include <string.h>
  #include <stdio.h>
+
+typedef struct inst
+{
+    int *pos;
+    char *ins;
+    int index;
+    struct inst *next;
+} inst;
 
 typedef struct push
 {
