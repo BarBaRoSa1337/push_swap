@@ -33,20 +33,19 @@
 //     }
 // }
 
-int *find_cheapest_in_a(push *stack, int **cheap,int data, int a_len)
+void find_cheapest_in_a(push *stack, int **cheap, int target, int a_len)
 {
-    while (stack && data < stack->data)
+    while (stack && target < stack->data)
     {
-        cheap[2] += 1;
+        *cheap[2] += 1;
         stack = stack->next;
     }
-    if (stack->data == data)
+    if (stack->data == target)
     {
-        cheap[2] += 1;
+        *cheap[2] += 1;
         stack = stack->next;
     }
-    cheap[3] = a_len - cheap[2];
-    return (cheap);
+    // *cheap[3] = a_len - *cheap[2];
 }
 
 int *count_push_price(push *stack_a, push *stack_b, int n)
@@ -58,77 +57,59 @@ int *count_push_price(push *stack_a, push *stack_b, int n)
     pos = malloc(sizeof(int) * 4);
     if (!pos)
         return (NULL);
+    pos[0] = 0;
     while (stack_b && stack_b->data != n)
     {
         pos[0] += 1;
         stack_b = stack_b->next;
     }
+    if (stack_b->data == n)
+        pos[0] += 1;
     pos[1] = b_len - pos[0];
     if (pos[0] < pos[1])
         pos[1] = -1;
     else if (pos[0] > pos[1])
     {
-        pos[0] = pos[1] 
+        pos[0] = pos[1];
         pos[1] = 1;
     }
     find_cheapest_in_a(stack_a, &pos, n, ft_lstsize(stack_a));
     return (pos);
 }
 
-// int *perfect_push(push *stack_a, push *stack_b, int b_len)
-// {
-//     int     i;
-//     int     *tmp;
-//     char    **ins;
-
-//     i = 0;
-//     tmp = malloc(sizeof(int) * 4);
-//     ins = malloc(sizeof(int *) * b_len);
-//     if (!ins)
-//         return (NULL);
-//     b_len = ft_lstsize(stack_b);
-//     while (i < b_len)
-//     {
-//         ins[i] = count_push_price(stack_a, stack_b, head->data);
-//         ++i;
-//     }
-//     i = 0
-
-//     return (ins);
-// }
-
 int main(int ac, char **ar)
 {
-    push *n = ft_lstnew(3);
+    push *n = ft_lstnew(1);
     push    *n1 = ft_lstnew(3);
     push        *n2 = ft_lstnew(5);
-    push            *n3 = ft_lstnew(2);
-    push                *n4 = ft_lstnew(4);
+    push            *n3 = ft_lstnew(6);
+    push                *n4 = ft_lstnew(8);
     n->next = n1;
     n1->next = n2;
     n2->next = n3;
     n3->next = n4;
-    // push    *b = ft_lstnew(6);
-    // push    *b1 = ft_lstnew(10);
-    // push    *b2  = ft_lstnew(9);
-    // b->next = b1;
-    // b1->next = b2;
+    push    *b = ft_lstnew(4);
+    push    *b1 = ft_lstnew(6);
+    push    *b2  = ft_lstnew(9);
+    b->next = b1;
+    b1->next = b2;
 
-    fix_lst(&n, ft_lstsize(n));
+    int *pos = count_push_price(b, n, 3);
+    printf("pos[0] = %d, pos[1] = %d\n", pos[0], pos[1]);
+    printf("pos[2] = %d, pos[3] = %d\n", pos[2], pos[3]);
+    free(pos);
     push *head = n;
-    // move_up_down_push(&n, &b, 6, 'u');
-    // push *tmp = b;
-    while (head)
-    {
-        printf ("1  %d\n", head->data);
-        head = head->next;
-    }
+    // while (head)
+    // {
+    //     printf ("1  %d\n", head->data);
+    //     head = head->next;
+    // }
     // while (b)
     // {
     //     printf ("2  %d\n", b->data);
     //     b = b->next;
     // }
     ft_lstclear(&n);
-    // ft_lstclear(&b);
+    ft_lstclear(&b);
     // ft_lstclear(&stack);
 }

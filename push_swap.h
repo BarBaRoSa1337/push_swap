@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:07:56 by achakour          #+#    #+#             */
-/*   Updated: 2024/02/20 14:36:27 by achakour         ###   ########.fr       */
+/*   Updated: 2024/02/20 15:26:34 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int     ft_check_dobles_limits(int ac, char **ar);
 push    *get_args(int ac, char **ar);
 void	ft_lstclear(push **lst);
 int ft_max(push *stack);
-int *count_push_price(push *stack, int n);
+// int *count_push_price(push *stack, int n);
 void    move_up_down_push(push **stack_a, push **stack_b, int n, char flag);
 
 void	ft_lstadd_back(push **lst, push *new);
