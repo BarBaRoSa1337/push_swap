@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 18:07:51 by achakour          #+#    #+#             */
-/*   Updated: 2024/02/20 13:41:52 by achakour         ###   ########.fr       */
+/*   Updated: 2024/02/20 20:05:02 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,16 +127,112 @@ int ft_min(int *arr, int len, int *index)
     return (min);
 }
 
-void    put_node_in_place(push **stack_a, push **stack_b)
-{
-    int *cheapest;
-    int b_len;
 
-    b_len = ft_lstsize(*stack_b);
-    while (b_len)
+void    fix_lst(push **stack, int len)
+{
+    int tmp[2];
+    int i;
+    push    *head;
+    push    *lst;
+
+    i = 0;
+    head = *stack;
+    tmp[0] = head->data;
+    while (head)
     {
-        cheapest = find_cheapest(*stack_b, ft_lstsize(*stack_b));
-        
+        if (head->data < tmp[0])
+        {
+            tmp[0] = head->data;
+            tmp[1] = i;
+        }
+        head = head->next;
+        ++i;
     }
-    
+    head = *stack;
+    lst = *stack;
+    while (lst && head->data != tmp[0])
+    {
+        if (tmp[1] <= len / 2)
+            ra_rb_rr(stack, "ra");
+        else
+            rra_rrb_rrr(stack, NULL, "rra");
+        head = *stack;
+        lst = lst->next;
+    }
+}
+
+void find_cheapest_in_a(push *stack, int **cheap,int target, int a_len)
+{
+    (*cheap)[2] = 0;
+    while (stack && target > stack->data)
+    {
+        (*cheap)[2] += 1;
+        stack = stack->next;
+    }
+    if (stack && stack->data == target)
+        (*cheap)[2] += 1;
+    (*cheap)[3] = a_len - (*cheap)[2];
+    if ((*cheap)[2] < (*cheap)[3])
+        (*cheap)[3] = -1;
+    else
+    {
+        (*cheap)[2] = (*cheap)[3];
+        (*cheap)[3] = 1;
+    }
+}
+
+int *count_push_price(push *stack_a, push *stack_b, int n, int b_len)
+{
+    int *pos;
+
+    pos = malloc(sizeof(int) * 4);
+    if (!pos)
+        return (NULL);
+    pos[0] = 0;
+    while (stack_b && stack_b->data != n)
+    {
+        pos[0] += 1;
+        stack_b = stack_b->next;
+    }
+    if (stack_b->data == n)
+        pos[0] += 1;
+    pos[1] = b_len - pos[0];
+    if (pos[0] < pos[1])
+        pos[1] = -1;
+    else if (pos[0] > pos[1])
+    {
+        pos[0] = pos[1];
+        pos[1] = 1;
+    }
+    find_cheapest_in_a(stack_a, &pos, n, ft_lstsize(stack_a));
+    return (pos);
+}
+
+int select_cheapest(push *stack_a, push *stack_b, int b_len)
+{
+    push    *head;
+    int     best[2];
+    int     i;
+    int     *tmp;
+
+    i = 0;
+    head = stack_b;
+    while (i < b_len)
+    {
+        tmp = count_push_price(stack_a, stack_b, head->data, b_len);
+        if (i == 0)
+        {
+            best[0] = tmp[0] + tmp[2];
+            best[1] = i;
+        }
+        if (tmp[0] + tmp[2] < best[0])
+        {
+            best[0] = tmp[0] + tmp[2];
+            best[1] = i;
+        }
+        free (tmp);
+        head = head->next;
+        ++i;
+    }
+    return(best[0]);
 }

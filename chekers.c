@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 19:16:50 by achakour          #+#    #+#             */
-/*   Updated: 2024/02/17 08:48:33 by achakour         ###   ########.fr       */
+/*   Updated: 2024/02/20 20:04:05 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,11 +88,6 @@ size_t	ft_atoi(const char *str)
 	num = 0;
 	sign = 1;
 	i = 0;
-	// while (str[i] == '\f' || str[i] == '\t' || str[i] == '\r'
-	// 	|| str[i] == '\n' || str[i] == ' ' || str[i] == '\v')
-	// {
-	// 	++i;
-	// }
 	if (str[i] == '+' || str[i] == '-')
 	{
 		if (str[i] == '-')
