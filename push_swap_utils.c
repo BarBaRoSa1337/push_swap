@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 18:07:51 by achakour          #+#    #+#             */
-/*   Updated: 2024/02/20 20:05:02 by achakour         ###   ########.fr       */
+/*   Updated: 2024/02/21 10:13:13 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,29 +80,29 @@ int ft_max(push *stack)
 }
 
 
-void    move_up_down_push(push **stack_a, push **stack_b, int n)
-{
-    push    *last;
+// void    move_up_down_push(push **stack_a, push **stack_b, int n)
+// {
+//     push    *last;
 
-    last = find_last_node(*stack_b);
-    if (flag == 'u')
-    {
-        while (last->data != n)
-            rra_rrb_rrr(stack_b, &last, "rrb");
-        if (last->data == n)
-            pa_pb(stack_a, stack_b, "pb");
-    }
-    if (flag == 'd')
-    {
-        while (last->data != n)
-        {
-            ra_rb_rr(stack_b, "rb");
-            last = find_last_node(*stack_b);
-        }
-        if (last->data == n)
-            pa_pb(stack_a, stack_b, "pb");
-    }
-}
+//     last = find_last_node(*stack_b);
+//     if (flag == 'u')
+//     {
+//         while (last->data != n)
+//             rra_rrb_rrr(stack_b, &last, "rrb");
+//         if (last->data == n)
+//             pa_pb(stack_a, stack_b, "pb");
+//     }
+//     if (flag == 'd')
+//     {
+//         while (last->data != n)
+//         {
+//             ra_rb_rr(stack_b, "rb");
+//             last = find_last_node(*stack_b);
+//         }
+//         if (last->data == n)
+//             pa_pb(stack_a, stack_b, "pb");
+//     }
+// }
 
 int ft_min(int *arr, int len, int *index)
 {

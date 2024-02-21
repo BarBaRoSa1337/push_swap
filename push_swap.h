@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:07:56 by achakour          #+#    #+#             */
-/*   Updated: 2024/02/20 20:09:28 by achakour         ###   ########.fr       */
+/*   Updated: 2024/02/21 09:37:09 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,22 +19,15 @@
  #include <string.h>
  #include <stdio.h>
 
-typedef struct inst
-{
-    int *pos;
-    char *ins;
-    int index;
-    struct inst *next;
-} inst;
-
 typedef struct push
 {
     int            data;
     struct  push  *next;
 }           push;
 
-void    rra_rrb_rrr(push **stack, push **last,char *flag);
+void    rra_rrb_rrr(push **stack, push **last, char *flag);
 void    ra_rb_rr(push **stack, char *flag);
+void rr_rrr(push **stack_a, push **stack_b, char *flag);
 void    sa_sb_ss(push *stack, char *flag);
 void    pa_pb(push **a, push **b, char *flag);
 int     is_lis(int *arr, int len,int n);
