@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 18:07:51 by achakour          #+#    #+#             */
-/*   Updated: 2024/02/21 10:13:13 by achakour         ###   ########.fr       */
+/*   Updated: 2024/02/21 11:28:26 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,31 +78,6 @@ int ft_max(push *stack)
     }
     return (tmp);   
 }
-
-
-// void    move_up_down_push(push **stack_a, push **stack_b, int n)
-// {
-//     push    *last;
-
-//     last = find_last_node(*stack_b);
-//     if (flag == 'u')
-//     {
-//         while (last->data != n)
-//             rra_rrb_rrr(stack_b, &last, "rrb");
-//         if (last->data == n)
-//             pa_pb(stack_a, stack_b, "pb");
-//     }
-//     if (flag == 'd')
-//     {
-//         while (last->data != n)
-//         {
-//             ra_rb_rr(stack_b, "rb");
-//             last = find_last_node(*stack_b);
-//         }
-//         if (last->data == n)
-//             pa_pb(stack_a, stack_b, "pb");
-//     }
-// }
 
 int ft_min(int *arr, int len, int *index)
 {
@@ -234,5 +209,5 @@ int select_cheapest(push *stack_a, push *stack_b, int b_len)
         head = head->next;
         ++i;
     }
-    return(best[0]);
+    return(best[0] + 1);
 }

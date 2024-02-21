@@ -14,41 +14,48 @@ void    selsect_moves(push **stack_a, push **stack_b)
     while (index--)
         head = head->next;
     pos = count_push_price(*stack_a, *stack_b, head->data, b_len);
+    printf("b %d \n ", head->data);
+        printf("a  %d \n ", (*stack_a)->data);
+    printf ("pos[0] %d pos[1] %d\n", pos[0], pos[1]);
+    printf ("pos[2] %d pos[3] %d\n", pos[2], pos[3]);
     if (pos[1] == 1 && pos[3] == 1)
-    { 
-        while (pos[0]-- && pos[2]--)
+    {
+        while (pos[0] > 0 && pos[2] > 0 && pos[0]-- && pos[2]--)
             rr_rrr(stack_a, stack_b, "rrr");
-        while (last->data != head->data)
+        while (pos[0] > 0 && pos[0]--)
             rra_rrb_rrr(stack_b, &last, "rrb");
-        while (pos[2]--)
+        while (pos[2] > 0 && pos[2]--)
             rra_rrb_rrr(stack_a , &last, "rra");
         pa_pb(stack_a, stack_b, "pb");
     }
     else if (pos[1] == -1 && pos[3] == -1)
     {
-        while (pos[0] > 0 && pos[2] > 0)
-        {
+        while (pos[0] > 0 && pos[2] > 0 && pos[0]-- && pos[2]--)
             rr_rrr(stack_a, stack_b, "rrr");
-            pos[0]--;
-            pos[2]--;
-        }
-        while (last->data != head->data)
+        while (pos[0] > 0 && pos[0]--)
             ra_rb_rr(stack_b, "rb");
-        while (pos[2]--)
+        while (pos[2] > 0 && pos[2]--)
             ra_rb_rr(stack_a, "ra");
         pa_pb(stack_a, stack_b, "pb");
     }
     else
     {
         if (pos[1] == 1)
-        {
-            while (pos[0])
-                ra_rb_rr(stack_a, stack_b, "")
-            
-        }
+            while (pos[0] > 0 && pos[0]--)
+                rra_rrb_rrr(stack_a, &last, "rrb");
+        else if (pos[1] == -1)
+            while (pos[0] > 0 && pos[0]--)
+                ra_rb_rr(stack_a, "rrb");
+        if (pos[3] == 1)
+            while (pos[2] > 0 && pos[2]--)
+                rra_rrb_rrr(stack_a, &last, "rra");
+        else if (pos[3] == -1)
+            while  (pos[2] > 0 && pos[2]--)
+                ra_rb_rr(stack_a, "ra");
+        pa_pb(stack_a, stack_b, "pb");
     }
-} 
-
+    free (pos);
+}
 
 int main(int ac, char **ar)
 {
@@ -66,8 +73,13 @@ int main(int ac, char **ar)
     push    *b2  = ft_lstnew(9);
     b->next = b1;
     b1->next = b2;
-
-    selsect_moves(&n, &b);
+    
+    for (int i = 0; i < 2; i++)
+    {
+        selsect_moves(&n, &b);
+    }
+    // fix_lst(&n, ft_lstsize(n));
+        // selsect_moves(&n, &b);
     push *head = n;
     push *stack = b;
     while (head)
@@ -75,11 +87,11 @@ int main(int ac, char **ar)
         printf ("1  %d\n", head->data);
         head = head->next;
     }
-    while (b)
-    {
-        printf ("2  %d\n", b->data);
-        b = b->next;
-    }
+    // while (b)
+    // {
+    //     printf ("2  %d\n", b->data);
+    //     b = b->next;
+    // }
     ft_lstclear(&n);
     // ft_lstclear(&b);
     ft_lstclear(&stack);
