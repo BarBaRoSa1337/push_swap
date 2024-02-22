@@ -57,6 +57,19 @@ void    selsect_moves(push **stack_a, push **stack_b)
     free (pos);
 }
 
+// void    stack_recovery(push **stack_a, push **stack_b)
+// {
+//     int *a;
+//     int b_len;
+
+//     b_len = ft_lstsize(*stack_b);
+//     a = ft_fill_arr(*stack_a);
+//     while (b_len--)
+//     {
+        
+//     }
+    
+// }
 int main(int ac, char **ar)
 {
     push *n = ft_lstnew(2);
@@ -73,20 +86,19 @@ int main(int ac, char **ar)
     push    *b2  = ft_lstnew(9);
     b->next = b1;
     b1->next = b2;
-    
-    for (int i = 0; i < 2; i++)
-    {
-        selsect_moves(&n, &b);
-    }
+
+    int *ins = count_push_price(&n, &b, 6, 3,ft_lstsize(b));
+    printf("0-->%d 1-->%d\n", ins[0] , ins[1]);
+    printf("2-->%d 3-->%d\n", ins[2] , ins[3]);
     // fix_lst(&n, ft_lstsize(n));
         // selsect_moves(&n, &b);
     push *head = n;
     push *stack = b;
-    while (head)
-    {
-        printf ("1  %d\n", head->data);
-        head = head->next;
-    }
+    // while (head)
+    // {
+    //     printf ("1  %d\n", head->data);
+    //     head = head->next;
+    // }
     // while (b)
     // {
     //     printf ("2  %d\n", b->data);

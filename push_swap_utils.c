@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 18:07:51 by achakour          #+#    #+#             */
-/*   Updated: 2024/02/21 11:28:26 by achakour         ###   ########.fr       */
+/*   Updated: 2024/02/21 13:37:06 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,15 +136,15 @@ void    fix_lst(push **stack, int len)
     }
 }
 
-void find_cheapest_in_a(push *stack, int **cheap,int target, int a_len)
+void find_cheapest_in_a(push *stack, int **cheap, int target, int a_len)
 {
     (*cheap)[2] = 0;
-    while (stack && target > stack->data)
+    while (stack && stack->data != target)
     {
         (*cheap)[2] += 1;
         stack = stack->next;
     }
-    if (stack && stack->data == target)
+    if (stack->next && stack->next->data == target)
         (*cheap)[2] += 1;
     (*cheap)[3] = a_len - (*cheap)[2];
     if ((*cheap)[2] < (*cheap)[3])
@@ -156,7 +156,7 @@ void find_cheapest_in_a(push *stack, int **cheap,int target, int a_len)
     }
 }
 
-int *count_push_price(push *stack_a, push *stack_b, int n, int b_len)
+int *count_push_price(push *stack_a, push *stack_b, int n, int target, int b_len)
 {
     int *pos;
 
@@ -179,7 +179,7 @@ int *count_push_price(push *stack_a, push *stack_b, int n, int b_len)
         pos[0] = pos[1];
         pos[1] = 1;
     }
-    find_cheapest_in_a(stack_a, &pos, n, ft_lstsize(stack_a));
+    find_cheapest_in_a(stack_a, &pos, n, target,ft_lstsize(stack_a));
     return (pos);
 }
 

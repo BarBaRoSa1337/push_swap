@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:07:56 by achakour          #+#    #+#             */
-/*   Updated: 2024/02/21 11:55:20 by achakour         ###   ########.fr       */
+/*   Updated: 2024/02/21 13:42:16 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,9 @@ void    sa_sb_ss(push *stack, char *flag);
 void    pa_pb(push **a, push **b, char *flag);
 int     is_lis(int *arr, int len,int n);
 
+int    *ft_fill_arr(push *lst);
 void    fix_lst(push **stack, int len);
-int *count_push_price(push *stack_a, push *stack_b, int n, int b_len);
+int *count_push_price(push *stack_a, push *stack_b, int n, int target, int b_len);
 int select_cheapest(push *stack_a, push *stack_b, int b_len);
 int     ft_double_numbers(int *arr, int n, unsigned int len);
 void    rotate_half_stack(push **stack, int len, char *flag);
@@ -44,7 +45,6 @@ push    *get_args(int ac, char **ar);
 void	ft_lstclear(push **lst);
 int ft_max(push *stack);
 // int *count_push_price(push *stack, int n);
-void    move_up_down_push(push **stack_a, push **stack_b, int n, char flag);
 
 void	ft_lstadd_back(push **lst, push *new);
 int	    ft_lstsize(push *lst);
