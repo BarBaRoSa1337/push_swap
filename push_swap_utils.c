@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 18:07:51 by achakour          #+#    #+#             */
-/*   Updated: 2024/02/21 13:37:06 by achakour         ###   ########.fr       */
+/*   Updated: 2024/02/23 11:12:23 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,7 +136,7 @@ void    fix_lst(push **stack, int len)
     }
 }
 
-void find_cheapest_in_a(push *stack, int **cheap, int target, int a_len)
+void find_cheapest_in_a(push *stack, int **cheap, int target ,int a_len)
 {
     (*cheap)[2] = 0;
     while (stack && stack->data != target)
@@ -156,10 +156,12 @@ void find_cheapest_in_a(push *stack, int **cheap, int target, int a_len)
     }
 }
 
-int *count_push_price(push *stack_a, push *stack_b, int n, int target, int b_len)
+int *count_push_price(push *stack_a, push *stack_b, int n, int *arr, int b_len)
 {
     int *pos;
+    int target;
 
+    target = put_numbr_inplace(arr, n, ft_lstsize(stack_a));
     pos = malloc(sizeof(int) * 4);
     if (!pos)
         return (NULL);
@@ -179,11 +181,11 @@ int *count_push_price(push *stack_a, push *stack_b, int n, int target, int b_len
         pos[0] = pos[1];
         pos[1] = 1;
     }
-    find_cheapest_in_a(stack_a, &pos, n, target,ft_lstsize(stack_a));
+    find_cheapest_in_a(stack_a, &pos, target,ft_lstsize(stack_a));
     return (pos);
 }
 
-int select_cheapest(push *stack_a, push *stack_b, int b_len)
+int select_cheapest(push *stack_a, push *stack_b, int *arr, int b_len)
 {
     push    *head;
     int     best[2];
@@ -194,7 +196,7 @@ int select_cheapest(push *stack_a, push *stack_b, int b_len)
     head = stack_b;
     while (i < b_len)
     {
-        tmp = count_push_price(stack_a, stack_b, head->data, b_len);
+        tmp = count_push_price(stack_a, stack_b, head->data, arr ,b_len);
         if (i == 0)
         {
             best[0] = tmp[0] + tmp[2];

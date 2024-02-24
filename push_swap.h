@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:07:56 by achakour          #+#    #+#             */
-/*   Updated: 2024/02/21 13:42:16 by achakour         ###   ########.fr       */
+/*   Updated: 2024/02/23 11:12:02 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,9 @@ int     is_lis(int *arr, int len,int n);
 
 int    *ft_fill_arr(push *lst);
 void    fix_lst(push **stack, int len);
-int *count_push_price(push *stack_a, push *stack_b, int n, int target, int b_len);
-int select_cheapest(push *stack_a, push *stack_b, int b_len);
+int put_numbr_inplace(int *arr, int n, int len);
+int select_cheapest(push *stack_a, push *stack_b, int *arr, int b_len);
+int *count_push_price(push *stack_a, push *stack_b, int n, int *arr, int b_len);
 int     ft_double_numbers(int *arr, int n, unsigned int len);
 void    rotate_half_stack(push **stack, int len, char *flag);
 size_t     *lst_weight(push *stack, int len);
