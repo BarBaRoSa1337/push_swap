@@ -6,26 +6,11 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 08:58:13 by achakour          #+#    #+#             */
-/*   Updated: 2024/02/20 10:12:17 by achakour         ###   ########.fr       */
+/*   Updated: 2024/02/25 10:40:56 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void    stack_recovery(push **stack_a, push **stack_b, int len)
-{
-    push    *head;
-
-    head = *stack_b;
-    while (head)
-    {
-        pos = find_cheapest(*stack_b, ft_lstsize(*stack_b));
-        if (head->data == target)
-            move_up_down_push(stack_a, stack_a, pos);
-        head = head->next
-    }
-    fix_lst(stack_a, first_node(*stack_a));
-}
 
 void    filter_lst(push **stack_a, push **stack_b)
 {

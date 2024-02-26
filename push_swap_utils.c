@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 18:07:51 by achakour          #+#    #+#             */
-/*   Updated: 2024/02/23 11:12:23 by achakour         ###   ########.fr       */
+/*   Updated: 2024/02/25 10:40:37 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,6 @@ int ft_min(int *arr, int len, int *index)
     }
     return (min);
 }
-
 
 void    fix_lst(push **stack, int len)
 {
