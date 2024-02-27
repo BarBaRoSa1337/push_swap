@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 18:07:51 by achakour          #+#    #+#             */
-/*   Updated: 2024/02/26 11:13:16 by achakour         ###   ########.fr       */
+/*   Updated: 2024/02/27 09:53:28 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,59 +155,59 @@ void find_cheapest_in_a(push *stack, int **cheap, int target , int a_len)
     }
 }
 
-int *count_push_price(push *stack_a, push *stack_b, int n, int target, int b_len)
-{
-    int *pos;
-    int target;
+// int *count_push_price(push *stack_a, push *stack_b, int n, int target, int b_len)
+// {
+//     int *pos;
+//     int target;
 
-    pos = malloc(sizeof(int) * 4);
-    if (!pos)
-        return (NULL);
-    pos[0] = 0;
-    while (stack_b && stack_b->data != n)
-    {
-        pos[0] += 1;
-        stack_b = stack_b->next;
-    }
-    if (stack_b->data == n)
-        pos[0] += 1;
-    pos[1] = b_len - pos[0];
-    if (pos[0] < pos[1])
-        pos[1] = -1;
-    else if (pos[0] > pos[1])
-    {
-        pos[0] = pos[1];
-        pos[1] = 1;
-    }
-    find_cheapest_in_a(stack_a, &pos, target, ft_lstsize(stack_a));
-    return (pos);
-}
+//     pos = malloc(sizeof(int) * 4);
+//     if (!pos)
+//         return (NULL);
+//     pos[0] = 0;
+//     while (stack_b && stack_b->data != n)
+//     {
+//         pos[0] += 1;
+//         stack_b = stack_b->next;
+//     }
+//     if (stack_b->data == n)
+//         pos[0] += 1;
+//     pos[1] = b_len - pos[0];
+//     if (pos[0] < pos[1])
+//         pos[1] = -1;
+//     else if (pos[0] > pos[1])
+//     {
+//         pos[0] = pos[1];
+//         pos[1] = 1;
+//     }
+//     find_cheapest_in_a(stack_a, &pos, target, ft_lstsize(stack_a));
+//     return (pos);
+// }
 
-int select_cheapest(push *stack_a, push *stack_b, int *arr, int b_len)
-{
-    push    *head;
-    int     best[2];
-    int     i;
-    int     *tmp;
+// int select_cheapest(push *stack_a, push *stack_b, int b_len)
+// {
+//     push    *head;
+//     int     best[2];
+//     int     i;
+//     int     *tmp;
 
-    i = 0;
-    head = stack_b;
-    while (i < b_len)
-    {
-        tmp = count_push_price(stack_a, stack_b, head->data, arr ,b_len);
-        if (i == 0)
-        {
-            best[0] = tmp[0] + tmp[2];
-            best[1] = i;
-        }
-        if (tmp[0] + tmp[2] < best[0])
-        {
-            best[0] = tmp[0] + tmp[2];
-            best[1] = i;
-        }
-        free (tmp);
-        head = head->next;
-        ++i;
-    }
-    return(best[0] + 1);
-}
+//     i = 0;
+//     head = stack_b;
+//     while (i < b_len)
+//     {
+//         tmp = count_push_price(stack_a, stack_b, head->data, b_len);
+//         if (i == 0)
+//         {
+//             best[0] = tmp[0] + tmp[2];
+//             best[1] = i;
+//         }
+//         if (tmp[0] + tmp[2] < best[0])
+//         {
+//             best[0] = tmp[0] + tmp[2];
+//             best[1] = i;
+//         }
+//         free (tmp);
+//         head = head->next;
+//         ++i;
+//     }
+//     return(best[0] + 1);
+// }

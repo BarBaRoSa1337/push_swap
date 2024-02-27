@@ -81,13 +81,14 @@ int main(int ac, char **ar)
     b->next = b1;
     b1->next = b2;
 
+    selsect_moves(&n, &b);
     push *head = n;
     push *stack = b;
-    // while (head)
-    // {
-    //     printf ("1  %d\n", head->data);
-    //     head = head->next;
-    // }
+    while (head)
+    {
+        printf ("1  %d\n", head->data);
+        head = head->next;
+    }
     // while (b)
     // {
     //     printf ("2  %d\n", b->data);
