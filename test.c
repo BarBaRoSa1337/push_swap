@@ -1,14 +1,12 @@
 #include "push_swap.h"
 
-int detect_target(push *stack, int n, int a_len)
+int detect_target(push *stack, int n, int *arr, int a_len)
 {
-    int *arr;
     int key;
     int i;
     int j;
 
     i = 1;
-    arr = ft_fill_arr(stack);
     while (i < a_len)
     {
         j = i - 1;
@@ -21,10 +19,63 @@ int detect_target(push *stack, int n, int a_len)
         }
         ++i;
     }
-    while (arr[i--] > n)
-    key = arr[i];
+    i = 0;
+    if (arr[i] > n)
+        return (arr[i]);
+    while (i < a_len && arr[i] < n)
+        ++i;
+    key = arr[i - 1];
     return (free(arr), key);
 }
+
+void find_cheapest_in_a2(push *stack, int **cheap, int target, int a_len)
+{
+    (*cheap)[2] = 0;
+    while (stack && stack->data != target)
+    {
+        (*cheap)[2] += 1;
+        stack = stack->next;
+    }
+    if (stack->next && stack->next->data == target)
+        (*cheap)[2] += 1;
+    (*cheap)[3] = a_len - (*cheap)[2];
+    if ((*cheap)[2] < (*cheap)[3])
+        (*cheap)[3] = -1;
+    else
+    {
+        (*cheap)[2] = (*cheap)[3];
+        (*cheap)[3] = 1;
+    }
+}
+
+int *count_push_price1(push *stack_a, push *stack_b, int n, int target, int b_len)
+{
+    int *pos;
+    int target;
+
+    pos = malloc(sizeof(int) * 4);
+    if (!pos)
+        return (NULL);
+    pos[0] = 0;
+    while (stack_b && stack_b->data != n)
+    {
+        pos[0] += 1;
+        stack_b = stack_b->next;
+    }
+    if (stack_b->data == n)
+        pos[0] += 1;
+    pos[1] = b_len - pos[0];
+    if (pos[0] < pos[1])
+        pos[1] = -1;
+    else if (pos[0] > pos[1])
+    {
+        pos[0] = pos[1];
+        pos[1] = 1;
+    }
+    find_cheapest_in_a2(stack_a, &pos, target, ft_lstsize(stack_a));
+    return (pos);
+}
+b
 
 int main(int ac, char **ar)
 {
@@ -43,8 +94,7 @@ int main(int ac, char **ar)
     b->next = b1;
     b1->next = b2;
 
-    int arr = detect_target(n, 11, ft_lstsize(n));
-    printf("%d\n", arr);
+    int *pos = count_push_price1(n, b, 6, detect_target(n),)
     push *head = n;
     push *stack = b;
     // while (head)

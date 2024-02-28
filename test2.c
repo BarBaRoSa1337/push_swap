@@ -1,6 +1,34 @@
 #include "push_swap.h"
 
-void    select_move2(push **stack_a, push **stack_b, int *pos)
+int detect_target(push *stack, int n, int *arr, int a_len)
+{
+    int key;
+    int i;
+    int j;
+
+    i = 1;
+    while (i < a_len)
+    {
+        j = i - 1;
+        key = arr[i];
+        while (j > -1 && arr[j] > arr[j + 1])
+        {
+            arr[j + 1] = arr[j];
+            arr[j] = key;
+            --j;
+        }
+        ++i;
+    }
+    i = 0;
+    if (arr[i] > n)
+        return (arr[i]);
+    while (i < a_len && arr[i] < n)
+        ++i;
+    key = arr[i - 1];
+    return (free(arr), key);
+}
+
+void    select_move2(push **stack_a, push **stack_b, int *pos, int target)
 {
     push    *last;
 
@@ -16,10 +44,13 @@ void    select_move2(push **stack_a, push **stack_b, int *pos)
     else if (pos[3] == -1)
         while  (pos[2] > 0 && pos[2]--)
             ra_rb_rr(stack_a, "ra");
+    last = find_last_node(*stack_a);
+    if (last->data > target)
+        rra_rrb_rrr(stack_a, &last, "rra");
     pa_pb(stack_a, stack_b, "pb");
 }
 
-void    select_move1(push **stack_a, push **stack_b, int *pos)
+void    select_move1(push **stack_a, push **stack_b, int *pos, int target)
 {
     push    *last;
 
@@ -31,6 +62,8 @@ void    select_move1(push **stack_a, push **stack_b, int *pos)
             rra_rrb_rrr(stack_b, &last, "rrb");
         while (pos[2] > 0 && pos[2]--)
             rra_rrb_rrr(stack_a , &last, "rra");
+        if (last->data > target)
+            rra_rrb_rrr(stack_a, &last, "rra");
         pa_pb(stack_a, stack_b, "pb");
     }
     else if (pos[1] == -1 && pos[3] == -1)
@@ -41,10 +74,13 @@ void    select_move1(push **stack_a, push **stack_b, int *pos)
             ra_rb_rr(stack_b, "rb");
         while (pos[2] > 0 && pos[2]--)
             ra_rb_rr(stack_a, "ra");
+        last = find_last_node(*stack_a);
+        if (last->data > target)
+            rra_rrb_rrr(stack_a, &last, "rra");
         pa_pb(stack_a, stack_b, "pb");
     }
     else
-        return (select_move2(stack_a, stack_b, pos));
+        return (select_move2(stack_a, stack_b, pos, target));
 }
 
 int    *selsect_moves(push **stack_a, push **stack_b)
