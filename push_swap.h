@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:07:56 by achakour          #+#    #+#             */
-/*   Updated: 2024/02/27 08:52:07 by achakour         ###   ########.fr       */
+/*   Updated: 2024/02/28 10:22:08 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,24 +27,25 @@ typedef struct push
 
 void    rra_rrb_rrr(push **stack, push **last, char *flag);
 void    ra_rb_rr(push **stack, char *flag);
-void rr_rrr(push **stack_a, push **stack_b, char *flag);
+void    rr_rrr(push **stack_a, push **stack_b, char *flag);
 void    sa_sb_ss(push *stack, char *flag);
 void    pa_pb(push **a, push **b, char *flag);
 int     is_lis(int *arr, int len,int n);
 
-int    *ft_fill_arr(push *lst);
+int     *ft_fill_arr(push *lst);
 void    fix_lst(push **stack, int len);
-int put_numbr_inplace(int *arr, int n, int len);
-int select_cheapest(push *stack_a, push *stack_b, int b_len);
-int *count_push_price(push *stack_a, push *stack_b, int n, int *arr, int b_len);
-int     ft_double_numbers(int *arr, int n, unsigned int len);
+int     *count_push_price(push *stack_a, push *stack_b, int n, int target, int b_len);
+int     detect_target(push *stack, int n, int *arr, int a_len);
+void    find_cheapest_in_a(push *stack, int **cheap, int target, int a_len);
+int     select_cheapest(push *stack_a, push *stack_b, int b_len, int a_len);
 void    rotate_half_stack(push **stack, int len, char *flag);
-size_t     *lst_weight(push *stack, int len);
+size_t  *lst_weight(push *stack, int len);
+int     ft_double_numbers(int *arr, int n, unsigned int len);
 int     ft_is_all_digit(int ac, char **ar);
 int     ft_check_dobles_limits(int ac, char **ar);
 push    *get_args(int ac, char **ar);
 void	ft_lstclear(push **lst);
-int ft_max(push *stack);
+int     ft_max(push *stack);
 // int *count_push_price(push *stack, int n);
 
 void	ft_lstadd_back(push **lst, push *new);
@@ -55,6 +56,6 @@ int    *ft_lis(push *lst, int *len);
 char	**ft_split(char const *s, char c);
 void    filter_lst(push **stack_a, push **stack_b);
 push    *find_last_node(push *stack);
-int    *ft_fill_arr(push *lst);
+int     *ft_fill_arr(push *lst);
 
 #endif

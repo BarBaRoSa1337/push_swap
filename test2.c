@@ -1,33 +1,5 @@
 #include "push_swap.h"
 
-int detect_target(push *stack, int n, int *arr, int a_len)
-{
-    int key;
-    int i;
-    int j;
-
-    i = 1;
-    while (i < a_len)
-    {
-        j = i - 1;
-        key = arr[i];
-        while (j > -1 && arr[j] > arr[j + 1])
-        {
-            arr[j + 1] = arr[j];
-            arr[j] = key;
-            --j;
-        }
-        ++i;
-    }
-    i = 0;
-    if (arr[i] > n)
-        return (arr[i]);
-    while (i < a_len && arr[i] < n)
-        ++i;
-    key = arr[i - 1];
-    return (free(arr), key);
-}
-
 void    select_move2(push **stack_a, push **stack_b, int *pos, int target)
 {
     push    *last;
@@ -44,9 +16,9 @@ void    select_move2(push **stack_a, push **stack_b, int *pos, int target)
     else if (pos[3] == -1)
         while  (pos[2] > 0 && pos[2]--)
             ra_rb_rr(stack_a, "ra");
-    last = find_last_node(*stack_a);
-    if (last->data > target)
-        rra_rrb_rrr(stack_a, &last, "rra");
+    // last = find_last_node(*stack_a);
+    // if (last->data > target)
+    //     rra_rrb_rrr(stack_a, &last, "rra");
     pa_pb(stack_a, stack_b, "pb");
 }
 
@@ -62,8 +34,8 @@ void    select_move1(push **stack_a, push **stack_b, int *pos, int target)
             rra_rrb_rrr(stack_b, &last, "rrb");
         while (pos[2] > 0 && pos[2]--)
             rra_rrb_rrr(stack_a , &last, "rra");
-        if (last->data > target)
-            rra_rrb_rrr(stack_a, &last, "rra");
+        // if (last->data > target)
+        //     rra_rrb_rrr(stack_a, &last, "rra");
         pa_pb(stack_a, stack_b, "pb");
     }
     else if (pos[1] == -1 && pos[3] == -1)
@@ -75,8 +47,8 @@ void    select_move1(push **stack_a, push **stack_b, int *pos, int target)
         while (pos[2] > 0 && pos[2]--)
             ra_rb_rr(stack_a, "ra");
         last = find_last_node(*stack_a);
-        if (last->data > target)
-            rra_rrb_rrr(stack_a, &last, "rra");
+        // if (last->data > target)
+        //     rra_rrb_rrr(stack_a, &last, "rra");
         pa_pb(stack_a, stack_b, "pb");
     }
     else
@@ -87,16 +59,22 @@ int    *selsect_moves(push **stack_a, push **stack_b)
 {
     push    *head;
     int     *pos;
+    int     a_len;
     int     b_len;
+    int     target;
     int     index;
 
     head = *stack_b;
+    a_len = ft_lstsize(*stack_a);
     b_len = ft_lstsize(*stack_b);
-    index = select_cheapest(*stack_a, *stack_b, b_len);
-    while (index--)
+    index = select_cheapest(*stack_a, *stack_b, b_len, a_len);
+    while (index-- && head->next)
         head = head->next;
-    pos = count_push_price(*stack_a, *stack_b, head->data, b_len);
-    select_move1(stack_a, stack_b, pos);
+    target = detect_target(*stack_a, head->data, ft_fill_arr(*stack_a), a_len);
+    printf ("%d\n", head->data);
+    printf ("%d\n", target);
+    pos = count_push_price(*stack_a, *stack_b, head->data, target, b_len);
+    select_move1(stack_a, stack_b, pos, target);
     free (pos);
 }
 
@@ -118,18 +96,20 @@ int main(int ac, char **ar)
     b1->next = b2;
 
     selsect_moves(&n, &b);
+    selsect_moves(&n, &b);
+    selsect_moves(&n, &b);
     push *head = n;
     push *stack = b;
     while (head)
     {
-        printf ("1  %d\n", head->data);
+        printf ("1 %d\n", head->data);
         head = head->next;
     }
-    // while (b)
-    // {
-    //     printf ("2  %d\n", b->data);
-    //     b = b->next;
-    // }
+    while (b)
+    {
+        printf ("2  %d\n", b->data);
+        b = b->next;
+    }
     ft_lstclear(&n);
     // ft_lstclear(&b);
     ft_lstclear(&stack);
