@@ -28,7 +28,7 @@ int detect_target(push *stack, int n, int *arr, int a_len)
     return (free(arr), key);
 }
 
-void find_cheapest_in_a2(push *stack, int **cheap, int target, int a_len)
+void find_cheapest_in_a(push *stack, int **cheap, int target, int a_len)
 {
     (*cheap)[2] = 0;
     while (stack && stack->data != target)
@@ -36,11 +36,13 @@ void find_cheapest_in_a2(push *stack, int **cheap, int target, int a_len)
         (*cheap)[2] += 1;
         stack = stack->next;
     }
-    if (stack->next && stack->next->data == target)
+    if (stack && stack->data == target)
         (*cheap)[2] += 1;
     (*cheap)[3] = a_len - (*cheap)[2];
     if ((*cheap)[2] < (*cheap)[3])
+    {
         (*cheap)[3] = -1;
+    }
     else
     {
         (*cheap)[2] = (*cheap)[3];
@@ -48,11 +50,11 @@ void find_cheapest_in_a2(push *stack, int **cheap, int target, int a_len)
     }
 }
 
-int *count_push_price1(push *stack_a, push *stack_b, int n, int target, int b_len)
+int *count_push_price(push *stack_a, push *stack_b, int n, int target, int b_len)
 {
     int *pos;
-    int target;
 
+    printf("%d\n", target);
     pos = malloc(sizeof(int) * 4);
     if (!pos)
         return (NULL);
@@ -72,29 +74,29 @@ int *count_push_price1(push *stack_a, push *stack_b, int n, int target, int b_le
         pos[0] = pos[1];
         pos[1] = 1;
     }
-    find_cheapest_in_a2(stack_a, &pos, target, ft_lstsize(stack_a));
+    find_cheapest_in_a(stack_a, &pos, target, ft_lstsize(stack_a));
     return (pos);
 }
-b
 
 int main(int ac, char **ar)
 {
-    push *n = ft_lstnew(2);
-    push    *n1 = ft_lstnew(8);
-    push        *n2 = ft_lstnew(1);
-    push            *n3 = ft_lstnew(4);
-    push                *n4 = ft_lstnew(3);
+    push *n = ft_lstnew(1);
+    push    *n1 = ft_lstnew(3);
+    push        *n2 = ft_lstnew(8);
+    push            *n3 = ft_lstnew(7);
+    push                *n4 = ft_lstnew(6);
     n->next = n1;
     n1->next = n2;
     n2->next = n3;
     n3->next = n4;
     push    *b = ft_lstnew(5);
-    push    *b1 = ft_lstnew(6);
-    push    *b2  = ft_lstnew(9);
+    push    *b1 = ft_lstnew(9);
+    push    *b2  = ft_lstnew(-66);
     b->next = b1;
     b1->next = b2;
 
-    int *pos = count_push_price1(n, b, 6, detect_target(n),)
+    int *pos = count_push_price1(n, b, 5, detect_target(n, 5, ft_fill_arr(n), ft_lstsize(n)), ft_lstsize(b));
+    printf("pos[2] = %d pos[3] = %d\n", pos[2], pos[3]);
     push *head = n;
     push *stack = b;
     // while (head)
