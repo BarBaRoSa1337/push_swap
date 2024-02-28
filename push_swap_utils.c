@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 18:07:51 by achakour          #+#    #+#             */
-/*   Updated: 2024/02/28 10:26:40 by achakour         ###   ########.fr       */
+/*   Updated: 2024/02/28 10:45:20 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ int is_lis(int *arr, int len,int n)
     }
     return (0);
 }
+
 
 void    fix_lst(push **stack, int len)
 {

@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 08:58:13 by achakour          #+#    #+#             */
-/*   Updated: 2024/02/25 10:40:56 by achakour         ###   ########.fr       */
+/*   Updated: 2024/02/28 10:33:36 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,10 @@ void    filter_lst(push **stack_a, push **stack_b)
         }
         ra_rb_rr (stack_a, "ra");
     }
+    stack_len = ft_lstsize(*stack_b);
+    while (stack_len--)
+        select_move()
+    fix_lst()
     free (lis);
 }
 
