@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:07:56 by achakour          #+#    #+#             */
-/*   Updated: 2024/02/28 10:41:58 by achakour         ###   ########.fr       */
+/*   Updated: 2024/02/29 09:34:23 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void    pa_pb(push **a, push **b, char *flag);
 int     is_lis(int *arr, int len,int n);
 
 int     *ft_fill_arr(push *lst);
-int    *selsect_moves(push **stack_a, push **stack_b);
+int    *stack_recovery(push **stack_a, push **stack_b);
 void    fix_lst(push **stack, int len);
 int     *count_push_price(push *stack_a, push *stack_b, int n, int target, int b_len);
 int     detect_target(push *stack, int n, int *arr, int a_len);
@@ -55,7 +55,6 @@ push	*ft_lstnew(int content);
 int    *ft_lis(push *lst, int *len);
 // ah torta9 lbarod
 char	**ft_split(char const *s, char c);
-void    filter_lst(push **stack_a, push **stack_b);
 push    *find_last_node(push *stack);
 int     *ft_fill_arr(push *lst);
 

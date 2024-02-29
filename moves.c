@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 15:44:14 by achakour          #+#    #+#             */
-/*   Updated: 2024/02/21 09:39:44 by achakour         ###   ########.fr       */
+/*   Updated: 2024/02/29 10:19:25 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void    rra_rrb_rrr(push **stack, push **last, char *flag)
 
     head = *stack;
     while (head->next->next)
-        head = head->next; 
+        head = head->next;
    tmp = head;
    if (last && *last)
     *last = tmp;

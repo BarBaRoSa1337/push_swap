@@ -6,13 +6,13 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 08:58:13 by achakour          #+#    #+#             */
-/*   Updated: 2024/02/28 10:33:36 by achakour         ###   ########.fr       */
+/*   Updated: 2024/02/29 09:26:25 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void    filter_lst(push **stack_a, push **stack_b)
+void    push_swap(push **stack_a, push **stack_b)
 {
     int     stack_len;
     int     tmp;
@@ -36,8 +36,8 @@ void    filter_lst(push **stack_a, push **stack_b)
     }
     stack_len = ft_lstsize(*stack_b);
     while (stack_len--)
-        select_move()
-    fix_lst()
+        stack_recovery(stack_a, stack_b);
+    fix_lst(stack_a, ft_lstsize(*stack_a));
     free (lis);
 }
 
@@ -53,11 +53,10 @@ int main(int ac, char **ar)
     stack_b = NULL;
     stack_a = get_args(ac, ar);
     stack_len = ft_lstsize(stack_a);
-    weight = lst_weight(stack_a, stack_len);
-    if (weight[0] > weight[1])
-        rotate_half_stack(&stack_a, stack_len, "rra");
-    filter_lst(&stack_a, &stack_b);
-    stack_recovery(&stack_a, &stack_b, stack_len);
-    return (free (weight), ft_lstclear(&stack_a), ft_lstclear(&stack_b), 0);
+    // weight = lst_weight(stack_a, stack_len);
+    // if (weight[0] > weight[1])
+    //     rotate_half_stack(&stack_a, stack_len, "rra");
+    push_swap(stack_a, stack_b);
+    // return (free (weight), ft_lstclear(&stack_a), ft_lstclear(&stack_b), 0);
 }
  

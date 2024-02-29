@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 18:07:51 by achakour          #+#    #+#             */
-/*   Updated: 2024/02/28 10:45:20 by achakour         ###   ########.fr       */
+/*   Updated: 2024/02/29 09:22:57 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,16 +63,14 @@ int is_lis(int *arr, int len,int n)
     return (0);
 }
 
-
-void    fix_lst(push **stack, int len)
+int *get_min(push *stack)
 {
-    int tmp[2];
-    int i;
+    int     i;
+    int     *tmp;
     push    *head;
-    push    *lst;
 
     i = 0;
-    head = *stack;
+    head = stack;
     tmp[0] = head->data;
     while (head)
     {
@@ -84,6 +82,18 @@ void    fix_lst(push **stack, int len)
         head = head->next;
         ++i;
     }
+    return (tmp);
+}
+
+void    fix_lst(push **stack, int len)
+{
+    push    *head;
+    push    *lst;
+    int     *tmp;
+
+    if (!stack || !*stack)
+        return ;
+    tmp = get_min(*stack);
     head = *stack;
     lst = *stack;
     while (lst && head->data != tmp[0])
@@ -95,4 +105,5 @@ void    fix_lst(push **stack, int len)
         head = *stack;
         lst = lst->next;
     }
+    free (tmp);
 }
