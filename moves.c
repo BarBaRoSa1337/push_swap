@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 15:44:14 by achakour          #+#    #+#             */
-/*   Updated: 2024/02/29 10:19:25 by achakour         ###   ########.fr       */
+/*   Updated: 2024/03/01 11:19:50 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,22 +61,6 @@ void rr_rrr(push **stack_a, push **stack_b, char *flag)
     }
 }
 
-void    sa_sb_ss(push *stack, char *flag)
-{
-    int tmp;
-
-    if (!stack->next)
-        return ;
-    while (stack->next->next)
-        stack = stack->next;
-    if (!stack->next)
-        return ;
-    tmp = stack->next->data;
-    stack->next->data = stack->data;
-    stack->data = tmp;
-    printf ("%s \n", flag);
-}
-
 int    push_node(push **stack_a, push **stack_b, int a_len, int b_len,char *flag)
 {
     push    *head;
@@ -86,16 +70,16 @@ int    push_node(push **stack_a, push **stack_b, int a_len, int b_len,char *flag
     {
         head = *stack_a;
         tmp = head->data;
-        ft_lstadd_back(stack_b, ft_lstnew(tmp));
-        ft_lstclear(stack_a);
+        ft_lstadd_front(stack_b, ft_lstnew(tmp));
+        ft_lstdelone(&head);
         return (1);
     }
     else if (flag[1] == 'b' && b_len == 1)
     {
         head = *stack_b;
         tmp = head->data;
-        ft_lstadd_back(stack_a, ft_lstnew(tmp));
-        ft_lstclear(stack_b);
+        ft_lstadd_front(stack_a, ft_lstnew(tmp));
+        ft_lstdelone(&head);
         return (1);
     }
     return (0);
@@ -106,25 +90,23 @@ void    pa_pb(push **stack_a, push **stack_b ,char *flag)
     int     tmp;
     push    *head;
 
-    if (push_node(stack_a, stack_b, ft_lstsize(*stack_a), ft_lstsize(*stack_b),flag))
+    if (push_node(stack_a, stack_b, ft_lstsize(*stack_a), ft_lstsize(*stack_b), flag))
         return ;
     if (flag[1] == 'a')
     {
         head = *stack_a;
-        while (head->next->next)
-            head = head->next;
-        tmp = head->next->data;
-        ft_lstadd_back(stack_b, ft_lstnew(tmp));
-        ft_lstclear(&head->next);
+        tmp = head->data;
+        *stack_a = head->next;
+        ft_lstadd_front(stack_b, ft_lstnew(tmp));
+        ft_lstdelone(&head);
     }
     else if (flag[1] == 'b')
     {
         head = *stack_b;
-        while (head->next->next)
-            head = head->next;
-        tmp = head->next->data;
-        ft_lstadd_back(stack_a, ft_lstnew(tmp));
-        ft_lstclear(&head->next);
+        tmp = head->data;
+        ft_lstadd_front(stack_a, ft_lstnew(tmp));
+        *stack_b = head->next;
+        ft_lstdelone(&head);
     }
     printf ("%s \n", flag);
 }

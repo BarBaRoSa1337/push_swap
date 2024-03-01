@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:07:56 by achakour          #+#    #+#             */
-/*   Updated: 2024/02/29 09:34:23 by achakour         ###   ########.fr       */
+/*   Updated: 2024/03/01 11:16:00 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,9 @@ void    sa_sb_ss(push *stack, char *flag);
 void    pa_pb(push **a, push **b, char *flag);
 int     is_lis(int *arr, int len,int n);
 
+void	ft_lstdelone(push **lst);
 int     *ft_fill_arr(push *lst);
+void	ft_lstadd_front(push **lst, push *new);
 int    *stack_recovery(push **stack_a, push **stack_b);
 void    fix_lst(push **stack, int len);
 int     *count_push_price(push *stack_a, push *stack_b, int n, int target, int b_len);
