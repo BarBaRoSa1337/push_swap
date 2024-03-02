@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 18:07:51 by achakour          #+#    #+#             */
-/*   Updated: 2024/02/29 09:22:57 by achakour         ###   ########.fr       */
+/*   Updated: 2024/03/02 10:05:47 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ size_t *lst_weight(push *stack, int len)
     return (weight);
 }
 
-int is_lis(int *arr, int len,int n)
+int is_lis(int *arr, int len, int n)
 {
     int i;
 

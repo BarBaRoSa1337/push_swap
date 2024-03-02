@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 08:58:13 by achakour          #+#    #+#             */
-/*   Updated: 2024/02/29 09:26:25 by achakour         ###   ########.fr       */
+/*   Updated: 2024/03/02 10:03:44 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,11 @@ void    push_swap(push **stack_a, push **stack_b)
     while (tmp--)
     {
         head = *stack_a;
-        last = find_last_node(head);
-        if (!is_lis(lis, stack_len, last->data))
+        if (!is_lis(lis, stack_len, head))
         {
-            pa_pb(stack_a, stack_b ,"pa");
+            pa_pb (stack_a, stack_b, "pa");
         }
-        ra_rb_rr (stack_a, "ra");
+        rra_rrb_rrr(stack_a, &last, "rra");
     }
     stack_len = ft_lstsize(*stack_b);
     while (stack_len--)

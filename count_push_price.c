@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 09:25:51 by achakour          #+#    #+#             */
-/*   Updated: 2024/03/01 12:25:25 by achakour         ###   ########.fr       */
+/*   Updated: 2024/03/02 10:11:26 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,16 @@ int detect_target(push *stack, int n, int *arr, int a_len)
         ++i;
     }
     i = 0;
-    if (arr[i] > n)
-        return (arr[i]);
     while (i < a_len && arr[i] < n)
         ++i;
-    key = arr[i - 1];
+    if (arr[0] > n)
+        key = arr[a_len - 1];
+    else
+        key = arr[i - 1];
     return (free(arr), key);
 }
 
-void find_cheapest_in_a(push *stack, int **cheap, int target, int a_len)
+void find_cheapest_in_a(push *stack, int **cheap, int n, int target, int a_len)
 {
     push    *head;
 
@@ -85,7 +86,7 @@ int *count_push_price(push *stack_a, push *stack_b, int n, int target, int b_len
         pos[0] = pos[1];
         pos[1] = 1;
     }
-    find_cheapest_in_a(stack_a, &pos, target, ft_lstsize(stack_a));
+    find_cheapest_in_a(stack_a, &pos, n, target, ft_lstsize(stack_a));
     return (pos);
 }
 
