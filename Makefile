@@ -10,4 +10,29 @@
 #                                                                              #
 # **************************************************************************** #
 
-S
+SRCS	=	push_swap_utils.c	push_swap.c	stack_recovery.c	moves.c	lst_utils.c	ft_lbft_split.c	find_lsi_sequence.c	\
+	count_push_price.c	chekers.c
+
+OBJ = $(SRCS:.c=.o)
+
+CFLAGS = -Wall -Wextra -Werror
+NAME = push_swap.a
+AR = ar rcs
+RM = rm -f
+CC = cc
+
+all:$(NAME)
+
+$(NAME):$(OBJ)
+
+%.o :%.c
+	$(CC) -c $(CFLAGS) $^ -o $@
+	$(AR) $(NAME) $@
+
+clean:
+	$(RM) $(OBJ)
+
+fclean: clean
+	$(RM) $(NAME)
+
+re: fclean all

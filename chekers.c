@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 19:16:50 by achakour          #+#    #+#             */
-/*   Updated: 2024/02/20 20:04:05 by achakour         ###   ########.fr       */
+/*   Updated: 2024/03/04 11:15:48 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,6 @@ size_t	ft_atoi(const char *str)
 push    *get_args(int ac, char **ar)
 {
     int i;
-    size_t  *tmp;
     push *lst;
     push *node;
 

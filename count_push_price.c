@@ -6,13 +6,13 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 09:25:51 by achakour          #+#    #+#             */
-/*   Updated: 2024/03/02 10:11:26 by achakour         ###   ########.fr       */
+/*   Updated: 2024/03/04 11:10:12 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int detect_target(push *stack, int n, int *arr, int a_len)
+int detect_target(int *arr, int n,int a_len)
 {
     int key;
     int i;
@@ -41,9 +41,8 @@ int detect_target(push *stack, int n, int *arr, int a_len)
     return (free(arr), key);
 }
 
-void find_cheapest_in_a(push *stack, int **cheap, int n, int target, int a_len)
+void find_cheapest_in_a(push *stack, int **cheap, int target, int a_len)
 {
-    push    *head;
 
     (*cheap)[2] = 0;
     while (stack && stack->data != target)
@@ -86,7 +85,7 @@ int *count_push_price(push *stack_a, push *stack_b, int n, int target, int b_len
         pos[0] = pos[1];
         pos[1] = 1;
     }
-    find_cheapest_in_a(stack_a, &pos, n, target, ft_lstsize(stack_a));
+    find_cheapest_in_a(stack_a, &pos, target, ft_lstsize(stack_a));
     return (pos);
 }
 
@@ -101,7 +100,7 @@ int select_cheapest(push *stack_a, push *stack_b, int b_len, int a_len)
     head = stack_b;
     while (i < b_len)
     {
-        tmp = count_push_price(stack_a, stack_b, head->data, detect_target(stack_a, head->data, ft_fill_arr(stack_a), a_len), b_len);
+        tmp = count_push_price(stack_a, stack_b, head->data, detect_target(ft_fill_arr(stack_a), head->data ,a_len), b_len);
         if (i == 0)
         {
             best[0] = tmp[0] + tmp[2];
@@ -116,5 +115,5 @@ int select_cheapest(push *stack_a, push *stack_b, int b_len, int a_len)
         head = head->next;
         ++i;
     }
-    return(best[0] + 1);
+    return(best[1]);
 }

@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:07:56 by achakour          #+#    #+#             */
-/*   Updated: 2024/03/02 08:57:33 by achakour         ###   ########.fr       */
+/*   Updated: 2024/03/04 11:14:54 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,12 @@ int     is_lis(int *arr, int len,int n);
 void	ft_lstdelone(push **lst);
 int     *ft_fill_arr(push *lst);
 void	ft_lstadd_front(push **lst, push *new);
-int    *stack_recovery(push **stack_a, push **stack_b);
+void   stack_recovery(push **stack_a, push **stack_b);
+int select_cheapest(push *stack_a, push *stack_b, int b_len, int a_len);
 void    fix_lst(push **stack, int len);
 int     *count_push_price(push *stack_a, push *stack_b, int n, int target, int b_len);
-int     detect_target(push *stack, int n, int *arr, int a_len);
-void find_cheapest_in_a(push *stack, int **cheap, int n, int target, int a_len);
-int     select_cheapest(push *stack_a, push *stack_b, int b_len, int a_len);
+int detect_target(int *arr, int n,int a_len);
+void find_cheapest_in_a(push *stack, int **cheap, int target, int a_len);
 void    rotate_half_stack(push **stack, int len, char *flag);
 size_t  *lst_weight(push *stack, int len);
 int     ft_double_numbers(int *arr, int n, unsigned int len);
