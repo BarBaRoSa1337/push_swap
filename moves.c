@@ -6,13 +6,13 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 15:44:14 by achakour          #+#    #+#             */
-/*   Updated: 2024/03/01 11:19:50 by achakour         ###   ########.fr       */
+/*   Updated: 2024/03/04 13:37:16 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void    rra_rrb_rrr(push **stack, push **last, char *flag)
+void    rra_rrb_rrr(push **stack, char *flag)
 {
     push    *head;
     push    *tmp;
@@ -21,8 +21,6 @@ void    rra_rrb_rrr(push **stack, push **last, char *flag)
     while (head->next->next)
         head = head->next;
    tmp = head;
-   if (last && *last)
-    *last = tmp;
    head->next->next = *stack;
    *stack = tmp->next;
    tmp->next = NULL;
@@ -48,7 +46,6 @@ void    ra_rb_rr(push **stack, char *flag)
 
 void rr_rrr(push **stack_a, push **stack_b, char *flag)
 {
-    push    *last;
     if (flag[0] == 'r' && !flag[2])
     {
         ra_rb_rr(stack_a, "nop");
@@ -56,8 +53,8 @@ void rr_rrr(push **stack_a, push **stack_b, char *flag)
     }
     else
     {
-        rra_rrb_rrr(stack_a, &last, "nop");
-        rra_rrb_rrr(stack_b, &last, "rrr");
+        rra_rrb_rrr(stack_a, "nop");
+        rra_rrb_rrr(stack_b, "rrr");
     }
 }
 

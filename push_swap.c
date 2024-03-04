@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 08:58:13 by achakour          #+#    #+#             */
-/*   Updated: 2024/03/04 11:02:56 by achakour         ###   ########.fr       */
+/*   Updated: 2024/03/04 14:15:45 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void    push_swap(push **stack_a, push **stack_b)
 {
     int     stack_len;
     int     tmp;
-    push    *last;
     push    *head;
     int     *lis;
 
@@ -33,15 +32,23 @@ void    push_swap(push **stack_a, push **stack_b)
         {
             pa_pb (stack_a, stack_b, "pa");
         }
-        rra_rrb_rrr(stack_a, &last, "rra");
+        rra_rrb_rrr(stack_a, "rra");
     }
     stack_len = ft_lstsize(*stack_b);
     while (stack_len--)
         stack_recovery(stack_a, stack_b);
-    // fix_lst(stack_a, ft_lstsize(*stack_a));
+    fix_lst(stack_a, ft_lstsize(*stack_a));
     free (lis);
 }
 
+int is_sorted(push *stack)
+{
+    while (stack && stack->next && stack->data < stack->next->data)
+        stack = stack->next;
+    if (!stack->next)
+        return (1);
+    return (0);
+}
 int main(int ac, char **ar)
 {
     push    *stack_a;
@@ -58,6 +65,12 @@ int main(int ac, char **ar)
     // if (weight[0] > weight[1])
     //     rotate_half_stack(&stack_a, stack_len, "rra");
     push_swap(&stack_a, &stack_b);
+    while (stack_a)
+    {
+       printf("%d\n", stack_a->data);
+       stack_a = stack_a->next;
+    }
+    // printf ("%d\n", is_sorted(stack_a));    
     // return (free (weight), ft_lstclear(&stack_a), ft_lstclear(&stack_b), 0);
 }
  

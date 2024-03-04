@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 10:35:28 by achakour          #+#    #+#             */
-/*   Updated: 2024/03/04 11:15:26 by achakour         ###   ########.fr       */
+/*   Updated: 2024/03/04 13:37:05 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,11 @@
 
 void    select_move3(push **stack_a, push **stack_b, int *pos)
 {
-    push    *last;
 
     if (pos[1] == 1)
     {
         while (pos[0] > 0 && pos[0]--)
-        {
-            rra_rrb_rrr(stack_b, &last, "rrb");
-        }
+            rra_rrb_rrr(stack_b, "rrb");
     }
     else if (pos[1] == -1)
     {
@@ -31,12 +28,14 @@ void    select_move3(push **stack_a, push **stack_b, int *pos)
     if (pos[3] == 1)
     {
         while (pos[2] > 0 && pos[2]--)
-            rra_rrb_rrr(stack_a, &last, "rra");
+            rra_rrb_rrr(stack_a, "rra");
     }
     else if (pos[3] == -1)
     {
         while (pos[2] > 0 && pos[2]--)
+        {
             ra_rb_rr(stack_a, "rrb");
+        }
     }
     pa_pb(stack_a, stack_b, "pb");
 }
@@ -45,7 +44,7 @@ void    select_move2(push **stack_a, push **stack_b, int *pos)
 {
     while (pos[0] > 0 && pos[2] > 0 && pos[0]-- && pos[2]--)
     {
-        rr_rrr(stack_a, stack_b, "rrr");
+        rr_rrr(stack_a, stack_b, "rr");
     }
     while (pos[0] > 0 && pos[0]--)
     {
@@ -60,8 +59,6 @@ void    select_move2(push **stack_a, push **stack_b, int *pos)
 
 void    select_move1(push **stack_a, push **stack_b, int *pos)
 {
-    push    *last;
-
     if (pos[1] == 1 && pos[3] == 1)
     {
         while (pos[0] > 0 && pos[2] > 0 && pos[0]-- && pos[2]--)
@@ -70,11 +67,11 @@ void    select_move1(push **stack_a, push **stack_b, int *pos)
         }
         while (pos[0] > 0 && pos[0]--)
         {
-            rra_rrb_rrr(stack_b, &last, "rrb");
+            rra_rrb_rrr(stack_b, "rrb");
         }
         while (pos[2] > 0 && pos[2]--)
         {
-            rra_rrb_rrr(stack_a , &last, "rra");
+            rra_rrb_rrr(stack_a , "rra");
         }
         pa_pb(stack_a, stack_b, "pb");
     }
@@ -83,7 +80,9 @@ void    select_move1(push **stack_a, push **stack_b, int *pos)
        select_move2(stack_a, stack_b, pos);
     }
     else
+    {
         select_move3(stack_a, stack_b, pos);
+    }
 }
 
 void   stack_recovery(push **stack_a, push **stack_b)

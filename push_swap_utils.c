@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 18:07:51 by achakour          #+#    #+#             */
-/*   Updated: 2024/03/04 11:02:21 by achakour         ###   ########.fr       */
+/*   Updated: 2024/03/04 14:08:41 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,18 @@
 void    rotate_half_stack(push **stack, int len, char *flag)
 {
     int     i;
-    push    *last;
 
     i = 0;
     while (i < (len / 2))
     {
-        rra_rrb_rrr(stack, &last, flag);
+        rra_rrb_rrr(stack, flag);
         ++i;
     }
 }
 
 // size_t *lst_weight(push *stack, int len)
 // {
-//     size_t *weight;
+//     ssize_t *weight;
 //     int tmp;
 //     int i;
 
@@ -35,13 +34,13 @@ void    rotate_half_stack(push **stack, int len, char *flag)
 //     weight = malloc(sizeof(size_t) * 2);
 //     if (!weight)
 //         return (NULL);
-//     while (i < (len / 2) && weight[0] < ULONG_MAX)
+//     while (i < (len / 2) && weight[0] < LONG_MAX)
 //     {
 //         weight[0] += stack->data;
 //         stack = stack->next;
 //         ++i;
 //     }
-//     while (stack && weight[1] < ULONG_MAX)
+//     while (stack && weight[1] < LONG_MAX)
 //     {
 //         weight[1] += stack->data;
 //         stack = stack->next;
@@ -63,25 +62,50 @@ int is_lis(int *arr, int len, int n)
     return (0);
 }
 
-// void    fix_lst(push **stack, int len)
-// {
-//     push    *head;
-//     push    *lst;
-//     int     *tmp;
+int *get_min(push *stack)
+{
+    int *tmp;
+    int i;
 
-//     if (!stack || !*stack)
-//         return ;
-//     tmp = get_min(*stack);
-//     head = *stack;
-//     lst = *stack;
-//     while (lst && head->data != tmp[0])
-//     {
-//         if (tmp[1] <= len / 2)
-//             ra_rb_rr(stack, "ra");
-//         else
-//             rra_rrb_rrr(stack, NULL, "rra");
-//         head = *stack;
-//         lst = lst->next;
-//     }
-//     free (tmp);
-// }
+    tmp = malloc(sizeof(int) * 2);
+    if (!tmp)
+        return (NULL);
+    i = 1;
+    tmp[0] = stack->data;
+    tmp[1] = i;
+    stack = stack->next;
+    while (stack)
+    {
+        if (stack->data < tmp[0])
+        {
+            tmp[0] = stack->data;
+            tmp[1] = i;
+        }
+        stack = stack->next;
+        ++i;
+    }
+    return (tmp);
+}
+
+void    fix_lst(push **stack, int len)
+{
+    push    *head;
+    push    *lst;
+    int     *tmp;
+
+    if (!stack || !*stack)
+        return ;
+    tmp = get_min(*stack);
+    head = *stack;
+    lst = *stack;
+    while (lst && head->data != tmp[0])
+    {
+        if (tmp[1] < len / 2)
+            ra_rb_rr(stack, "ra");
+        else
+            rra_rrb_rrr(stack, "rra");
+        head = *stack;
+        lst = lst->next;
+    }
+    free (tmp);
+}
