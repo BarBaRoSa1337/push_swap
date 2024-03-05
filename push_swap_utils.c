@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 18:07:51 by achakour          #+#    #+#             */
-/*   Updated: 2024/03/05 08:54:36 by achakour         ###   ########.fr       */
+/*   Updated: 2024/03/05 10:49:30 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,29 +24,28 @@ void    rotate_half_stack(push **stack, int len, char *flag)
     }
 }
 
-// size_t *lst_weight(push *stack, int len)
-// {
-//     ssize_t *weight;
-//     int tmp;
-//     int i;
+ssize_t *lst_weight(push *stack, int len)
+{
+    ssize_t *weight;
+    int i;
 
-//     i = 0;
-//     weight = malloc(sizeof(size_t) * 2);
-//     if (!weight)
-//         return (NULL);
-//     while (i < (len / 2) && weight[0] < LONG_MAX)
-//     {
-//         weight[0] += stack->data;
-//         stack = stack->next;
-//         ++i;
-//     }
-//     while (stack && weight[1] < LONG_MAX)
-//     {
-//         weight[1] += stack->data;
-//         stack = stack->next;
-//     }
-//     return (weight);
-// }
+    i = 0;
+    weight = malloc(sizeof(ssize_t) * 2);
+    if (!weight)
+        return (NULL);
+    while (i < (len / 2) && weight[0] < LONG_MAX && weight[0] > LONG_MIN)
+    {
+        weight[0] += stack->data;
+        stack = stack->next;
+        ++i;
+    }
+    while (stack && weight[1] < LONG_MAX && weight[0] > LONG_MIN)
+    {
+        weight[1] += stack->data;
+        stack = stack->next;
+    }
+    return (weight);
+}
 
 int is_lis(int *arr, int len, int n)
 {

@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 10:35:28 by achakour          #+#    #+#             */
-/*   Updated: 2024/03/05 08:49:24 by achakour         ###   ########.fr       */
+/*   Updated: 2024/03/05 14:23:56 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ void   stack_recovery(push **stack_a, push **stack_b)
         head = head->next;
     target = detect_target(ft_fill_arr(*stack_a), head->data, a_len);
     pos = count_push_price(*stack_a, *stack_b, head->data, target, b_len);
+    // printf("rec: %d %d\n", target, head->data);
     select_move1(stack_a, stack_b, pos);
     free (pos);
 }
