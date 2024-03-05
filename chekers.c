@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 19:16:50 by achakour          #+#    #+#             */
-/*   Updated: 2024/03/04 11:15:48 by achakour         ###   ########.fr       */
+/*   Updated: 2024/03/05 10:01:44 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,22 +102,20 @@ size_t	ft_atoi(const char *str)
 	return (num * sign);
 }
 
+
 push    *get_args(int ac, char **ar)
 {
-    int i;
-    push *lst;
-    push *node;
+    int     i;
+    push    *lst;
 
     if (ac < 2)
         return (NULL);
-    node = ft_lstnew(ft_atoi(ar[1]));
-    lst = node;
-    i = 2;
+    i = 1;
+    lst = NULL;
     while (i < ac)
     {
-        node->next = ft_lstnew(ft_atoi(ar[i]));
-        node = node->next;
-        ++i;
+       ft_lstadd_front(&lst, ft_lstnew(ft_atoi(ar[i])));
+       ++i;
     }
     return (lst);
 }

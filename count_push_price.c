@@ -6,13 +6,13 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 09:25:51 by achakour          #+#    #+#             */
-/*   Updated: 2024/03/04 11:10:12 by achakour         ###   ########.fr       */
+/*   Updated: 2024/03/05 08:49:44 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int detect_target(int *arr, int n,int a_len)
+int detect_target(int *arr, int n, int a_len)
 {
     int key;
     int i;

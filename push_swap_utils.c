@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 18:07:51 by achakour          #+#    #+#             */
-/*   Updated: 2024/03/04 14:08:41 by achakour         ###   ########.fr       */
+/*   Updated: 2024/03/05 08:54:36 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,22 +90,21 @@ int *get_min(push *stack)
 void    fix_lst(push **stack, int len)
 {
     push    *head;
-    push    *lst;
     int     *tmp;
-
+    int     i;
+    
     if (!stack || !*stack)
         return ;
     tmp = get_min(*stack);
     head = *stack;
-    lst = *stack;
-    while (lst && head->data != tmp[0])
+    while (i < len && head->data != tmp[0])
     {
         if (tmp[1] < len / 2)
             ra_rb_rr(stack, "ra");
         else
             rra_rrb_rrr(stack, "rra");
         head = *stack;
-        lst = lst->next;
+        ++i;
     }
     free (tmp);
 }

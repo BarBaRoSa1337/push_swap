@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 15:44:14 by achakour          #+#    #+#             */
-/*   Updated: 2024/03/04 13:37:16 by achakour         ###   ########.fr       */
+/*   Updated: 2024/03/05 10:19:00 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ int    push_node(push **stack_a, push **stack_b, int a_len, int b_len,char *flag
         tmp = head->data;
         ft_lstadd_front(stack_b, ft_lstnew(tmp));
         ft_lstdelone(&head);
+        printf("%s\n", flag);
         return (1);
     }
     else if (flag[1] == 'b' && b_len == 1)
@@ -77,6 +78,7 @@ int    push_node(push **stack_a, push **stack_b, int a_len, int b_len,char *flag
         tmp = head->data;
         ft_lstadd_front(stack_a, ft_lstnew(tmp));
         ft_lstdelone(&head);
+        printf("%s\n", flag);
         return (1);
     }
     return (0);
@@ -105,5 +107,5 @@ void    pa_pb(push **stack_a, push **stack_b ,char *flag)
         *stack_b = head->next;
         ft_lstdelone(&head);
     }
-    printf ("%s \n", flag);
+    printf ("%s\n", flag);
 }
