@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 10:35:28 by achakour          #+#    #+#             */
-/*   Updated: 2024/03/05 14:23:56 by achakour         ###   ########.fr       */
+/*   Updated: 2024/03/06 09:55:07 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void    select_move3(push **stack_a, push **stack_b, int *pos)
 {
-
     if (pos[1] == 1)
     {
         while (pos[0] > 0 && pos[0]--)
@@ -23,7 +22,7 @@ void    select_move3(push **stack_a, push **stack_b, int *pos)
     else if (pos[1] == -1)
     {
         while (pos[0] > 0 && pos[0]--)
-            ra_rb_rr(stack_b, "rrb");
+            ra_rb_rr(stack_b, "rb");
     }
     if (pos[3] == 1)
     {
@@ -34,7 +33,7 @@ void    select_move3(push **stack_a, push **stack_b, int *pos)
     {
         while (pos[2] > 0 && pos[2]--)
         {
-            ra_rb_rr(stack_a, "rrb");
+            ra_rb_rr(stack_a, "ra");
         }
     }
     pa_pb(stack_a, stack_b, "pb");
@@ -94,6 +93,8 @@ void   stack_recovery(push **stack_a, push **stack_b)
     int     target;
     int     index;
 
+    if (!stack_a || !stack_b || !*stack_a || !*stack_b)
+        return ;
     head = *stack_b;
     a_len = ft_lstsize(*stack_a);
     b_len = ft_lstsize(*stack_b);
@@ -102,7 +103,6 @@ void   stack_recovery(push **stack_a, push **stack_b)
         head = head->next;
     target = detect_target(ft_fill_arr(*stack_a), head->data, a_len);
     pos = count_push_price(*stack_a, *stack_b, head->data, target, b_len);
-    // printf("rec: %d %d\n", target, head->data);
     select_move1(stack_a, stack_b, pos);
     free (pos);
 }

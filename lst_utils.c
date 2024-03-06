@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 15:44:38 by achakour          #+#    #+#             */
-/*   Updated: 2024/03/01 11:15:41 by achakour         ###   ########.fr       */
+/*   Updated: 2024/03/06 07:55:46 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,14 +69,16 @@ void	ft_lstdelone(push **lst)
 
 int	ft_lstsize(push *lst)
 {
+	push	*head;
 	int	len;
 
+	head = lst;
 	len = 0;
 	if (lst == NULL)
 		return (0);
-	while (lst != NULL)
+	while (head != NULL)
 	{
-		lst = lst->next;
+		head = head->next;
 		++len;
 	}
 	return (len);

@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 15:44:14 by achakour          #+#    #+#             */
-/*   Updated: 2024/03/05 10:46:10 by achakour         ###   ########.fr       */
+/*   Updated: 2024/03/06 08:29:42 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,9 @@ void    rra_rrb_rrr(push **stack, char *flag)
    *stack = tmp->next;
    tmp->next = NULL;
    if (flag[2] != 'p')
-    printf ("%s\n", flag);
+   {
+        printf ("%s\n", flag);
+   }
 }
 
 void    ra_rb_rr(push **stack, char *flag)
@@ -41,7 +43,9 @@ void    ra_rb_rr(push **stack, char *flag)
     *stack = tmp;
     head->next->next = NULL;
     if (flag[2] != 'p')
+    {
         printf("%s\n", flag);
+    }
 }
 
 void rr_rrr(push **stack_a, push **stack_b, char *flag)

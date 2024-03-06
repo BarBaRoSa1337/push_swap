@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 18:07:51 by achakour          #+#    #+#             */
-/*   Updated: 2024/03/05 10:49:30 by achakour         ###   ########.fr       */
+/*   Updated: 2024/03/06 08:07:42 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,23 +26,25 @@ void    rotate_half_stack(push **stack, int len, char *flag)
 
 ssize_t *lst_weight(push *stack, int len)
 {
+    push    *head;
     ssize_t *weight;
     int i;
 
     i = 0;
+    head = stack;
     weight = malloc(sizeof(ssize_t) * 2);
     if (!weight)
         return (NULL);
     while (i < (len / 2) && weight[0] < LONG_MAX && weight[0] > LONG_MIN)
     {
-        weight[0] += stack->data;
-        stack = stack->next;
+        weight[0] += head->data;
+        head = head->next;
         ++i;
     }
-    while (stack && weight[1] < LONG_MAX && weight[0] > LONG_MIN)
+    while (head && weight[1] < LONG_MAX && weight[0] > LONG_MIN)
     {
-        weight[1] += stack->data;
-        stack = stack->next;
+        weight[1] += head->data;
+        head = head->next;
     }
     return (weight);
 }
@@ -63,24 +65,26 @@ int is_lis(int *arr, int len, int n)
 
 int *get_min(push *stack)
 {
+    push    *head;
     int *tmp;
     int i;
 
+    head = stack;
     tmp = malloc(sizeof(int) * 2);
     if (!tmp)
         return (NULL);
     i = 1;
-    tmp[0] = stack->data;
+    tmp[0] = head->data;
     tmp[1] = i;
-    stack = stack->next;
-    while (stack)
+    head = head->next;
+    while (head)
     {
-        if (stack->data < tmp[0])
+        if (head->data < tmp[0])
         {
-            tmp[0] = stack->data;
+            tmp[0] = head->data;
             tmp[1] = i;
         }
-        stack = stack->next;
+        head = head->next;
         ++i;
     }
     return (tmp);
@@ -94,9 +98,10 @@ void    fix_lst(push **stack, int len)
     
     if (!stack || !*stack)
         return ;
-    tmp = get_min(*stack);
+    i = 0;
     head = *stack;
-    while (i < len && head->data != tmp[0])
+    tmp = get_min(head);
+    while (i < len && tmp && head->data != tmp[0])
     {
         if (tmp[1] < len / 2)
             ra_rb_rr(stack, "ra");

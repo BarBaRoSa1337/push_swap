@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 09:25:51 by achakour          #+#    #+#             */
-/*   Updated: 2024/03/05 08:49:44 by achakour         ###   ########.fr       */
+/*   Updated: 2024/03/06 10:07:12 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,16 @@ int detect_target(int *arr, int n, int a_len)
 
 void find_cheapest_in_a(push *stack, int **cheap, int target, int a_len)
 {
+    push    *head;
 
+    head = stack;
     (*cheap)[2] = 0;
-    while (stack && stack->data != target)
+    while (head && head->data != target)
     {
         (*cheap)[2] += 1;
-        stack = stack->next;
+        head = head->next;
     }
-    if (stack->data ==  target)
+    if (head->data ==  target)
         (*cheap)[2] += 1;
     (*cheap)[3] = a_len - (*cheap)[2];
     if ((*cheap)[2] < (*cheap)[3])
@@ -66,16 +68,18 @@ void find_cheapest_in_a(push *stack, int **cheap, int target, int a_len)
 
 int *count_push_price(push *stack_a, push *stack_b, int n, int target, int b_len)
 {
-    int *pos;
+    push    *head_b;
+    int     *pos;
 
     pos = malloc(sizeof(int) * 4);
     if (!pos)
         return (NULL);
     pos[0] = 0;
-    while (stack_b && stack_b->data != n)
+    head_b = stack_b;
+    while (head_b && head_b->data != n)
     {
         pos[0] += 1;
-        stack_b = stack_b->next;
+        head_b = head_b->next;
     }
     pos[1] = b_len - pos[0];
     if (pos[0] < pos[1])
