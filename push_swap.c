@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 08:58:13 by achakour          #+#    #+#             */
-/*   Updated: 2024/03/06 12:28:22 by achakour         ###   ########.fr       */
+/*   Updated: 2024/03/08 11:24:28 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void    push_swap(push **stack_a, push **stack_b)
     stack_len = ft_lstsize(*stack_b);
     while (stack_len--)
     {
+        printf("is sorted%d\n", is_sorted(*stack_a));
         print_stack(*stack_a);
         stack_recovery(stack_a, stack_b);
     }

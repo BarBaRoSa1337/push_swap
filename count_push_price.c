@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 09:25:51 by achakour          #+#    #+#             */
-/*   Updated: 2024/03/06 10:07:12 by achakour         ###   ########.fr       */
+/*   Updated: 2024/03/08 11:37:05 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@ int detect_target(int *arr, int n, int a_len)
     i = 0;
     while (i < a_len && arr[i] < n)
         ++i;
-    if (arr[0] > n)
-        key = arr[a_len - 1];
-    else
+    if (i > 0)
         key = arr[i - 1];
+    // else
+    //     key = arr[0];        
     return (free(arr), key);
 }
 
