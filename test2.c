@@ -7,45 +7,50 @@ int ft_isdigit(int c)
     return (0);
 }
 
-size_t	ft_atoi(const char *str)
+int     ft_strlen(char *str)
 {
-	size_t	num;
-	ssize_t	sign;
-	int	i;
+    int i;
 
-	num = 0;
-	sign = 1;
-	i = 0;
-	if (str[i] == '+' || str[i] == '-')
-	{
-		if (str[i] == '-')
-			sign = -1;
-		++i;
-	}
-	while (ft_isdigit(str[i]) && str[i] != '\0')
-	{
-		num = num * 10 + str[i] - '0';
-		++i;
-	}
-	return (num * sign);
+    i = 0;
+    while (str[i])
+        ++i;
+    return (i);
 }
 
-push    *get_args(int ac, char **ar)
+char    *get_args1(int ac, char **ar)
 {
-    int     i;
+    char    *buff;
+    int     len;
+    int     z;
     int     j;
-    push    *lst;
+    int     i;
 
+    if (ac < 1)
+        return (NULL);
     i = 1;
-    lst = NULL;
-    while (ar[i])
+    while (i < ac)
     {
-       ft_lstadd_front(&lst, ft_lstnew(ft_atoi(ar[i])));
-       ++i;
+        len += ft_strlen(ar[i]);
+        ++i;
     }
-    return (lst);
+    buff = malloc(sizeof(char) * len + 1);
+    if (!buff)
+        return (NULL);
+    i = 1;
+    z = 0;
+    while (i < ac)
+    {
+        j = 0;
+        while (ar[i][j])
+        {
+            buff[z] = ar[i][j];
+            ++z;
+            ++j;
+        }
+        ++i;
+    }
+    return (buff);
 }
-
 
 int main(int ac, char **ar)
 {
@@ -64,18 +69,20 @@ int main(int ac, char **ar)
     // b->next = b1;
     // b1->next = b2;
     
-    push *n =  get_args(ac, ar);
-    push *head = n;
-    while (head)
-    {
-        printf ("%d\n", head->data);
-        head = head->next;
-    }
+    char *buff =  get_args1(ac, ar);
+    printf ("%s \n", buff);
+    // push *head = n;
+    // while (head)
+    // {
+    //     printf ("%d\n", head->data);
+    //     head = head->next;
+    // }
     // while (b)
     // {
     //     printf ("2  %d\n", b->data);
     //     b = b->next;
     // }
-    ft_lstclear(&n);
+    // ft_lstclear(&n);
     // ft_lstclear(&stack);
+    free (buff);
 }
