@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 08:58:13 by achakour          #+#    #+#             */
-/*   Updated: 2024/03/10 10:14:27 by achakour         ###   ########.fr       */
+/*   Updated: 2024/03/10 12:26:23 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,9 @@ void    print_stack(push *stack)
 {
     push *head;
     head = stack;
-    int i = 1;
     while (head)
     {
-        printf("||%d %d||\n",i, head->data);
-        ++i;
+        printf("||%d||\n", head->data);
         head = head->next;
     }
 }
@@ -67,23 +65,37 @@ int main(int ac, char **ar)
 {
     push    *stack_a;
     push    *stack_b;
-    ssize_t     *weight;
-    int     stack_len;
+    // ssize_t     *weight;
+    // int     stack_len;
 
     // if (!ft_is_all_digit(ac, ar) || !ft_check_dobles_limits(ac, ar))
     //     perror("ERROR");
     // printf("!");
     stack_b = NULL;
     stack_a = get_args(ac, ar);
-    stack_len = ft_lstsize(stack_a);
-    weight = lst_weight(stack_a, stack_len);
-    if (weight[0] > weight[1])
-        rotate_half_stack(&stack_a, stack_len, "rra");
+    // stack_len = ft_lstsize(stack_a);
+    // weight = lst_weight(stack_a, stack_len);
+    // if (weight[0] > weight[1])
+    //     rotate_half_stack(&stack_a, stack_len, "rra");
     push_swap(&stack_a, &stack_b);
     fix_lst(&stack_a, ft_lstsize(stack_a));
-    printf("is sorted %d\n", is_sorted(stack_a));
-    // print_stack(stack_a);
-    free (weight);
-    return (ft_lstclear(&stack_a), 0);
+    // rra_rrb_rrr(&stack_a, "rra");
+    // rra_rrb_rrr(&stack_a, "rra");
+    
+    // pa_pb(&stack_a, &stack_b, "pa");
+    
+    // rra_rrb_rrr(&stack_a, "rra");
+    // pa_pb(&stack_a, &stack_b, "pa");
+    
+    // rra_rrb_rrr(&stack_a, "rra");
+    // pa_pb(&stack_a, &stack_b, "pb");
+    // pa_pb(&stack_a, &stack_b, "pb");
+    // rra_rrb_rrr(&stack_a, "rra");
+    // rra_rrb_rrr(&stack_a, "rra");
+    // printf("is sorted %d\n", is_sorted(stack_a));
+    
+    print_stack(stack_a);
+    // free (weight);
+    ft_lstclear(&stack_a);
 }
 

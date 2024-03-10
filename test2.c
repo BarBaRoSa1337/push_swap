@@ -54,7 +54,7 @@ char    *get_args1(int ac, char **ar)
 
 int main(int ac, char **ar)
 {
-    // push *n = ft_lstnew(-11);
+    push *n = ft_lstnew(-11);
     // push    *n1 = ft_lstnew(3);
     // push        *n2 = ft_lstnew(4);
     // push            *n3 = ft_lstnew(5);
@@ -69,8 +69,9 @@ int main(int ac, char **ar)
     // b->next = b1;
     // b1->next = b2;
     
-    char *buff =  get_args1(ac, ar);
-    printf ("%s \n", buff);
+    // char *buff =  get_args1(ac, ar);
+    printf ("%d \n", ft_lstsize(n));
+    ft_lstdelone(&n);
     // push *head = n;
     // while (head)
     // {
@@ -84,5 +85,5 @@ int main(int ac, char **ar)
     // }
     // ft_lstclear(&n);
     // ft_lstclear(&stack);
-    free (buff);
+    // free (buff);
 }

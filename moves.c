@@ -6,12 +6,24 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 15:44:14 by achakour          #+#    #+#             */
-/*   Updated: 2024/03/10 10:07:45 by achakour         ###   ########.fr       */
+/*   Updated: 2024/03/10 12:14:41 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+void    ft_putchar(char *flag)
+{
+    int i;
+
+    i = 0;
+    while (flag[i])
+    {
+        write(1, &flag[i], 1);
+        ++i;
+    }
+    write(1, "\n", 1);
+}
 void    rra_rrb_rrr(push **stack, char *flag)
 {
     push    *head;
@@ -26,7 +38,7 @@ void    rra_rrb_rrr(push **stack, char *flag)
    tmp->next = NULL;
    if (flag[2] != 'p')
    {
-        printf ("%s\n", flag);
+        ft_putchar(flag);
    }
 }
 
@@ -44,7 +56,7 @@ void    ra_rb_rr(push **stack, char *flag)
     head->next->next = NULL;
     if (flag[2] != 'p')
     {
-        printf("%s\n", flag);
+        ft_putchar(flag);
     }
 }
 
@@ -52,13 +64,13 @@ void rr_rrr(push **stack_a, push **stack_b, char *flag)
 {
     if (flag[0] == 'r' && !flag[2])
     {
-        ra_rb_rr(stack_a, "nop");
-        ra_rb_rr(stack_b, "rr");
+        ra_rb_rr(stack_a, "rr");
+        ra_rb_rr(stack_b, "nop");
     }
     else
     {
-        rra_rrb_rrr(stack_a, "nop");
-        rra_rrb_rrr(stack_b, "rrr");
+        rra_rrb_rrr(stack_a, "rrr");
+        rra_rrb_rrr(stack_b, "nop");
     }
 }
 
@@ -73,7 +85,7 @@ int    push_node(push **stack_a, push **stack_b, int a_len, int b_len, char *fla
         tmp = head->data;
         ft_lstadd_front(stack_b, ft_lstnew(tmp));
         ft_lstdelone(&head);
-        printf("%s\n", flag);
+        ft_putchar(flag);
         return (1);
     }
     else if (flag[1] == 'b' && b_len == 1)
@@ -82,7 +94,7 @@ int    push_node(push **stack_a, push **stack_b, int a_len, int b_len, char *fla
         tmp = head->data;
         ft_lstadd_front(stack_a, ft_lstnew(tmp));
         ft_lstdelone(&head);
-        printf("%s\n", flag);
+        ft_putchar(flag);
         return (1);
     }
     return (0);
@@ -111,5 +123,5 @@ void    pa_pb(push **stack_a, push **stack_b ,char *flag)
         *stack_b = head->next;
         ft_lstdelone(&head);
     }
-    printf ("%s\n", flag);
+    ft_putchar(flag);
 }
