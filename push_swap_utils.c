@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 18:07:51 by achakour          #+#    #+#             */
-/*   Updated: 2024/03/06 08:07:42 by achakour         ###   ########.fr       */
+/*   Updated: 2024/03/10 10:18:20 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ void    rotate_half_stack(push **stack, int len, char *flag)
 
 ssize_t *lst_weight(push *stack, int len)
 {
-    push    *head;
     ssize_t *weight;
+    push    *head;
     int i;
 
     i = 0;
@@ -41,7 +41,9 @@ ssize_t *lst_weight(push *stack, int len)
         head = head->next;
         ++i;
     }
-    while (head && weight[1] < LONG_MAX && weight[0] > LONG_MIN)
+    while (head && i < (len / 2))
+        head = head->next;
+    while (head && weight[1] < LONG_MAX && weight[1] > LONG_MIN)
     {
         weight[1] += head->data;
         head = head->next;
@@ -95,7 +97,7 @@ void    fix_lst(push **stack, int len)
     push    *head;
     int     *tmp;
     int     i;
-    
+
     if (!stack || !*stack)
         return ;
     i = 0;

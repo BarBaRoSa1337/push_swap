@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 15:44:14 by achakour          #+#    #+#             */
-/*   Updated: 2024/03/06 08:29:42 by achakour         ###   ########.fr       */
+/*   Updated: 2024/03/10 10:07:45 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void rr_rrr(push **stack_a, push **stack_b, char *flag)
     }
 }
 
-int    push_node(push **stack_a, push **stack_b, int a_len, int b_len,char *flag)
+int    push_node(push **stack_a, push **stack_b, int a_len, int b_len, char *flag)
 {
     push    *head;
     int     tmp;

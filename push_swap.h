@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:07:56 by achakour          #+#    #+#             */
-/*   Updated: 2024/03/06 09:33:47 by achakour         ###   ########.fr       */
+/*   Updated: 2024/03/10 10:20:51 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,12 @@ int     is_lis(int *arr, int len,int n);
 void	ft_lstdelone(push **lst);
 int     *ft_fill_arr(push *lst);
 void	ft_lstadd_front(push **lst, push *new);
-void   stack_recovery(push **stack_a, push **stack_b);
-int select_cheapest(push *stack_a, push *stack_b, int b_len, int a_len);
+void    stack_recovery(push **stack_a, push **stack_b);
+int     select_cheapest(push *stack_a, push *stack_b, int b_len, int a_len);
 void    fix_lst(push **stack, int len);
 int     *count_push_price(push *stack_a, push *stack_b, int n, int target, int b_len);
 int     detect_target(int *arr, int n,int a_len);
-void find_cheapest_in_a(push *stack, int **cheap, int target, int a_len);
+void    find_cheapest_in_a(push *stack, int **cheap, int target, int a_len);
 void    rotate_half_stack(push **stack, int len, char *flag);
 ssize_t *lst_weight(push *stack, int len);
 int     ft_double_numbers(int *arr, int n, unsigned int len);
@@ -48,16 +48,12 @@ int     ft_is_all_digit(int ac, char **ar);
 int     ft_check_dobles_limits(int ac, char **ar);
 push    *get_args(int ac, char **ar);
 void	ft_lstclear(push **lst);
-int     ft_max(push *stack);
-// int *count_push_price(push *stack, int n);
-
 void	ft_lstadd_back(push **lst, push *new);
 int	    ft_lstsize(push *lst);
 push	*ft_lstnew(int content);
 int    *ft_lis(push *lst, int *len);
-// ah torta9 lbarod
 char	**ft_split(char const *s, char c);
 push    *find_last_node(push *stack);
 int     *ft_fill_arr(push *lst);
-
+ 
 #endif

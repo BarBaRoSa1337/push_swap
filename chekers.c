@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 19:16:50 by achakour          #+#    #+#             */
-/*   Updated: 2024/03/09 12:13:07 by achakour         ###   ########.fr       */
+/*   Updated: 2024/03/10 10:19:23 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int ft_is_all_digit(int ac, char **ar)
     return (1);
 }
 
-size_t	ft_atoi(const char *str)
+ssize_t	ft_atoi(const char *str)
 {
 	size_t	num;
 	ssize_t	sign;

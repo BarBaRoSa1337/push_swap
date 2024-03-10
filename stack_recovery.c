@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 10:35:28 by achakour          #+#    #+#             */
-/*   Updated: 2024/03/09 10:17:22 by achakour         ###   ########.fr       */
+/*   Updated: 2024/03/10 10:13:42 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ void   stack_recovery(push **stack_a, push **stack_b)
     int     a_len;
     int     b_len;
     int     target;
-    int     index; //|-35196
+    int     index;
 
     if (!stack_a || !stack_b || !*stack_a || !*stack_b)
         return ;
@@ -103,9 +103,6 @@ void   stack_recovery(push **stack_a, push **stack_b)
         head = head->next;
     target = detect_target(ft_fill_arr(*stack_a), head->data, a_len);
     pos = count_push_price(*stack_a, *stack_b, head->data, target, b_len);
-    // printf("target= %d data %d\n", target, head->data);
-    // printf("pos[0]= %d pos[1]=%d\n", pos[0], pos[1]);
-    // printf("pos[2]= %d pos[3]=%d\n", pos[2], pos[3]);
     select_move1(stack_a, stack_b, pos);
     free (pos);
 }
