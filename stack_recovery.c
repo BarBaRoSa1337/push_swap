@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 10:35:28 by achakour          #+#    #+#             */
-/*   Updated: 2024/03/10 12:23:54 by achakour         ###   ########.fr       */
+/*   Updated: 2024/03/11 09:23:38 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,12 +86,12 @@ void    select_move1(push **stack_a, push **stack_b, int *pos)
 
 void   stack_recovery(push **stack_a, push **stack_b)
 {
+    int     target;
     push    *head;
-    int     *pos;
     int     a_len;
     int     b_len;
-    int     target;
     int     index;
+    int     *pos;
 
     if (!stack_a || !stack_b || !*stack_a || !*stack_b)
         return ;

@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 18:07:51 by achakour          #+#    #+#             */
-/*   Updated: 2024/03/10 10:18:20 by achakour         ###   ########.fr       */
+/*   Updated: 2024/03/11 09:50:05 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int *get_min(push *stack)
     head = head->next;
     while (head)
     {
-        if (head->data < tmp[0])
+        if (head->data > tmp[0])
         {
             tmp[0] = head->data;
             tmp[1] = i;

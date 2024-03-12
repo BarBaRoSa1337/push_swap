@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 15:44:14 by achakour          #+#    #+#             */
-/*   Updated: 2024/03/10 12:14:41 by achakour         ###   ########.fr       */
+/*   Updated: 2024/03/11 09:33:05 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,11 @@ void    ft_putchar(char *flag)
     }
     write(1, "\n", 1);
 }
+
 void    rra_rrb_rrr(push **stack, char *flag)
 {
+//     rra (reverse rotate a): Shift down all elements of stack a by 1.
+// The last element becomes the first one.
     push    *head;
     push    *tmp;
 
@@ -44,10 +47,12 @@ void    rra_rrb_rrr(push **stack, char *flag)
 
 void    ra_rb_rr(push **stack, char *flag)
 {
+//     ra (rotate a): Shift up all elements of stack a by 1.
+// The first element becomes the last one.
     push    *head;
     push    *tmp;
 
-    head = *stack;
+    head = *stack; 
     tmp = head->next;
     while (head->next)
         head = head->next;
@@ -62,12 +67,12 @@ void    ra_rb_rr(push **stack, char *flag)
 
 void rr_rrr(push **stack_a, push **stack_b, char *flag)
 {
-    if (flag[0] == 'r' && !flag[2])
+    if (flag[0] == 'r' && flag[1] == 'r' && !flag[2])
     {
         ra_rb_rr(stack_a, "rr");
         ra_rb_rr(stack_b, "nop");
     }
-    else
+    else if (flag[0] == 'r' && flag[1] == 'r' && flag[2] == 'r')
     {
         rra_rrb_rrr(stack_a, "rrr");
         rra_rrb_rrr(stack_b, "nop");
@@ -119,8 +124,8 @@ void    pa_pb(push **stack_a, push **stack_b ,char *flag)
     {
         head = *stack_b;
         tmp = head->data;
-        ft_lstadd_front(stack_a, ft_lstnew(tmp));
         *stack_b = head->next;
+        ft_lstadd_front(stack_a, ft_lstnew(tmp));
         ft_lstdelone(&head);
     }
     ft_putchar(flag);

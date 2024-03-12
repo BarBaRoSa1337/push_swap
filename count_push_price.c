@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 09:25:51 by achakour          #+#    #+#             */
-/*   Updated: 2024/03/09 10:15:03 by achakour         ###   ########.fr       */
+/*   Updated: 2024/03/11 09:22:31 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ int select_cheapest(push *stack_a, push *stack_b, int b_len, int a_len)
     head = stack_b;
     while (i < b_len)
     {
-        tmp = count_push_price(stack_a, stack_b, head->data, detect_target(ft_fill_arr(stack_a), head->data ,a_len), b_len);
+        tmp = count_push_price(stack_a, stack_b, head->data, detect_target(ft_fill_arr(stack_a), head->data, a_len), b_len);
         if (i == 0)
         {
             best[0] = tmp[0] + tmp[2];

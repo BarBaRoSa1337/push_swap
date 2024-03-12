@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 19:16:50 by achakour          #+#    #+#             */
-/*   Updated: 2024/03/10 10:19:23 by achakour         ###   ########.fr       */
+/*   Updated: 2024/03/11 09:35:01 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,42 +19,14 @@ int ft_isdigit(int c)
     return (0);
 }
 
-int ft_double_numbers(int *arr, int n, unsigned int len)
-{
-    size_t i;
-    int flag;
-
-    i = 0;
-    flag = 0;
-    while (i < len)
-    {
-        if (arr[i] == n && flag)
-            return (0);
-        else if (arr[i] == n)
-            ++flag;
-        ++i;
-    }
-    return (1);
-}
-
-int ft_is_all_digit(int ac, char **ar)
+int     ft_strlen(char *str)
 {
     int i;
-    int j;
 
-    i = 1;
-    while (i < ac)
-    {
-        j = 0;
-        while (ar[i][j])
-        {
-            if (!ft_isdigit(ar[i][j]))
-                return (0);
-            ++j;
-        }
+    i = 0;
+    while (str[i])
         ++i;
-    }
-    return (1);
+    return (i);
 }
 
 ssize_t	ft_atoi(const char *str)
@@ -80,37 +52,27 @@ ssize_t	ft_atoi(const char *str)
 	return (num * sign);
 }
 
-int	ft_doubles(ssize_t *arr, ssize_t n, int len)
-{
-	int	i;
+// int	is_valid_args(char *buff)
+// {
+// 	char	**args;
+// 	int	i;
 
-	i = 0;
-	while (i < len)
-	{
-		if (arr[i] == n)
-			return (0);
-	}
-	return (1);
-}
-int 	ft_check_dobles_limits(int ac, char **ar)
-{
-    ssize_t  *tmp;
-    int  i;
-
-    i = 0;
-    tmp = (ssize_t *)malloc(sizeof(ssize_t) * ac - 1);
-    if (!tmp)
-        return (0);
-    while (i < ac)
-    {
-        tmp[i] = ft_atoi(ar[i + 1]);
-        if (tmp[i] > 2147483647 || tmp[i] < -2147483648 || !ft_doubles(tmp, tmp[i], ac - 1))
-            return (free (tmp), 0);
-        ++i;
-    }
-    free (tmp);
-    return (1);
-}
+// 	i = 0;
+// 	args = ft_split(buff, ' ');
+// 	while (args[i])
+// 	{
+// 		if (!ft_isdigit(args[i]) || is_doubled(args[i], args, i) || is_in_range(ft_atoi(args[i])))
+// 			return (NULL);
+// 		++i;
+// 	}
+// 	i = 0;
+// 	while (args[i])
+// 	{
+// 		ft_lstadd_front()
+// 	}
+	
+// 	return (args);
+// }
 
 push    *get_args(int ac, char **ar)
 {
@@ -123,8 +85,37 @@ push    *get_args(int ac, char **ar)
     lst = NULL;
     while (i < ac)
     {
-       ft_lstadd_front(&lst, ft_lstnew(ft_atoi(ar[i])));
+       ft_lstadd_back(&lst, ft_lstnew(ft_atoi(ar[i])));
        ++i;
     }
     return (lst);
 }
+
+// char    *get_args(int ac, char **ar)
+// {
+//     char    *buff;
+//     int     len;
+//     int     z;
+//     int     j;
+//     int     i;
+
+//     i = 1;
+//     len = 0;
+//     while (i < ac)
+//         len += ft_strlen(ar[i++]);
+//     buff = malloc(sizeof(char) * len + ac);
+//     if (!buff)
+//         return (NULL);
+//     i = 1;
+//     z = 0;
+//     while (i < ac)
+//     {
+//         j = 0;
+//         while (ar[i][j])
+//             buff[z++] = ar[i][j++];
+//         if (i < ac)
+//             buff[z++] = ' ';
+//         ++i;
+//     }
+//     return (buff);
+// }
