@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 10:35:28 by achakour          #+#    #+#             */
-/*   Updated: 2024/03/11 09:23:38 by achakour         ###   ########.fr       */
+/*   Updated: 2024/03/12 15:47:19 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void    select_move3(push **stack_a, push **stack_b, int *pos)
             ra_rb_rr(stack_a, "ra");
         }
     }
-    pa_pb(stack_a, stack_b, "pb");
+    pa_pb(stack_a, stack_b, "pa");
 }
 
 void    select_move2(push **stack_a, push **stack_b, int *pos)
@@ -53,7 +53,7 @@ void    select_move2(push **stack_a, push **stack_b, int *pos)
     {
         ra_rb_rr(stack_a, "ra");
     }
-    pa_pb(stack_a, stack_b, "pb");
+    pa_pb(stack_a, stack_b, "pa");
 }
 
 void    select_move1(push **stack_a, push **stack_b, int *pos)
@@ -72,7 +72,7 @@ void    select_move1(push **stack_a, push **stack_b, int *pos)
         {
             rra_rrb_rrr(stack_a , "rra");
         }
-        pa_pb(stack_a, stack_b, "pb");
+        pa_pb(stack_a, stack_b, "pa");
     }
     else if (pos[1] == -1 && pos[3] == -1)
     {

@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 15:44:14 by achakour          #+#    #+#             */
-/*   Updated: 2024/03/11 09:33:05 by achakour         ###   ########.fr       */
+/*   Updated: 2024/03/12 15:48:37 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ int    push_node(push **stack_a, push **stack_b, int a_len, int b_len, char *fla
     push    *head;
     int     tmp;
 
-    if (flag[1] == 'a' && a_len == 1)
+    if (flag[1] == 'b' && a_len == 1)
     {
         head = *stack_a;
         tmp = head->data;
@@ -93,7 +93,7 @@ int    push_node(push **stack_a, push **stack_b, int a_len, int b_len, char *fla
         ft_putchar(flag);
         return (1);
     }
-    else if (flag[1] == 'b' && b_len == 1)
+    else if (flag[1] == 'a' && b_len == 1)
     {
         head = *stack_b;
         tmp = head->data;
@@ -112,7 +112,7 @@ void    pa_pb(push **stack_a, push **stack_b ,char *flag)
 
     if (push_node(stack_a, stack_b, ft_lstsize(*stack_a), ft_lstsize(*stack_b), flag))
         return ;
-    if (flag[1] == 'a')
+    if (flag[1] == 'b')
     {
         head = *stack_a;
         tmp = head->data;
@@ -120,7 +120,7 @@ void    pa_pb(push **stack_a, push **stack_b ,char *flag)
         ft_lstadd_front(stack_b, ft_lstnew(tmp));
         ft_lstdelone(&head);
     }
-    else if (flag[1] == 'b')
+    else if (flag[1] == 'a')
     {
         head = *stack_b;
         tmp = head->data;

@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 08:58:13 by achakour          #+#    #+#             */
-/*   Updated: 2024/03/11 09:50:21 by achakour         ###   ########.fr       */
+/*   Updated: 2024/03/12 16:53:45 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,12 @@ void    push_swap(push **stack_a, push **stack_b)
         head = *stack_a;
         if (!is_lis(lis, stack_len, head->data))
         {
-            pa_pb (stack_a, stack_b, "pa");
+            pa_pb (stack_a, stack_b, "pb");
         }
-        ra_rb_rr(stack_a, "ra");
+        rra_rrb_rrr(stack_a, "rra");
     }
     stack_len = ft_lstsize(*stack_b);
-    while (stack_len-- && stack_len > 0)
+    while (stack_len--)
         stack_recovery(stack_a, stack_b);
     free (lis);
 }
@@ -73,11 +73,16 @@ int main(int ac, char **ar)
     ssize_t     *weight;
     int     stack_len;
 
-    // if (!ft_is_all_digit(ac, ar) || !ft_check_dobles_limits(ac, ar))
+    //else if (!ft_is_all_digit(ac, ar) || !ft_check_dobles_limits(ac, ar))
     //     perror("ERROR");
     stack_b = NULL;
     stack_a = get_args(ac, ar);
+    if (ac == 1 || is_sorted(stack_a))
+        return (ft_lstclear(&stack_a), 0);
     stack_len = ft_lstsize(stack_a);
+    // if (stack_len == 3)
+    //     sort_three_args(&stack_a, &stack_b);
+    // else if (stack_len == 5)
     weight = lst_weight(stack_a, stack_len);
     if (weight[0] > weight[1])
         rotate_half_stack(&stack_a, stack_len, "ra");
