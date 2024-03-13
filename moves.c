@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 15:44:14 by achakour          #+#    #+#             */
-/*   Updated: 2024/03/12 15:48:37 by achakour         ###   ########.fr       */
+/*   Updated: 2024/03/13 09:44:07 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ void    ft_putchar(char *flag)
 
 void    rra_rrb_rrr(push **stack, char *flag)
 {
-//     rra (reverse rotate a): Shift down all elements of stack a by 1.
-// The last element becomes the first one.
     push    *head;
     push    *tmp;
 
@@ -47,8 +45,6 @@ void    rra_rrb_rrr(push **stack, char *flag)
 
 void    ra_rb_rr(push **stack, char *flag)
 {
-//     ra (rotate a): Shift up all elements of stack a by 1.
-// The first element becomes the last one.
     push    *head;
     push    *tmp;
 
@@ -129,4 +125,19 @@ void    pa_pb(push **stack_a, push **stack_b ,char *flag)
         ft_lstdelone(&head);
     }
     ft_putchar(flag);
+}
+
+void    sa_sb(push **stack, char *flag)
+{
+    push    *head;
+    int     tmp;
+
+    head = *stack;
+    while (head->next && head->next->next && head->next->next)
+        head = head->next;
+    if (!head || !head->next)
+        return ;
+    tmp = head->next->data;
+    head->next->data = head->data;
+    head->data = tmp;
 }

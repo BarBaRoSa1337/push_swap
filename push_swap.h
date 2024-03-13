@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:07:56 by achakour          #+#    #+#             */
-/*   Updated: 2024/03/10 10:20:51 by achakour         ###   ########.fr       */
+/*   Updated: 2024/03/13 09:43:12 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,12 @@ typedef struct push
 void    rra_rrb_rrr(push **stack, char *flag);
 void    ra_rb_rr(push **stack, char *flag);
 void    rr_rrr(push **stack_a, push **stack_b, char *flag);
-void    sa_sb_ss(push *stack, char *flag);
+void    sa_sb(push **stack, char *flag);
 void    pa_pb(push **a, push **b, char *flag);
 int     is_lis(int *arr, int len,int n);
 
 void	ft_lstdelone(push **lst);
+int *get_min(push *stack);
 int     *ft_fill_arr(push *lst);
 void	ft_lstadd_front(push **lst, push *new);
 void    stack_recovery(push **stack_a, push **stack_b);

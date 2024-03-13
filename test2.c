@@ -46,11 +46,58 @@ char    *get_args1(int ac, char **ar)
     return (buff);
 }
 
+void    sort_three(push **stack_a)
+{
+    int *min;
+    push    *head;
+
+    head = *stack_a;
+    min = get_min(head);
+    if (head->next->data == min[0])
+    {
+        ra_rb_rr(stack_a, "ra");
+        head = *stack_a;
+    }
+    else if (head->next->next->data == min[0])
+        rra_rrb_rrr(stack_a, "rra");
+    head = *stack_a;
+    if (head->next->data > head->next->next->data)
+        sa_sb(stack_a, "sa");
+    free (min);
+}
+
+void    push_node(push **stack_a, push **stack_b, int min)
+{
+    push    *head;
+
+    head = 
+}
+
+void    sort_five(push **stack_a, push **stack_b)
+{
+    int *min;
+    int b_len;
+    push    *head;
+
+    head = *stack_a;
+    while (ft_lstsize(head) > 3)
+    {
+        min = get_min(head);
+        push_node(stack_a, stack_b, min[0]);
+        free (min);
+        head = *stack_a;
+    }
+    sort_three(stack_a);
+    b_len = ft_lstsize(*stack_b);
+    while (b_len--)
+        stack_recovery(stack_a, stack_b);
+}
+
 int main(int ac, char **ar)
 {
-    push *n = ft_lstnew(1);
-    push    *n1 = ft_lstnew(3);
-    push        *n2 = ft_lstnew(4);
+    push *n = ft_lstnew(2);
+    push    *n1 = ft_lstnew(1);
+    push        *n2 = ft_lstnew(3);
     push            *n3 = ft_lstnew(5);
     push                *n4 = ft_lstnew(7);
     n->next = n1;
@@ -63,7 +110,8 @@ int main(int ac, char **ar)
     // b->next = b1;
     // b1->next = b2;
     
-    rra_rrb_rrr(&n, "rra");
+    // sort_three(&n);
+   sort_three(&n);
     push *head = n;
     while (head)
     {
