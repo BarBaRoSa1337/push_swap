@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 15:44:38 by achakour          #+#    #+#             */
-/*   Updated: 2024/03/10 12:07:54 by achakour         ###   ########.fr       */
+/*   Updated: 2024/03/13 10:32:32 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,9 @@ void	ft_lstadd_back(push **lst, push *new)
 	push	*head;
 
 	if (!new || lst == NULL)
+	{
 		return ;
+	}
 	head = *lst;
 	if (!head)
 	{
@@ -40,7 +42,9 @@ void	ft_lstadd_back(push **lst, push *new)
 		return ;
 	}
 	while (head->next)
+	{
 		head = head->next;
+	}
 	head->next = new;
 }
 
@@ -49,7 +53,9 @@ void	ft_lstclear(push **lst)
 	push	*next_node;
 
 	if (lst == NULL || *lst == NULL)
+	{
 		return ;
+	}
 	while (*lst != NULL)
 	{
 		next_node = (*lst)->next;
@@ -62,7 +68,9 @@ void	ft_lstclear(push **lst)
 void	ft_lstdelone(push **lst)
 {
 	if (lst == NULL)
+	{
 		return ;
+	}
 	free (*lst);
 	lst = NULL;
 }
@@ -72,10 +80,12 @@ int	ft_lstsize(push *lst)
 	push	*head;
 	int		len;
 
-	if (!lst)
-		return (0);
-	head = lst;
 	len = 0;
+	if (!lst)
+	{
+		return (0);
+	}
+	head = lst;
 	while (head != NULL)
 	{
 		head = head->next;
@@ -90,7 +100,9 @@ push	*ft_lstnew(int content)
 
 	node = (push *)malloc(sizeof(push));
 	if (!node)
+	{
 		return (NULL);
+	}
 	node->data = content;
 	node->next = NULL;
 	return (node);
@@ -99,8 +111,12 @@ push	*ft_lstnew(int content)
 push    *find_last_node(push *stack)
 {
 	if (!stack)
+	{
 		return (NULL);
+	}
     while (stack->next)
+	{
         stack = stack->next;
+	}
     return(stack);
 }

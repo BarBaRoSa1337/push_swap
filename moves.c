@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 15:44:14 by achakour          #+#    #+#             */
-/*   Updated: 2024/03/13 09:44:07 by achakour         ###   ########.fr       */
+/*   Updated: 2024/03/13 11:02:17 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,9 @@ void    rra_rrb_rrr(push **stack, char *flag)
 
     head = *stack;
     while (head->next->next)
+    {
         head = head->next;
+    }
    tmp = head;
    head->next->next = *stack;
    *stack = tmp->next;
@@ -51,7 +53,9 @@ void    ra_rb_rr(push **stack, char *flag)
     head = *stack; 
     tmp = head->next;
     while (head->next)
+    {
         head = head->next;
+    }
     head->next = *stack;
     *stack = tmp;
     head->next->next = NULL;
@@ -106,8 +110,11 @@ void    pa_pb(push **stack_a, push **stack_b ,char *flag)
     int     tmp;
     push    *head;
 
-    if (push_node(stack_a, stack_b, ft_lstsize(*stack_a), ft_lstsize(*stack_b), flag))
+    if (push_node(stack_a, stack_b, ft_lstsize(*stack_a),
+            ft_lstsize(*stack_b), flag))
+    {
         return ;
+    }
     if (flag[1] == 'b')
     {
         head = *stack_a;
@@ -129,15 +136,20 @@ void    pa_pb(push **stack_a, push **stack_b ,char *flag)
 
 void    sa_sb(push **stack, char *flag)
 {
-    push    *head;
     int     tmp;
+    push    *head;
 
-    head = *stack;
-    while (head->next && head->next->next && head->next->next)
-        head = head->next;
-    if (!head || !head->next)
+    if (!stack)
+    {
         return ;
-    tmp = head->next->data;
-    head->next->data = head->data;
-    head->data = tmp;
+    }
+    head = *stack;
+    if (!head->next)
+    {
+        return ;
+    } 
+    tmp = head->data;
+    head->data = head->next->data;
+    head->next->data = tmp;
+    ft_putchar(flag);
 }

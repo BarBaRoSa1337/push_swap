@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 12:08:43 by achakour          #+#    #+#             */
-/*   Updated: 2024/03/06 08:23:38 by achakour         ###   ########.fr       */
+/*   Updated: 2024/03/13 10:31:03 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,11 @@ int    *ft_find_sequence(int *arr, int *lis, int max, int *len)
 
     i = 0;
     tmp = *len;
-    seq = malloc(sizeof(int) * max);
+    seq = (int *)malloc(sizeof(int) * max);
     if (!seq)
+    {
         return (NULL);
+    }
     while (tmp)
     {
         if (lis[tmp - 1] == max)
@@ -45,13 +47,17 @@ int find_max(int *arr, int len)
     int i;
 
     if (len < 1)
+    {
         return (0);
+    }
     i = 0;
     tmp = arr[i++];
     while (i < len)
     {
         if (arr[i] > tmp)
+        {
             tmp = arr[i];
+        }
         ++i;
     }
     return (tmp);
@@ -60,16 +66,20 @@ int find_max(int *arr, int len)
 int    *ft_fill_arr(push *lst)
 {
     push    *head;
+    int     *arr;
     size_t  i;
-    int    *arr;
 
-    if (!lst)
-        return (NULL);
-    head = lst;
-    arr = malloc(sizeof(int) * ft_lstsize(lst));
-    if (!arr)
-        return (NULL);
     i = 0;
+    if (!lst)
+    {
+        return (NULL);
+    }
+    head = lst;
+    arr = (int *)malloc(sizeof(int) * ft_lstsize(lst));
+    if (!arr)
+    {
+        return (NULL);
+    }
     while (head)
     {
         arr[i] = head->data;

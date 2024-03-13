@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 09:25:51 by achakour          #+#    #+#             */
-/*   Updated: 2024/03/11 09:22:31 by achakour         ###   ########.fr       */
+/*   Updated: 2024/03/13 11:44:04 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int detect_target(int *arr, int n, int a_len)
 void find_cheapest_in_a(push *stack, int **cheap, int target, int a_len)
 {
     push    *head;
-        
+
     head = stack;
     (*cheap)[2] = 0;
     while (head && head->data != target)
@@ -83,7 +83,9 @@ int *count_push_price(push *stack_a, push *stack_b, int n, int target, int b_len
     }
     pos[1] = b_len - pos[0];
     if (pos[0] < pos[1])
+    {
         pos[1] = -1;
+    }
     else
     {
         pos[0] = pos[1];
