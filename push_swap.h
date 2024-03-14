@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:07:56 by achakour          #+#    #+#             */
-/*   Updated: 2024/03/13 11:43:33 by achakour         ###   ########.fr       */
+/*   Updated: 2024/03/14 13:40:24 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int     *get_min(push *stack);
 int     find_max(int *arr, int len);
 int     *ft_fill_arr(push *lst);
 void	ft_lstadd_front(push **lst, push *new);
+int     ft_strlen(char *str);
 void    stack_recovery(push **stack_a, push **stack_b);
 int     select_cheapest(push *stack_a, push *stack_b, int b_len, int a_len);
 void    fix_lst(push **stack, int len);

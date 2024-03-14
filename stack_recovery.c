@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 10:35:28 by achakour          #+#    #+#             */
-/*   Updated: 2024/03/12 15:47:19 by achakour         ###   ########.fr       */
+/*   Updated: 2024/03/13 14:30:31 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,8 +96,8 @@ void   stack_recovery(push **stack_a, push **stack_b)
     if (!stack_a || !stack_b || !*stack_a || !*stack_b)
         return ;
     head = *stack_b;
+    b_len = ft_lstsize(head);
     a_len = ft_lstsize(*stack_a);
-    b_len = ft_lstsize(*stack_b);
     index = select_cheapest(*stack_a, *stack_b, b_len, a_len);
     while (head->next && index--)
         head = head->next;
