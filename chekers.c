@@ -6,83 +6,83 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 19:16:50 by achakour          #+#    #+#             */
-/*   Updated: 2024/03/15 12:59:51 by achakour         ###   ########.fr       */
+/*   Updated: 2024/03/15 13:25:30 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int ft_isdigit(int c)
+int	ft_isdigit(int c)// too manyy functions
 {
-    if (c >= '0' && c <= '9')
-        return (1);
-    return (0);
+	if (c >= '0' && c <= '9')
+		return (1);
+	return (0);
 }
 
-int     ft_strlen(char *str)
+int	ft_strlen(char *str)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    while (str[i])
-        ++i;
-    return (i);
+	i = 0;
+	while (str[i])
+		++i;
+	return (i);
 }
 
-ssize_t *char_to_arr(char **buff, int *length)
+ssize_t	*char_to_arr(char **buff, int *length)
 {
-    ssize_t *arr;
-    int     len;
-    int     i;
+	ssize_t	*arr;
+	int		len;
+	int		i;
 
-    i = 0;
-    if (!buff || !buff[0])
-        return (NULL);
-    while (buff[i])
-    {
-        ++len;
-        ++i;
-    }
-    arr = malloc(sizeof(ssize_t) * len);
-    if (!arr)
-        return (NULL);
-    i = 0;
-    while (i < len)
-    {
-        arr[i] = ft_atoi(buff[i]);
-        ++i;
-    }
-    length = *len;
-    return (arr);
+	i = 0;
+	if (!buff || !buff[0])
+		return (NULL);
+	while (buff[i])
+	{
+		++len;
+		++i;
+	}
+	arr = malloc(sizeof(ssize_t) * len);
+	if (!arr)
+		return (NULL);
+	i = 0;
+	while (i < len)
+	{
+		arr[i] = ft_atoi(buff[i]);
+		++i;
+	}
+	length = *len;
+	return (arr);
 }
 
-int is_doubled(ssize_t *arr, ssize_t n, int index, int len)
+int	is_doubled(ssize_t *arr, ssize_t n, int index, int len)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    while (i < index)
-    {
-        if (arr[i] == n)
-            return (0);
-        ++i;
-    }
-    if (i == index && arr[i] == n)
-        ++i;
-    while (i < len)
-    {
-        if (arr[i] == n)
-            return (0);
-        ++i;
-    }
-    return (1);
+	i = 0;
+	while (i < index)
+	{
+		if (arr[i] == n)
+			return (0);
+		++i;
+	}
+	if (i == index && arr[i] == n)
+		++i;
+	while (i < len)
+	{
+		if (arr[i] == n)
+			return (0);
+		++i;
+	}
+	return (1);
 }
 
 ssize_t	ft_atoi(const char *str)
 {
 	ssize_t	sign;
 	size_t	num;
-	int	    i;
+	int		i;
 
 	i = 0;
 	num = 0;
@@ -90,9 +90,9 @@ ssize_t	ft_atoi(const char *str)
 	if (str[i] == '+' || str[i] == '-')
 	{
 		if (str[i] == '-')
-        {
+		{
 			sign = -1;
-        }
+		}
 		++i;
 	}
 	while (ft_isdigit(str[i]) && str[i] != '\0')
@@ -103,102 +103,104 @@ ssize_t	ft_atoi(const char *str)
 	return (num * sign);
 }
 
-int is_valid_args(int ac, char **ar)
+int	is_valid_args(int ac, char **ar)
 {
-    int i;
-    int j;
+	int	i;
+	int	j;
 
-    i = 1;
-    if (ac == 1)
-        return (1);
-    while (ar[i])
-    {
-       j = 0;
-       while (ar[i][j])
-       {
-            if (ar[i][j + 1] && (ar[i][j] == '-' || ar[i][j] == '+') && (ar[i][j + 1] == '+' || ar[i][j + 1] == '-'))
-                return (0);
-            else if (ar[i][j + 1] && ft_isdigit(ar[i][j]) && !ft_isdigit(ar[i][j + 1]))
-            {
-                return (0);
-            }
-            else if (!ft_isdigit(ar[i][j]) && (ar[i][j] != '-' && ar[i][j] != '+'))
-                return (0);
-            ++j;
-       }
-       ++i;
-    }
-    return (1);
+	i = 1;
+	if (ac == 1)
+		return (1);
+	while (ar[i])
+	{
+		j = 0;
+		while (ar[i][j])
+		{
+			if (ar[i][j + 1] && (ar[i][j] == '-' || ar[i][j] == '+') && (ar[i][j
+					+ 1] == '+' || ar[i][j + 1] == '-'))
+				return (0);
+			else if (ar[i][j + 1] && ft_isdigit(ar[i][j]) && !ft_isdigit(ar[i][j
+					+ 1]))
+				return (0);
+			else if (!ft_isdigit(ar[i][j]) && (ar[i][j] != '-'
+					&& ar[i][j] != '+'))
+				return (0);
+			++j;
+		}
+		++i;
+	}
+	return (1);
 }
 
-int is_doubled_or_max_min(ssize_t *arr, int len)
+int	is_doubled_or_max_min(ssize_t *arr, int len)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    while (i < len)
-    {
-        if (arr[i] < INT_MIN || arr[i] > INT_MAX || is_doubled(arr, arr[i], i, len))
-            return (0);
-        ++i;
-    }
-    return (1);
+	i = 0;
+	while (i < len)
+	{
+		if (arr[i] < INT_MIN || arr[i] > INT_MAX || is_doubled(arr, arr[i], i,
+				len))
+			return (0);
+		++i;
+	}
+	return (1);
 }
 
-char    *get_args1(int ac, char **ar)
+char	*get_args1(int ac, char **ar)
 {
-    char    *buff;
-    int     len;
-    int     z;
-    int     j;
-    int     i;
+	char	*buff;
+	int		len;
+	int		z;
+	int		j;
+	int		i;
 
-    i = 1;
-    len = 0;
-    while (i < ac)
-        len += ft_strlen(ar[i++]);
-    buff = (char *)malloc(sizeof(char) * len + ac);
-    if (!buff)
-        return (NULL);
-    i = 1;
-    z = 0;
-    while (i < ac)
-    {
-        j = 0;
-        while (ar[i][j])
-            buff[z++] = ar[i][j++];
-        if (i < ac)
-            buff[z++] = ' ';
-        ++i;
-    }
-    return (buff);
+	i = 1;
+	len = 0;
+	while (i < ac)
+		len += ft_strlen(ar[i++]);
+	buff = (char *)malloc(sizeof(char) * len + ac);
+	if (!buff)
+		return (NULL);
+	i = 1;
+	z = 0;
+	while (i < ac)
+	{
+		j = 0;
+		while (ar[i][j])
+			buff[z++] = ar[i][j++];
+		if (i < ac)
+			buff[z++] = ' ';
+		++i;
+	}
+	return (buff);
 }
 
-void    *process_args(char *buff)
+void	*process_args(char *buff)
 {
-    char    **args;
-    push    *lst;
-    ssize_t *arr;
-    int     len;
-    int     i;
+	char	**args;
+	push	*lst;
+	ssize_t	*arr;
+	int		len;
+	int		i;
 
-    args = ft_split(buff, ' ');
-    if (!(arr = char_to_arr(args)))
-        return (NULL);
-    i = 0;
-    if (is_doubled_or_max_min(arr, &len))
-        return (NULL);
-    while (i < len)
-    {
-        ft_lstadd_front(&lst, ft_lstnew(ft_atoi(args[i])));
-        ++i;
-    }
-    i = 0;
-    while (i < len)
-    {
-        free(args[i]);
-        ++i;
-    }
-    free (args);
-    free (buff);
+	args = ft_split(buff, ' ');
+	if (!(arr = char_to_arr(args)))// fix this
+		return (NULL);
+	i = 0;
+	if (is_doubled_or_max_min(arr, &len))
+		return (NULL);
+	while (i < len)
+	{
+		ft_lstadd_front(&lst, ft_lstnew(ft_atoi(args[i])));
+		++i;
+	}
+	i = 0;
+	while (i < len)
+	{
+		free(args[i]);
+		++i;
+	}
+	free(args);
+	free(buff);
 }

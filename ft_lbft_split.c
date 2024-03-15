@@ -6,13 +6,13 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 12:13:18 by achakour          #+#    #+#             */
-/*   Updated: 2024/03/04 11:07:19 by achakour         ###   ########.fr       */
+/*   Updated: 2024/03/15 13:23:08 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_strlcpy(char *dst, char *src, size_t dstsize)
+void	ft_strlcpy(char *dst, char *src, size_t dstsize)// too many functions
 {
 	size_t	i;
 

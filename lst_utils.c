@@ -6,13 +6,13 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 15:44:38 by achakour          #+#    #+#             */
-/*   Updated: 2024/03/14 13:18:57 by achakour         ###   ########.fr       */
+/*   Updated: 2024/03/15 13:22:57 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_lstadd_front(push **lst, push *new)
+void	ft_lstadd_front(push **lst, push *new)// too many functions
 {
 	if (!new || lst == NULL)
 	{
@@ -71,7 +71,7 @@ void	ft_lstdelone(push **lst)
 	{
 		return ;
 	}
-	free (*lst);
+	free(*lst);
 	lst = NULL;
 }
 
@@ -108,15 +108,15 @@ push	*ft_lstnew(int content)
 	return (node);
 }
 
-push    *find_last_node(push *stack)
+push	*find_last_node(push *stack)
 {
 	if (!stack)
 	{
 		return (NULL);
 	}
-    while (stack->next)
+	while (stack->next)
 	{
-        stack = stack->next;
+		stack = stack->next;
 	}
-    return(stack);
+	return (stack);
 }

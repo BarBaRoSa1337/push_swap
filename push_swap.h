@@ -6,63 +6,66 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:07:56 by achakour          #+#    #+#             */
-/*   Updated: 2024/03/15 11:20:04 by achakour         ###   ########.fr       */
+/*   Updated: 2024/03/15 13:19:34 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
-#define PUSH_SWAP_H
+# define PUSH_SWAP_H
 
- #include <limits.h>
- #include <unistd.h>
- #include <stdlib.h>
- #include <string.h>
- #include <stdio.h>
+# include <limits.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <string.h>
+# include <unistd.h>
 
 typedef struct push
 {
-    int            data;
-    struct  push  *next;
-}           push;
+	int			data;
+	struct push	*next;
+}				t_push;
 
-void    rra_rrb_rrr(push **stack, char *flag);
-void    ra_rb_rr(push **stack, char *flag);
-void    rr_rrr(push **stack_a, push **stack_b, char *flag);
-void    sa_sb(push **stack, char *flag);
-void    pa_pb(push **a, push **b, char *flag);
-int     is_lis(int *arr, int len,int n);
+void			rra_rrb_rrr(push **stack, char *flag);
+void			ra_rb_rr(push **stack, char *flag);
+void			rr_rrr(push **stack_a, push **stack_b, char *flag);
+void			sa_sb(push **stack, char *flag);
+void			pa_pb(push **a, push **b, char *flag);
+int				is_lis(int *arr, int len, int n);
 
-void    select_move1(push **stack_a, push **stack_b, int *pos);
-void    select_move2(push **stack_a, push **stack_b, int *pos);
-void    select_move3(push **stack_a, push **stack_b, int *pos);
-void   stack_recovery(push **stack_a, push **stack_b);
-void	ft_lstdelone(push **lst);
-int is_valid_args(char **ar);
-int     *get_min(push *stack);
-int     find_max(int *arr, int len);
-int     *ft_fill_arr(push *lst);
-void    *process_args(char *buff);
-void	ft_lstadd_front(push **lst, push *new);
-int     ft_strlen(char *str);
-void    stack_recovery(push **stack_a, push **stack_b);
-int     select_cheapest(push *stack_a, push *stack_b, int b_len, int a_len);
-void    fix_lst(push **stack, int len);
-int     *count_push_price(push *stack_a, push *stack_b, int n, int target, int b_len);
-int     detect_target(int *arr, int n,int a_len);
-void find_cheapest_in_a(push *stack, int **cheap, int target, int a_len);
-void    rotate_half_stack(push **stack, int len, char *flag);
-ssize_t *lst_weight(push *stack, int len);
-int     ft_double_numbers(int *arr, int n, unsigned int len);
-int     ft_is_all_digit(int ac, char **ar);
-int     ft_check_dobles_limits(int ac, char **ar);
-char    *get_args1(int ac, char **ar);
-void	ft_lstclear(push **lst);
-void	ft_lstadd_back(push **lst, push *new);
-int	    ft_lstsize(push *lst);
-push	*ft_lstnew(int content);
-int    *ft_lis(push *lst, int *len);
-char	**ft_split(char const *s, char c);
-push    *find_last_node(push *stack);
-int     *ft_fill_arr(push *lst);
- 
+void			select_move1(push **stack_a, push **stack_b, int *pos);
+void			select_move2(push **stack_a, push **stack_b, int *pos);
+void			select_move3(push **stack_a, push **stack_b, int *pos);
+void			stack_recovery(push **stack_a, push **stack_b);
+void			ft_lstdelone(push **lst);
+int				is_valid_args(char **ar);
+int				*get_min(push *stack);
+int				find_max(int *arr, int len);
+int				*ft_fill_arr(push *lst);
+void			*process_args(char *buff);
+void			ft_lstadd_front(push **lst, push *new);
+int				ft_strlen(char *str);
+void			stack_recovery(push **stack_a, push **stack_b);
+int				select_cheapest(push *stack_a, push *stack_b, int b_len,
+					int a_len);
+void			fix_lst(push **stack, int len);
+int				*count_push_price(push *stack_a, push *stack_b, int n,
+					int target, int b_len);
+int				detect_target(int *arr, int n, int a_len);
+void			find_cheapest_in_a(push *stack, int **cheap, int target,
+					int a_len);
+void			rotate_half_stack(push **stack, int len, char *flag);
+ssize_t			*lst_weight(push *stack, int len);
+int				ft_double_numbers(int *arr, int n, unsigned int len);
+int				ft_is_all_digit(int ac, char **ar);
+int				ft_check_dobles_limits(int ac, char **ar);
+char			*get_args1(int ac, char **ar);
+void			ft_lstclear(push **lst);
+void			ft_lstadd_back(push **lst, push *new);
+int				ft_lstsize(push *lst);
+push			*ft_lstnew(int content);
+int				*ft_lis(push *lst, int *len);
+char			**ft_split(char const *s, char c);
+push			*find_last_node(push *stack);
+int				*ft_fill_arr(push *lst);
+
 #endif
