@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:07:56 by achakour          #+#    #+#             */
-/*   Updated: 2024/03/14 13:40:24 by achakour         ###   ########.fr       */
+/*   Updated: 2024/03/15 11:20:04 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,11 @@ void    select_move2(push **stack_a, push **stack_b, int *pos);
 void    select_move3(push **stack_a, push **stack_b, int *pos);
 void   stack_recovery(push **stack_a, push **stack_b);
 void	ft_lstdelone(push **lst);
+int is_valid_args(char **ar);
 int     *get_min(push *stack);
 int     find_max(int *arr, int len);
 int     *ft_fill_arr(push *lst);
+void    *process_args(char *buff);
 void	ft_lstadd_front(push **lst, push *new);
 int     ft_strlen(char *str);
 void    stack_recovery(push **stack_a, push **stack_b);
@@ -53,7 +55,7 @@ ssize_t *lst_weight(push *stack, int len);
 int     ft_double_numbers(int *arr, int n, unsigned int len);
 int     ft_is_all_digit(int ac, char **ar);
 int     ft_check_dobles_limits(int ac, char **ar);
-push    *get_args(int ac, char **ar);
+char    *get_args1(int ac, char **ar);
 void	ft_lstclear(push **lst);
 void	ft_lstadd_back(push **lst, push *new);
 int	    ft_lstsize(push *lst);

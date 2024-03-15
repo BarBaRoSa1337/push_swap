@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 09:25:51 by achakour          #+#    #+#             */
-/*   Updated: 2024/03/13 11:44:04 by achakour         ###   ########.fr       */
+/*   Updated: 2024/03/14 15:06:01 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,10 +97,10 @@ int *count_push_price(push *stack_a, push *stack_b, int n, int target, int b_len
 
 int select_cheapest(push *stack_a, push *stack_b, int b_len, int a_len)
 {
-    push    *head;
     int     best[2];
-    int     i;
+    push    *head;
     int     *tmp;
+    int     i;
 
     i = 0;
     head = stack_b;

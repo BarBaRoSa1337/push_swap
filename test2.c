@@ -16,6 +16,7 @@ int     ft_strlen(char *str)
         ++i;
     return (i);
 }
+
 char    *get_args1(int ac, char **ar)
 {
     char    *buff;
@@ -24,11 +25,13 @@ char    *get_args1(int ac, char **ar)
     int     j;
     int     i;
 
+    if (ac < 2)
+        return (NULL);
     i = 1;
     len = 0;
     while (i < ac)
         len += ft_strlen(ar[i++]);
-    buff = (char *)malloc(sizeof(char) * len + ac);
+    buff = (char *)malloc(sizeof(char) * len + ac + 1);
     if (!buff)
         return (NULL);
     i = 1;
@@ -42,6 +45,7 @@ char    *get_args1(int ac, char **ar)
             buff[z++] = ' ';
         ++i;
     }
+    buff[z] = '\0';
     return (buff);
 }
 
@@ -69,20 +73,31 @@ ssize_t	ft_atoi(const char *str)
 	}
 	return (num * sign);
 }
+
 ssize_t *char_to_arr(char **buff, int *len)
 {
     int     length;
     ssize_t *arr;
     int     i;
 
-    i = 0;
-    while (buff[i++])
-        ++length;
-    arr = malloc(sizeof(ssize_t) * (ssize_t)len);
-    if (!arr)
+    if (!buff || !(*buff))
+    {
         return (NULL);
+    }
     i = 0;
-    while (i < length);
+    length = 0;
+    while (buff[i])
+    {
+        length += 1;
+        ++i;
+    }
+    arr = malloc(sizeof(ssize_t) * (ssize_t)length);
+    if (!arr)
+    {
+        return (NULL);
+    }
+    i = 0;
+    while (i < length)
     {
         arr[i] = ft_atoi(buff[i]);
         ++i;
@@ -90,6 +105,43 @@ ssize_t *char_to_arr(char **buff, int *len)
     *len = length;
     return (arr);
 }
+
+int is_doubled(ssize_t *arr, ssize_t n, int index, int len)
+{
+    int i;
+
+    i = 0;
+    while (i < index)
+    {
+        if (arr[i] == n)
+            return (0);
+        ++i;
+    }
+    if (i == index && arr[i] == n)
+        ++i;
+    while (i < len)
+    {
+        if (arr[i] == n)
+            return (0);
+        ++i;
+    }
+    return (1);
+}
+
+int is_doubled_or_max_min(ssize_t *arr, int len)
+{
+    int i;
+
+    i = 0;
+    while (i < len)
+    {
+        if (arr[i] < INT_MIN || arr[i] > INT_MAX || is_doubled(arr, arr[i], i, len))
+            return (0);
+        ++i;
+    }
+    return (1);
+}
+
 
 int main(int ac, char **ar)
 {
@@ -112,9 +164,14 @@ int main(int ac, char **ar)
 
     char *buff = get_args1(ac , ar);
     char    **bu = ft_split(buff, ' ');
+    int i = 0;
     int len;
     ssize_t *arr = char_to_arr(bu, &len);
-    int i = 0;
+    free (buff);
+    free (arr);
+    // printf("%d\n", is_doubled_or_max_min(arr, len));
+    // printf("%d\n", is_doubled_or_max_min(arr, len));
+    // int i = 0;
     // while (i  < len)
     // {
     //    printf ("%ld\n", arr[i]);
@@ -126,14 +183,14 @@ int main(int ac, char **ar)
     //     printf ("%s\n", bu[i]);
     //     ++i;
     // }
-    // i = 0;
-    // while (bu[i])
-    // {
-    //     /* code */
-    //     free (bu[i]);
-    //     ++i;
-    // }
-    // free (bu);
+    i = 0;
+    while (bu[i])
+    {
+        /* code */
+        free (bu[i]);
+        ++i;
+    }
+    free (bu);
     // printf ("%d\n", is_valid_args(ft_split(buff, ' ')));
     // sort_three(&n);
 //    sort_five(&n, &b);
