@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 19:16:50 by achakour          #+#    #+#             */
-/*   Updated: 2024/03/15 13:25:30 by achakour         ###   ########.fr       */
+/*   Updated: 2024/03/16 11:53:14 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,16 @@ ssize_t	*char_to_arr(char **buff, int *length)
 	}
 	arr = malloc(sizeof(ssize_t) * len);
 	if (!arr)
+	{
 		return (NULL);
+	}
 	i = 0;
 	while (i < len)
 	{
 		arr[i] = ft_atoi(buff[i]);
 		++i;
 	}
-	length = *len;
+	*length = len;
 	return (arr);
 }
 
@@ -64,15 +66,21 @@ int	is_doubled(ssize_t *arr, ssize_t n, int index, int len)
 	while (i < index)
 	{
 		if (arr[i] == n)
+		{
 			return (0);
+		}
 		++i;
 	}
 	if (i == index && arr[i] == n)
+	{
 		++i;
+	}
 	while (i < len)
 	{
 		if (arr[i] == n)
+		{
 			return (0);
+		}
 		++i;
 	}
 	return (1);
@@ -176,23 +184,23 @@ char	*get_args1(int ac, char **ar)
 	return (buff);
 }
 
-void	*process_args(char *buff)
+int process_args(t_push **lst, char *buff)
 {
 	char	**args;
-	push	*lst;
 	ssize_t	*arr;
 	int		len;
 	int		i;
 
-	args = ft_split(buff, ' ');
-	if (!(arr = char_to_arr(args)))// fix this
-		return (NULL);
 	i = 0;
-	if (is_doubled_or_max_min(arr, &len))
-		return (NULL);
+	// if (!buff)
+	// 	return (free (buff), 0);
+	args = ft_split(buff, ' ');
+	arr = char_to_arr(args, &len);
+	if (is_doubled_or_max_min(arr, len))
+		return (0);
 	while (i < len)
 	{
-		ft_lstadd_front(&lst, ft_lstnew(ft_atoi(args[i])));
+		ft_lstadd_back(lst, ft_lstnew(ft_atoi(args[i])));
 		++i;
 	}
 	i = 0;
@@ -203,4 +211,6 @@ void	*process_args(char *buff)
 	}
 	free(args);
 	free(buff);
+	free (arr);
+	return (1);
 }

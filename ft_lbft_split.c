@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 12:13:18 by achakour          #+#    #+#             */
-/*   Updated: 2024/03/15 13:23:08 by achakour         ###   ########.fr       */
+/*   Updated: 2024/03/16 11:40:44 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ void	ft_strlcpy(char *dst, char *src, size_t dstsize)// too many functions
 
 static size_t	ft_count_words(char *str, int c)
 {
-	size_t	i;
 	size_t	words;
+	size_t	i;
 
 	i = 0;
 	words = 0;

@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 12:08:43 by achakour          #+#    #+#             */
-/*   Updated: 2024/03/15 13:15:46 by achakour         ###   ########.fr       */
+/*   Updated: 2024/03/16 14:07:18 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,13 @@ int	find_max(int *arr, int len)
 		}
 		++i;
 	}
+	free (arr);
 	return (tmp);
 }
 
-int	*ft_fill_arr(push *lst)
+int	*ft_fill_arr(t_push *lst)
 {
-	push	*head;
+	t_push	*head;
 	int		*arr;
 	size_t	i;
 
@@ -89,7 +90,16 @@ int	*ft_fill_arr(push *lst)
 	return (arr);
 }
 
-int	*ft_lis(push *lst, int *len)
+void	set_arr(int *lis, int len)
+{
+	int	i;
+
+	i = 0;
+	while (i < len)
+		lis[i++] = 1;
+}
+
+int	*ft_lis(t_push *lst, int *len)
 {
 	int	*arr;
 	int	*lis;
@@ -97,11 +107,11 @@ int	*ft_lis(push *lst, int *len)
 	int	i;
 	int	j;
 
-	i = 0;
 	tmp = *len;
-	lis = malloc(sizeof(int) * *len);
-	while (i < *len)
-		lis[i++] = 1;
+	lis = malloc(sizeof(int) * tmp);
+	if (!lis)
+		return (NULL);
+	set_arr(lis, tmp);
 	arr = ft_fill_arr(lst);
 	i = 1;
 	while (i < tmp)

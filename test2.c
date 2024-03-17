@@ -81,9 +81,7 @@ ssize_t *char_to_arr(char **buff, int *len)
     int     i;
 
     if (!buff || !(*buff))
-    {
         return (NULL);
-    }
     i = 0;
     length = 0;
     while (buff[i])
@@ -93,9 +91,7 @@ ssize_t *char_to_arr(char **buff, int *len)
     }
     arr = malloc(sizeof(ssize_t) * (ssize_t)length);
     if (!arr)
-    {
         return (NULL);
-    }
     i = 0;
     while (i < length)
     {
@@ -103,6 +99,7 @@ ssize_t *char_to_arr(char **buff, int *len)
         ++i;
     }
     *len = length;
+    printf ("len %d\n", *len);
     return (arr);
 }
 
@@ -111,17 +108,18 @@ int is_doubled(ssize_t *arr, ssize_t n, int index, int len)
     int i;
 
     i = 0;
-    while (i < index)
-    {
-        if (arr[i] == n)
-            return (0);
-        ++i;
-    }
-    if (i == index && arr[i] == n)
-        ++i;
+    // while (i < index)
+    // {
+    //     if (arr[i] == n)
+    //         return (0);
+    //     ++i;
+    // }
+    // if (i == index && arr[i] == n)
+    //     ++i;
+    printf("index %d \n", index);
     while (i < len)
     {
-        if (arr[i] == n)
+        if (arr[i] == n && i != index)
             return (0);
         ++i;
     }
@@ -136,12 +134,14 @@ int is_doubled_or_max_min(ssize_t *arr, int len)
     while (i < len)
     {
         if (arr[i] < INT_MIN || arr[i] > INT_MAX || is_doubled(arr, arr[i], i, len))
+        {
+            printf ("a%ld\n", arr[i]);
             return (0);
+        }
         ++i;
     }
     return (1);
 }
-
 
 int main(int ac, char **ar)
 {
@@ -162,14 +162,11 @@ int main(int ac, char **ar)
     // b->next = b1;
     // b1->next = b2;
 
-    char *buff = get_args1(ac , ar);
-    char    **bu = ft_split(buff, ' ');
-    int i = 0;
     int len;
+    char    *buff = get_args1(ac , ar);
+    char    **bu = ft_split(buff, ' ');
     ssize_t *arr = char_to_arr(bu, &len);
-    free (buff);
-    free (arr);
-    // printf("%d\n", is_doubled_or_max_min(arr, len));
+    is_doubled_or_max_min(arr, len);
     // printf("%d\n", is_doubled_or_max_min(arr, len));
     // int i = 0;
     // while (i  < len)
@@ -183,14 +180,14 @@ int main(int ac, char **ar)
     //     printf ("%s\n", bu[i]);
     //     ++i;
     // }
-    i = 0;
-    while (bu[i])
-    {
-        /* code */
-        free (bu[i]);
-        ++i;
-    }
-    free (bu);
+    // i = 0;
+    // while (bu[i])
+    // {
+    //     /* code */
+    //     free (bu[i]);
+    //     ++i;
+    // }
+    // free (bu);
     // printf ("%d\n", is_valid_args(ft_split(buff, ' ')));
     // sort_three(&n);
 //    sort_five(&n, &b);

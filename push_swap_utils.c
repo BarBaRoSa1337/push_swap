@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 18:07:51 by achakour          #+#    #+#             */
-/*   Updated: 2024/03/15 13:18:05 by achakour         ###   ########.fr       */
+/*   Updated: 2024/03/16 13:55:45 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	is_lis(int *arr, int len, int n)
 	return (0);
 }
 
-void	rotate_half_stack(push **stack, int len, char *flag)
+void	rotate_half_stack(t_push **stack, int len, char *flag)
 {
 	int	i;
 
@@ -40,10 +40,10 @@ void	rotate_half_stack(push **stack, int len, char *flag)
 	}
 }
 
-ssize_t	*lst_weight(push *stack, int len)
+ssize_t	*lst_weight(t_push *stack, int len)
 {
 	ssize_t	*weight;
-	push	*head;
+	t_push	*head;
 	int		i;
 
 	i = 0;
@@ -51,15 +51,13 @@ ssize_t	*lst_weight(push *stack, int len)
 	weight = (ssize_t *)malloc(sizeof(ssize_t) * 2);
 	if (!weight)
 		return (NULL);
+	weight[0] = 0;
+	weight[1] = 0;
 	while (i < (len / 2) && weight[0] < LONG_MAX && weight[0] > LONG_MIN)
 	{
 		weight[0] += head->data;
 		head = head->next;
 		++i;
-	}
-	while (head && i < (len / 2))
-	{
-		head = head->next;
 	}
 	while (head && weight[1] < LONG_MAX && weight[1] > LONG_MIN)
 	{
@@ -69,9 +67,9 @@ ssize_t	*lst_weight(push *stack, int len)
 	return (weight);
 }
 
-int	*get_min(push *stack)
+int	*get_min(t_push *stack)
 {
-	push	*head;
+	t_push	*head;
 	int		*tmp;
 	int		i;
 
@@ -98,9 +96,9 @@ int	*get_min(push *stack)
 	return (tmp);
 }
 
-void	fix_lst(push **stack, int len)
+void	fix_lst(t_push **stack, int len)
 {
-	push	*head;
+	t_push	*head;
 	int		*tmp;
 	int		i;
 

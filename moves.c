@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 15:44:14 by achakour          #+#    #+#             */
-/*   Updated: 2024/03/15 13:22:37 by achakour         ###   ########.fr       */
+/*   Updated: 2024/03/16 10:22:17 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ void	ft_putchar(char *flag)// too many functions
 	write(1, "\n", 1);
 }
 
-void	rra_rrb_rrr(push **stack, char *flag)
+void	rra_rrb_rrr(t_push **stack, char *flag)
 {
-	push	*head;
-	push	*tmp;
+	t_push	*head;
+	t_push	*tmp;
 
 	head = *stack;
 	while (head->next->next)
@@ -45,10 +45,10 @@ void	rra_rrb_rrr(push **stack, char *flag)
 	}
 }
 
-void	ra_rb_rr(push **stack, char *flag)
+void	ra_rb_rr(t_push **stack, char *flag)
 {
-	push	*head;
-	push	*tmp;
+	t_push	*head;
+	t_push	*tmp;
 
 	head = *stack;
 	tmp = head->next;
@@ -65,7 +65,7 @@ void	ra_rb_rr(push **stack, char *flag)
 	}
 }
 
-void	rr_rrr(push **stack_a, push **stack_b, char *flag)
+void	rr_rrr(t_push **stack_a, t_push **stack_b, char *flag)
 {
 	if (flag[0] == 'r' && flag[1] == 'r' && !flag[2])
 	{
@@ -79,9 +79,9 @@ void	rr_rrr(push **stack_a, push **stack_b, char *flag)
 	}
 }
 
-int	push_node(push **stack_a, push **stack_b, int a_len, char *flag)
+int	push_node(t_push **stack_a, t_push **stack_b, int a_len, char *flag)
 {
-	push	*head;
+	t_push	*head;
 	int		b_len;
 	int		tmp;
 
@@ -107,13 +107,12 @@ int	push_node(push **stack_a, push **stack_b, int a_len, char *flag)
 	return (0);
 }
 
-void	pa_pb(push **stack_a, push **stack_b, char *flag)
+void	pa_pb(t_push **stack_a, t_push **stack_b, char *flag)
 {
 	int		tmp;
-	push	*head;
+	t_push	*head;
 
-	if (push_node(stack_a, stack_b, ft_lstsize(*stack_a), ft_lstsize(*stack_b),
-			flag))
+	if (push_node(stack_a, stack_b, ft_lstsize(*stack_a), flag))
 	{
 		return ;
 	}
@@ -136,10 +135,10 @@ void	pa_pb(push **stack_a, push **stack_b, char *flag)
 	ft_putchar(flag);
 }
 
-void	sa_sb(push **stack, char *flag)
+void	sa_sb(t_push **stack, char *flag)
 {
 	int		tmp;
-	push	*head;
+	t_push	*head;
 
 	if (!stack)
 	{

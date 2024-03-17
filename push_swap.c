@@ -6,15 +6,15 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 08:58:13 by achakour          #+#    #+#             */
-/*   Updated: 2024/03/15 13:22:04 by achakour         ###   ########.fr       */
+/*   Updated: 2024/03/16 13:51:06 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	is_sorted(push *stack)// too many functions
+int	is_sorted(t_push *stack)// too many functions
 {
-	push	*head;
+	t_push	*head;
 	int		len;
 
 	head = stack;
@@ -29,9 +29,9 @@ int	is_sorted(push *stack)// too many functions
 	return (0);
 }
 
-void	sort_three(push **stack_a)
+void	sort_three(t_push **stack_a)
 {
-	push	*head;
+	t_push	*head;
 	int		*min;
 	int		max;
 
@@ -54,18 +54,19 @@ void	sort_three(push **stack_a)
 	free(min);
 }
 
-void	push_node_to_b(push **stack_a, push **stack_b, int min)
+void	push_node_to_b(t_push **stack_a, t_push **stack_b, int min, int a_len)
 {
-	push	*head;
+	t_push	*head;
 	int		pos[2];
 
+	pos[0] = 0;
 	head = *stack_a;
 	while (head && head->data != min)
 	{
 		pos[0]++;
 		head = head->next;
 	}
-	pos[1] = ft_lstsize(*stack_a) - pos[0];
+	pos[1] = a_len - pos[0];
 	if (pos[0] > pos[1])
 	{
 		while (pos[1] > 0 && pos[1]--)
@@ -76,20 +77,18 @@ void	push_node_to_b(push **stack_a, push **stack_b, int min)
 	else
 	{
 		while (pos[0] > 0 && pos[0]--)
-		{
 			ra_rb_rr(stack_a, "ra");
-		}
 	}
 	pa_pb(stack_a, stack_b, "pb");
 }
 
-void	sort_five(push **stack_a, push **stack_b)
+void	sort_five(t_push **stack_a, t_push **stack_b)
 {
-	push	*head;
+	t_push	*head;
 	int		*min;
 	int		len;
 
-	if (!stack_a || !*stack_a || !stack_b || !*stack_b)
+	if (!stack_a || !*stack_a)
 		return ;
 	head = *stack_a;
 	*stack_b = NULL;
@@ -97,7 +96,7 @@ void	sort_five(push **stack_a, push **stack_b)
 	while (len > 3)
 	{
 		min = get_min(head);
-		push_node_to_b(stack_a, stack_b, min[0]);
+		push_node_to_b(stack_a, stack_b, min[0], ft_lstsize(*stack_a));
 		head = *stack_a;
 		free(min);
 		len--;
@@ -106,19 +105,19 @@ void	sort_five(push **stack_a, push **stack_b)
 	sort_three(stack_a);
 	while (len)
 	{
-		stack_recovery(stack_a, stack_b);
+		stack_recovery(stack_a, stack_b, ft_lstsize(*stack_a), ft_lstsize(*stack_b));
 		--len;
 	}
 }
 
-void	push_swap(push **stack_a, push **stack_b)
+void	push_swap(t_push **stack_a, t_push **stack_b)
 {
 	int		stack_len;
-	push	*head;
+	t_push	*head;
 	int		*lis;
 	int		tmp;
 
-	if (!stack_a || !*stack_a)
+	if (!stack_a || !*stack_a || is_sorted(*stack_a))
 		return ;
 	head = *stack_a;
 	stack_len = ft_lstsize(head);
@@ -136,20 +135,44 @@ void	push_swap(push **stack_a, push **stack_b)
 	}
 	stack_len = ft_lstsize(*stack_b);
 	while (stack_len--)
-		stack_recovery(stack_a, stack_b);
+		stack_recovery(stack_a, stack_b, ft_lstsize(*stack_a), ft_lstsize(*stack_b));
 	free(lis);
+}
+
+t_push    *get_args(char **ar)
+{
+    int     i;
+    t_push    *lst;
+
+    i = 1;
+    lst = NULL;
+    while (ar[i])
+    {
+       ft_lstadd_back(&lst, ft_lstnew(ft_atoi(ar[i])));
+       ++i;
+    }
+    return (lst);
 }
 
 int	main(int ac, char **ar)
 {
 	int		stack_len;
-	push	*stack_b;
-	push	*stack_a;
+	t_push	*stack_b;
+	t_push	*stack_a;
 	ssize_t	*weight;
 
-	if (!is_valid_args(ar) || !process_args(get_args1(ac, ar)))
-		perror("ERROR");
-	// stack_a = get_args(ac, ar);
+	// if (!process_args(&stack_a, get_args1(ac, ar)))
+	// {
+	// 	ft_lstclear(&stack_a);
+	// 	perror("ERROI");
+	// 	return (0);
+	// }
+	// while (stack_a)
+	// {
+	// 	printf("%d\n", stack_a->data);
+	// 	stack_a = stack_a->next;
+	// }
+	stack_a = get_args(ar);
 	if (ac == 1 || is_sorted(stack_a))
 		return (ft_lstclear(&stack_a), 0);
 	stack_len = ft_lstsize(stack_a);
@@ -166,5 +189,12 @@ int	main(int ac, char **ar)
 		fix_lst(&stack_a, ft_lstsize(stack_a));
 		free(weight);
 	}
+	// t_push *head = stack_a;
+	// while (head)
+	// {
+	// 	printf("%d\n", head->data);
+	// 	head = head->next;
+	// 	/* code */
+	// }
 	return (ft_lstclear(&stack_a), 0);
 }

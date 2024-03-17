@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 09:25:51 by achakour          #+#    #+#             */
-/*   Updated: 2024/03/15 13:24:00 by achakour         ###   ########.fr       */
+/*   Updated: 2024/03/15 14:08:17 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ int	detect_target(int *arr, int n, int a_len)
 	return (free(arr), key);
 }
 
-void	find_cheapest_in_a(push *stack, int **cheap, int target, int a_len)
+void	find_cheapest_in_a(t_push *stack, int **cheap, int target, int a_len)
 {
-	push	*head;
+	t_push	*head;
 
 	head = stack;
 	(*cheap)[2] = 0;
@@ -66,9 +66,9 @@ void	find_cheapest_in_a(push *stack, int **cheap, int target, int a_len)
 	}
 }
 
-int	*count_push_price(push *stack_a, push *stack_b, int n, int target)
+int	*count_push_price(t_push *stack_a, t_push *stack_b, int n, int target)
 {
-	push	*head_b;
+	t_push	*head_b;
 	int		*pos;
 
 	pos = malloc(sizeof(int) * 4);
@@ -95,10 +95,10 @@ int	*count_push_price(push *stack_a, push *stack_b, int n, int target)
 	return (pos);
 }
 
-int	select_cheapest(push *stack_a, push *stack_b, int b_len, int a_len)// fix this
+int	select_cheapest(t_push *stack_a, t_push *stack_b, int b_len, int a_len)// fix this
 {
 	int		best[2];
-	push	*head;
+	t_push	*head;
 	int		*tmp;
 	int		i;
 

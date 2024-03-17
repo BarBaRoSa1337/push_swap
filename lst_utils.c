@@ -6,13 +6,13 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 15:44:38 by achakour          #+#    #+#             */
-/*   Updated: 2024/03/15 13:22:57 by achakour         ###   ########.fr       */
+/*   Updated: 2024/03/15 14:09:02 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_lstadd_front(push **lst, push *new)// too many functions
+void	ft_lstadd_front(t_push **lst, t_push *new)// too many functions
 {
 	if (!new || lst == NULL)
 	{
@@ -27,9 +27,9 @@ void	ft_lstadd_front(push **lst, push *new)// too many functions
 	*lst = new;
 }
 
-void	ft_lstadd_back(push **lst, push *new)
+void	ft_lstadd_back(t_push **lst, t_push *new)
 {
-	push	*head;
+	t_push	*head;
 
 	if (!new || lst == NULL)
 	{
@@ -48,9 +48,9 @@ void	ft_lstadd_back(push **lst, push *new)
 	head->next = new;
 }
 
-void	ft_lstclear(push **lst)
+void	ft_lstclear(t_push **lst)
 {
-	push	*next_node;
+	t_push	*next_node;
 
 	if (lst == NULL || *lst == NULL)
 	{
@@ -65,7 +65,7 @@ void	ft_lstclear(push **lst)
 	*lst = NULL;
 }
 
-void	ft_lstdelone(push **lst)
+void	ft_lstdelone(t_push **lst)
 {
 	if (lst == NULL)
 	{
@@ -75,9 +75,9 @@ void	ft_lstdelone(push **lst)
 	lst = NULL;
 }
 
-int	ft_lstsize(push *lst)
+int	ft_lstsize(t_push *lst)
 {
-	push	*head;
+	t_push	*head;
 	int		len;
 
 	len = 0;
@@ -94,11 +94,11 @@ int	ft_lstsize(push *lst)
 	return (len);
 }
 
-push	*ft_lstnew(int content)
+t_push	*ft_lstnew(int content)
 {
-	push	*node;
+	t_push	*node;
 
-	node = (push *)malloc(sizeof(push));
+	node = (t_push *)malloc(sizeof(t_push));
 	if (!node)
 	{
 		return (NULL);
@@ -108,7 +108,7 @@ push	*ft_lstnew(int content)
 	return (node);
 }
 
-push	*find_last_node(push *stack)
+t_push	*find_last_node(t_push *stack)
 {
 	if (!stack)
 	{

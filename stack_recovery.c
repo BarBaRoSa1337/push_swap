@@ -6,13 +6,13 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 10:35:28 by achakour          #+#    #+#             */
-/*   Updated: 2024/03/15 13:20:52 by achakour         ###   ########.fr       */
+/*   Updated: 2024/03/16 10:22:48 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	select_move3(push **stack_a, push **stack_b, int *pos)
+void	select_move3(t_push **stack_a, t_push **stack_b, int *pos)
 {
 	if (pos[1] == 1)
 	{
@@ -39,7 +39,7 @@ void	select_move3(push **stack_a, push **stack_b, int *pos)
 	pa_pb(stack_a, stack_b, "pa");
 }
 
-void	select_move2(push **stack_a, push **stack_b, int *pos)
+void	select_move2(t_push **stack_a, t_push **stack_b, int *pos)
 {
 	while (pos[0] > 0 && pos[2] > 0 && pos[0]-- && pos[2]--)
 	{
@@ -56,7 +56,7 @@ void	select_move2(push **stack_a, push **stack_b, int *pos)
 	pa_pb(stack_a, stack_b, "pa");
 }
 
-void	select_move1(push **stack_a, push **stack_b, int *pos)
+void	select_move1(t_push **stack_a, t_push **stack_b, int *pos)
 {
 	if (pos[1] == 1 && pos[3] == 1)
 	{
@@ -84,10 +84,10 @@ void	select_move1(push **stack_a, push **stack_b, int *pos)
 	}
 }
 
-void	stack_recovery(push **stack_a, push **stack_b, int a_len, int b_len)
+void	stack_recovery(t_push **stack_a, t_push **stack_b, int a_len, int b_len)
 {
 	int		target;
-	push	*head;
+	t_push	*head;
 	int		index;
 	int		*pos;
 
@@ -98,7 +98,7 @@ void	stack_recovery(push **stack_a, push **stack_b, int a_len, int b_len)
 	while (head->next && index--)
 		head = head->next;
 	target = detect_target(ft_fill_arr(*stack_a), head->data, a_len);
-	pos = count_push_price(*stack_a, *stack_b, head->data, target, b_len);
+	pos = count_push_price(*stack_a, *stack_b, head->data, target);
 	select_move1(stack_a, stack_b, pos);
 	free(pos);
 }
