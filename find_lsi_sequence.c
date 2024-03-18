@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 12:08:43 by achakour          #+#    #+#             */
-/*   Updated: 2024/03/16 14:07:18 by achakour         ###   ########.fr       */
+/*   Updated: 2024/03/18 22:01:25 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	*ft_find_sequence(int *arr, int *lis, int max, int *len)
 	tmp = *len;
 	seq = (int *)malloc(sizeof(int) * max);
 	if (!seq)
-	{
+	{ 
 		return (NULL);
 	}
 	while (tmp)
