@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 12:08:43 by achakour          #+#    #+#             */
-/*   Updated: 2024/03/18 22:01:25 by achakour         ###   ########.fr       */
+/*   Updated: 2024/03/25 14:56:02 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	*ft_find_sequence(int *arr, int *lis, int max, int *len)
 		tmp--;
 	}
 	*len = i;
-	free(lis);
+	// free(lis);
 	free(arr);
 	return (seq);
 }
@@ -96,7 +96,10 @@ void	set_arr(int *lis, int len)
 
 	i = 0;
 	while (i < len)
-		lis[i++] = 1;
+	{
+		lis[i] = 1;
+		++i;
+	}
 }
 
 int	*ft_lis(t_push *lst, int *len)
@@ -108,7 +111,7 @@ int	*ft_lis(t_push *lst, int *len)
 	int	j;
 
 	tmp = *len;
-	lis = malloc(sizeof(int) * tmp);
+	lis = malloc(sizeof(int) * *len);
 	if (!lis)
 		return (NULL);
 	set_arr(lis, tmp);

@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 08:58:13 by achakour          #+#    #+#             */
-/*   Updated: 2024/03/16 13:51:06 by achakour         ###   ########.fr       */
+/*   Updated: 2024/03/25 15:03:01 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ void	sort_five(t_push **stack_a, t_push **stack_b)
 	len = ft_lstsize(head);
 	while (len > 3)
 	{
-		min = get_min(head);
+		min = get_min(head); 
 		push_node_to_b(stack_a, stack_b, min[0], ft_lstsize(*stack_a));
 		head = *stack_a;
 		free(min);
@@ -122,6 +122,7 @@ void	push_swap(t_push **stack_a, t_push **stack_b)
 	head = *stack_a;
 	stack_len = ft_lstsize(head);
 	tmp = stack_len;
+	(void)tmp;
 	lis = ft_lis(head, &stack_len);
 	while (tmp && lis)
 	{
@@ -161,17 +162,6 @@ int	main(int ac, char **ar)
 	t_push	*stack_a;
 	ssize_t	*weight;
 
-	// if (!process_args(&stack_a, get_args1(ac, ar)))
-	// {
-	// 	ft_lstclear(&stack_a);
-	// 	perror("ERROI");
-	// 	return (0);
-	// }
-	// while (stack_a)
-	// {
-	// 	printf("%d\n", stack_a->data);
-	// 	stack_a = stack_a->next;
-	// }
 	stack_a = get_args(ar);
 	if (ac == 1 || is_sorted(stack_a))
 		return (ft_lstclear(&stack_a), 0);
@@ -189,12 +179,5 @@ int	main(int ac, char **ar)
 		fix_lst(&stack_a, ft_lstsize(stack_a));
 		free(weight);
 	}
-	// t_push *head = stack_a;
-	// while (head)
-	// {
-	// 	printf("%d\n", head->data);
-	// 	head = head->next;
-	// 	/* code */
-	// }
 	return (ft_lstclear(&stack_a), 0);
 }

@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 19:16:50 by achakour          #+#    #+#             */
-/*   Updated: 2024/03/16 11:53:14 by achakour         ###   ########.fr       */
+/*   Updated: 2024/03/25 15:34:30 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -192,8 +192,6 @@ int process_args(t_push **lst, char *buff)
 	int		i;
 
 	i = 0;
-	// if (!buff)
-	// 	return (free (buff), 0);
 	args = ft_split(buff, ' ');
 	arr = char_to_arr(args, &len);
 	if (is_doubled_or_max_min(arr, len))
