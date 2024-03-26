@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 08:58:13 by achakour          #+#    #+#             */
-/*   Updated: 2024/03/25 15:03:01 by achakour         ###   ########.fr       */
+/*   Updated: 2024/03/26 15:07:17 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,14 +117,13 @@ void	push_swap(t_push **stack_a, t_push **stack_b)
 	int		*lis;
 	int		tmp;
 
-	if (!stack_a || !*stack_a || is_sorted(*stack_a))
-		return ;
 	head = *stack_a;
 	stack_len = ft_lstsize(head);
 	tmp = stack_len;
-	(void)tmp;
 	lis = ft_lis(head, &stack_len);
-	while (tmp && lis)
+	if (stack_a == 0)
+		pa_pb(stack_a, stack_a, "pb");
+	while (tmp > 0 && lis && stack_len > 0)
 	{
 		head = *stack_a;
 		if (!is_lis(lis, stack_len, head->data))
@@ -142,8 +141,8 @@ void	push_swap(t_push **stack_a, t_push **stack_b)
 
 t_push    *get_args(char **ar)
 {
-    int     i;
-    t_push    *lst;
+    int		i;
+    t_push	*lst;
 
     i = 1;
     lst = NULL;
@@ -162,8 +161,10 @@ int	main(int ac, char **ar)
 	t_push	*stack_a;
 	ssize_t	*weight;
 
+	if (ac == 1)
+		return (0);
 	stack_a = get_args(ar);
-	if (ac == 1 || is_sorted(stack_a))
+	if (is_sorted(stack_a))
 		return (ft_lstclear(&stack_a), 0);
 	stack_len = ft_lstsize(stack_a);
 	if (stack_len == 3)

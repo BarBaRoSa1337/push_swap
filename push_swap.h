@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:07:56 by achakour          #+#    #+#             */
-/*   Updated: 2024/03/16 11:51:03 by achakour         ###   ########.fr       */
+/*   Updated: 2024/03/26 14:28:34 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ typedef struct push
 	struct push	*next;
 }				t_push;
 
+void	sort_five(t_push **stack_a, t_push **stack_b);
+void	sort_three(t_push **stack_a);
 void			rr_rrr(t_push **stack_a, t_push **stack_b, char *flag);
 void			pa_pb(t_push **a, t_push **b, char *flag);
 void			rra_rrb_rrr(t_push **stack, char *flag);

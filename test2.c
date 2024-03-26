@@ -17,42 +17,10 @@ int     ft_strlen(char *str)
     return (i);
 }
 
-char    *get_args1(int ac, char **ar)
-{
-    char    *buff;
-    int     len;
-    int     z;
-    int     j;
-    int     i;
-
-    if (ac < 2)
-        return (NULL);
-    i = 1;
-    len = 0;
-    while (i < ac)
-        len += ft_strlen(ar[i++]);
-    buff = (char *)malloc(sizeof(char) * len + ac + 1);
-    if (!buff)
-        return (NULL);
-    i = 1;
-    z = 0;
-    while (i < ac)
-    {
-        j = 0;
-        while (ar[i][j])
-            buff[z++] = ar[i][j++];
-        if (i < ac)
-            buff[z++] = ' ';
-        ++i;
-    }
-    buff[z] = '\0';
-    return (buff);
-}
-
 ssize_t	ft_atoi(const char *str)
 {
 	ssize_t	sign;
-	size_t	num;
+	ssize_t	num;
 	int	    i;
 
 	i = 0;
@@ -74,150 +42,47 @@ ssize_t	ft_atoi(const char *str)
 	return (num * sign);
 }
 
-ssize_t *char_to_arr(char **buff, int *len)
+int check_doubles(int ac, char **ar)
 {
-    int     length;
-    ssize_t *arr;
+    ssize_t a;
+    ssize_t b;
     int     i;
+    int     j;
 
-    if (!buff || !(*buff))
-        return (NULL);
-    i = 0;
-    length = 0;
-    while (buff[i])
+    i = 1;
+    while (i < ac)
     {
-        length += 1;
-        ++i;
-    }
-    arr = malloc(sizeof(ssize_t) * (ssize_t)length);
-    if (!arr)
-        return (NULL);
-    i = 0;
-    while (i < length)
-    {
-        arr[i] = ft_atoi(buff[i]);
-        ++i;
-    }
-    *len = length;
-    printf ("len %d\n", *len);
-    return (arr);
-}
-
-int is_doubled(ssize_t *arr, ssize_t n, int index, int len)
-{
-    int i;
-
-    i = 0;
-    // while (i < index)
-    // {
-    //     if (arr[i] == n)
-    //         return (0);
-    //     ++i;
-    // }
-    // if (i == index && arr[i] == n)
-    //     ++i;
-    printf("index %d \n", index);
-    while (i < len)
-    {
-        if (arr[i] == n && i != index)
-            return (0);
-        ++i;
-    }
-    return (1);
-}
-
-int is_doubled_or_max_min(ssize_t *arr, int len)
-{
-    int i;
-
-    i = 0;
-    while (i < len)
-    {
-        if (arr[i] < INT_MIN || arr[i] > INT_MAX || is_doubled(arr, arr[i], i, len))
+        j = 1;
+        if (ft_atoi(ar[i]) > INT_MAX || ft_atoi(ar[i]) < INT_MIN)
+                return (0);
+        while (j < ac)
         {
-            printf ("a%ld\n", arr[i]);
-            return (0);
+            if ((i != j) && (ft_atoi(ar[i]) == ft_atoi(ar[j])))
+                return (0);
+            ++j;
         }
         ++i;
     }
     return (1);
 }
 
+// void    sort_less_than_ten(t_push **stack_a, t_push **stack_b, int a_len, int b_len)
+// {
+//     int i;
+
+//     i = 0;
+//     while (i < a_len / 2)
+//     {
+//         pa_pb(stack_a, stack_b, "pb");
+//         ++i;
+//     }
+//     a_len = ft_lstsize(*stack_a);
+//     if (a_len == 5)
+//         sort_five(stack_a, stack_b);
+//     else if ()
+// }
+
 int main(int ac, char **ar)
 {
-    // push *n = ft_lstnew(2);
-    // push    *n1 = ft_lstnew(1);
-    // push        *n2 = ft_lstnew(3);
-    // push            *n3 = ft_lstnew(5);
-    // push                *n4 = ft_lstnew(7);
-    // n->next = n1;
-    // n1->next = n2;
-    // n2->next = n3;
-    // n3->next = n4;
-
-    // push    *b = NULL;
-    // push    *b = ft_lstnew(5);
-    // push    *b1 = ft_lstnew(1);
-    // push    *b2  = ft_lstnew(9);
-    // b->next = b1;
-    // b1->next = b2;
-
-    int len;
-    char    *buff = get_args1(ac , ar);
-    char    **bu = ft_split(buff, ' ');
-    ssize_t *arr = char_to_arr(bu, &len);
-    is_doubled_or_max_min(arr, len);
-    // printf("%d\n", is_doubled_or_max_min(arr, len));
-    // int i = 0;
-    // while (i  < len)
-    // {
-    //    printf ("%ld\n", arr[i]);
-    //    ++i;
-    // }
-    
-    // while (bu[i])
-    // {
-    //     printf ("%s\n", bu[i]);
-    //     ++i;
-    // }
-    // i = 0;
-    // while (bu[i])
-    // {
-    //     /* code */
-    //     free (bu[i]);
-    //     ++i;
-    // }
-    // free (bu);
-    // printf ("%d\n", is_valid_args(ft_split(buff, ' ')));
-    // sort_three(&n);
-//    sort_five(&n, &b);
-    // push *head = n;
-    // while (head)
-    // {
-    //     printf ("%d\n", head->data);
-    //     head = head->next;
-    // }
-    // while (b)
-    // {
-    //     printf ("2  %d\n", b->data);
-    //     b = b->next;
-    // }
-    // ft_lstclear(&n);
-    // ft_lstclear(&stack);
-    // char *buff =  get_args1(ac, ar);
-    // printf("%s\n", buff);
-    // char **args = ft_split(buff, ' ');
-    // int i = 0;
-    // while (args[i])
-    // {
-    //     printf("%s\n", args[i]);
-    //     ++i;
-    // }
-    // i = 0;
-    // while (args[i])
-    // {
-    //     free (args[i]);
-    //     ++i;
-    // }
-    // free (buff);
+    printf ("%d\n", check_doubles(ac, ar));
 }

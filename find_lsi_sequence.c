@@ -6,40 +6,11 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 12:08:43 by achakour          #+#    #+#             */
-/*   Updated: 2024/03/25 14:56:02 by achakour         ###   ########.fr       */
+/*   Updated: 2024/03/26 15:01:07 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int	*ft_find_sequence(int *arr, int *lis, int max, int *len)
-{
-	int	*seq;
-	int	tmp;
-	int	i;
-
-	i = 0;
-	tmp = *len;
-	seq = (int *)malloc(sizeof(int) * max);
-	if (!seq)
-	{ 
-		return (NULL);
-	}
-	while (tmp)
-	{
-		if (lis[tmp - 1] == max)
-		{
-			seq[i] = arr[tmp - 1];
-			max--;
-			++i;
-		}
-		tmp--;
-	}
-	*len = i;
-	// free(lis);
-	free(arr);
-	return (seq);
-}
 
 int	find_max(int *arr, int len)
 {
@@ -62,6 +33,34 @@ int	find_max(int *arr, int len)
 	}
 	free (arr);
 	return (tmp);
+}
+
+int	*ft_find_sequence(int *arr, int *lis, int max, int *len)
+{
+	int	*seq;
+	int	tmp;
+	int	i;
+
+	i = 0;
+	tmp = *len;
+	if (max <= 0)
+		return (NULL);
+	seq = (int *)malloc(sizeof(int) * max);
+	if (!seq)
+		return (NULL);
+	while (tmp > 0 && max > 0)
+	{
+		if (lis[tmp - 1] == max)
+		{
+			seq[i] = arr[tmp - 1];
+			max--;
+			++i;
+		}
+		tmp--;
+	}
+	*len = i;
+	free(arr);
+	return (seq);
 }
 
 int	*ft_fill_arr(t_push *lst)
@@ -90,17 +89,17 @@ int	*ft_fill_arr(t_push *lst)
 	return (arr);
 }
 
-void	set_arr(int *lis, int len)
-{
-	int	i;
+// void	set_arr(int **lis, int len)
+// {
+// 	int	i;
 
-	i = 0;
-	while (i < len)
-	{
-		lis[i] = 1;
-		++i;
-	}
-}
+// 	i = 0;
+// 	while (i < len)
+// 	{
+// 		*lis[i] = 1;
+// 		++i;
+// 	}
+// }
 
 int	*ft_lis(t_push *lst, int *len)
 {
@@ -111,10 +110,10 @@ int	*ft_lis(t_push *lst, int *len)
 	int	j;
 
 	tmp = *len;
-	lis = malloc(sizeof(int) * *len);
-	if (!lis)
-		return (NULL);
-	set_arr(lis, tmp);
+	lis = malloc(sizeof(int) * tmp);
+	i = 0;
+	while (lis && i < tmp)
+		lis[i++] = 1;
 	arr = ft_fill_arr(lst);
 	i = 1;
 	while (i < tmp)

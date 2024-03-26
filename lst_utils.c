@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 15:44:38 by achakour          #+#    #+#             */
-/*   Updated: 2024/03/25 15:00:20 by achakour         ###   ########.fr       */
+/*   Updated: 2024/03/26 14:00:03 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 void	ft_lstadd_front(t_push **lst, t_push *new)// too many functions
 {
-	if (!new || !lst)
+	if (!lst || !new)
 	{
 		return ;
 	}
-	if (*lst == NULL)
+	if (lst != NULL && *lst == NULL)
 	{
 		*lst = new;
 		return ;
