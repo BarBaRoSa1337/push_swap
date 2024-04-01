@@ -66,22 +66,6 @@ int check_doubles(int ac, char **ar)
     return (1);
 }
 
-// void    sort_less_than_ten(t_push **stack_a, t_push **stack_b, int a_len, int b_len)
-// {
-//     int i;
-
-//     i = 0;
-//     while (i < a_len / 2)
-//     {
-//         pa_pb(stack_a, stack_b, "pb");
-//         ++i;
-//     }
-//     a_len = ft_lstsize(*stack_a);
-//     if (a_len == 5)
-//         sort_five(stack_a, stack_b);
-//     else if ()
-// }
-
 int main(int ac, char **ar)
 {
     printf ("%d\n", check_doubles(ac, ar));
