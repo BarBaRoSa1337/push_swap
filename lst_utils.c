@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 15:44:38 by achakour          #+#    #+#             */
-/*   Updated: 2024/04/01 23:51:11 by achakour         ###   ########.fr       */
+/*   Updated: 2024/04/01 23:57:03 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_lstadd_back(t_push **lst, t_push *new)
 {
 	t_push	*head;
-
+  
 	if (!new || lst == NULL)
 	{
 		return ;
