@@ -6,44 +6,42 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 19:16:50 by achakour          #+#    #+#             */
-/*   Updated: 2024/03/26 13:47:21 by achakour         ###   ########.fr       */
+/*   Updated: 2024/04/01 23:48:12 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_isdigit(int c)
+int ft_isdigit(int c)
 {
-	if (c >= '0' && c <= '9')
-		return (1);
-	return (0);
+    if (c >= '0' && c <= '9')
+        return (1);
+    return (0);
 }
 
-int	ft_strlen(char *str)
+int     ft_strlen(char *str)
 {
-	int	i;
+    int i;
 
-	i = 0;
-	while (str[i])
-		++i;
-	return (i);
+    i = 0;
+    while (str[i])
+        ++i;
+    return (i);
 }
 
 ssize_t	ft_atoi(const char *str)
 {
-	ssize_t	sign;
 	size_t	num;
-	int		i;
+	ssize_t	sign;
+	int	i;
 
-	i = 0;
 	num = 0;
 	sign = 1;
+	i = 0;
 	if (str[i] == '+' || str[i] == '-')
 	{
 		if (str[i] == '-')
-		{
 			sign = -1;
-		}
 		++i;
 	}
 	while (ft_isdigit(str[i]) && str[i] != '\0')
@@ -83,46 +81,41 @@ int	is_valid_args(int ac, char **ar)
 	return (1);
 }
 
-// char	*get_args1(int ac, char **ar)
-// {
-// 	char	*buff;
-// 	int		len;
-// 	int		z;
-// 	int		j;
-// 	int		i;
+int check_doubles(int ac, char **ar)
+{
+    int     i;
+    int     j;
 
-// 	i = 1;
-// 	len = 0;
-// 	while (i < ac)
-// 		len += ft_strlen(ar[i++]);
-// 	buff = (char *)malloc(sizeof(char) * len + ac);
-// 	if (!buff)
-// 		return (NULL);
-// 	i = 1;
-// 	z = 0;
-// 	while (i < ac)
-// 	{
-// 		j = 0;
-// 		while (ar[i][j])
-// 			buff[z++] = ar[i][j++];
-// 		if (i < ac)
-// 			buff[z++] = ' ';
-// 		++i;
-// 	}
-// 	return (buff);
-// }
+    i = 1;
+    while (i < ac)
+    {
+        j = 1;
+        if (ft_atoi(ar[i]) > INT_MAX || ft_atoi(ar[i]) < INT_MIN)
+                return (0);
+        while (j < ac)
+        {
+            if ((i != j) && (ft_atoi(ar[i]) == ft_atoi(ar[j])))
+                return (0);
+            ++j;
+        }
+        ++i;
+    }
+    return (1);
+}
 
-// t_push    *get_args(char **ar)
-// {
-//     int     i;
-//     t_push    *lst;
+t_push    *get_args(int ac, char **ar)
+{
+    t_push    *lst;
+    int     i;
 
-//     i = 1;
-//     lst = NULL;
-//     while (ar[i])
-//     {
-//        ft_lstadd_back(&lst, ft_lstnew(ft_atoi(ar[i])));
-//        ++i;
-//     }
-//     return (lst);
-// }
+    if (ac < 2)
+        return (NULL);
+    i = 1;
+    lst = NULL;
+    while (i < ac)
+    {
+       ft_lstadd_back(&lst, ft_lstnew(ft_atoi(ar[i])));
+       ++i;
+    }
+    return (lst);
+}

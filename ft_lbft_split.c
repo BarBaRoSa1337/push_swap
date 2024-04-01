@@ -6,13 +6,13 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 12:13:18 by achakour          #+#    #+#             */
-/*   Updated: 2024/03/16 11:40:44 by achakour         ###   ########.fr       */
+/*   Updated: 2024/03/04 11:07:19 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_strlcpy(char *dst, char *src, size_t dstsize)// too many functions
+void	ft_strlcpy(char *dst, char *src, size_t dstsize)
 {
 	size_t	i;
 
@@ -30,8 +30,8 @@ void	ft_strlcpy(char *dst, char *src, size_t dstsize)// too many functions
 
 static size_t	ft_count_words(char *str, int c)
 {
-	size_t	words;
 	size_t	i;
+	size_t	words;
 
 	i = 0;
 	words = 0;

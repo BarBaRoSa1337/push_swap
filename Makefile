@@ -6,16 +6,16 @@
 #    By: achakour <achakour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/15 14:53:03 by achakour          #+#    #+#              #
-#    Updated: 2024/03/26 14:13:46 by achakour         ###   ########.fr        #
+#    Updated: 2024/03/10 11:51:48 by achakour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS	= push_swap.c chekers.c push_swap_utils.c stack_recovery.c moves.c lst_utils.c ft_lbft_split.c find_lsi_sequence.c	\
-	count_push_price.c	
+SRCS	=	push_swap_utils.c	push_swap.c	stack_recovery.c	moves.c	lst_utils.c	ft_lbft_split.c	find_lsi_sequence.c	\
+	count_push_price.c	chekers.c
 
 OBJ = $(SRCS:.c=.o)
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror #-fsanitize=address -g3
 NAME = push_swap
 AR = ar rcs
 RM = rm -f

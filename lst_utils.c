@@ -6,26 +6,11 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 15:44:38 by achakour          #+#    #+#             */
-/*   Updated: 2024/03/26 14:00:03 by achakour         ###   ########.fr       */
+/*   Updated: 2024/04/01 23:51:11 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	ft_lstadd_front(t_push **lst, t_push *new)// too many functions
-{
-	if (!lst || !new)
-	{
-		return ;
-	}
-	if (lst != NULL && *lst == NULL)
-	{
-		*lst = new;
-		return ;
-	}
-	new->next = *(lst);
-	*lst = new;
-}
 
 void	ft_lstadd_back(t_push **lst, t_push *new)
 {
@@ -65,26 +50,16 @@ void	ft_lstclear(t_push **lst)
 	*lst = NULL;
 }
 
-void	ft_lstdelone(t_push **lst)
-{
-	if (lst == NULL)
-	{
-		return ;
-	}
-	free(*lst);
-	lst = NULL;
-}
-
 int	ft_lstsize(t_push *lst)
 {
 	t_push	*head;
 	int		len;
 
+	len = 0;
 	if (!lst)
 	{
 		return (0);
 	}
-	len = 0;
 	head = lst;
 	while (head != NULL)
 	{
@@ -106,17 +81,4 @@ t_push	*ft_lstnew(int content)
 	node->data = content;
 	node->next = NULL;
 	return (node);
-}
-
-t_push	*find_last_node(t_push *stack)
-{
-	if (!stack)
-	{
-		return (NULL);
-	}
-	while (stack->next)
-	{
-		stack = stack->next;
-	}
-	return (stack);
 }
