@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 10:35:28 by achakour          #+#    #+#             */
-/*   Updated: 2024/04/14 12:14:10 by achakour         ###   ########.fr       */
+/*   Updated: 2024/04/14 14:43:59 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,6 @@ void	select_move1(t_push **stack_a, t_push **stack_b, int *pos)
 
 void	stack_recovery(t_push **stack_a, t_push **stack_b, int a_len, int b_len)
 {
-	int		target;
 	t_push	*head;
 	int		index;
 	int		*pos;
@@ -97,8 +96,7 @@ void	stack_recovery(t_push **stack_a, t_push **stack_b, int a_len, int b_len)
 	index = select_cheapest(*stack_a, *stack_b, b_len, a_len);
 	while (head->next && index--)
 		head = head->next;
-	target = detect_target(ft_fill_arr(*stack_a), head->data, a_len);
-	pos = count_push_price(*stack_a, *stack_b, head->data, target, b_len);
+	pos = count_push_price(*stack_a, *stack_b, head->data, a_len);
 	select_move1(stack_a, stack_b, pos);
 	free(pos);
 }

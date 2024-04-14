@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 09:25:51 by achakour          #+#    #+#             */
-/*   Updated: 2024/04/14 12:02:46 by achakour         ###   ########.fr       */
+/*   Updated: 2024/04/14 14:41:06 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,10 @@ void	find_cheapest_in_a(t_push *stack, int **cheap, int target, int a_len)
 	}
 }
 
-int	*count_push_price(t_push *stack_a, t_push *stack_b, int n, int target)
+int	*count_push_price(t_push *stack_a, t_push *stack_b, int n, int a_len)
 {
 	t_push	*head_b;
+	int		target;
 	int		*pos;
 
 	pos = malloc(sizeof(int) * 4);
@@ -81,32 +82,31 @@ int	*count_push_price(t_push *stack_a, t_push *stack_b, int n, int target)
 		pos[0] += 1;
 		head_b = head_b->next;
 	}
-	pos[1] = ft_strlen(stack_b) - pos[0];
+	pos[1] = ft_lstsize(stack_b) - pos[0];
 	if (pos[0] < pos[1])
-	{
 		pos[1] = -1;
-	}
 	else
 	{
 		pos[0] = pos[1];
 		pos[1] = 1;
 	}
-	find_cheapest_in_a(stack_a, &pos, target, ft_lstsize(stack_a));
+	target = detect_target(ft_fill_arr(stack_a), n, a_len);
+	find_cheapest_in_a(stack_a, &pos, target, a_len);
 	return (pos);
 }
 
-int	select_cheapest(t_push *stack_a, t_push *stack_b, int b_len, int target)
+int	select_cheapest(t_push *stack_a, t_push *stack_b, int b_len, int a_len)
 {
-	t_push	*head;
 	int		best[2];
-	int		i;
+	t_push	*head;
 	int		*tmp;
+	int		i;
 
 	i = 0;
 	head = stack_b;
 	while (i < b_len)
 	{
-		tmp = count_push_price(stack_a, stack_b, head->data, target);
+		tmp = count_push_price(stack_a, stack_b, head->data, a_len);
 		if (i == 0)
 		{
 			best[0] = tmp[0] + tmp[2];

@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 15:44:14 by achakour          #+#    #+#             */
-/*   Updated: 2024/04/14 12:08:50 by achakour         ###   ########.fr       */
+/*   Updated: 2024/04/14 12:48:07 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,7 @@ void	pa_pb(t_push **stack_a, t_push **stack_b, char *flag)
 	int		tmp;
 	t_push	*head;
 
-	if (push_node(stack_a, stack_b, ft_lstsize(*stack_a), ft_lstsize(*stack_b),
-			flag))
+	if (push_node(stack_a, stack_b, ft_lstsize(*stack_a), flag))
 	{
 		return ;
 	}

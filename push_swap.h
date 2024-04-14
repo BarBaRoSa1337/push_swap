@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:07:56 by achakour          #+#    #+#             */
-/*   Updated: 2024/04/14 12:14:42 by achakour         ###   ########.fr       */
+/*   Updated: 2024/04/14 14:43:20 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,16 +34,21 @@ int is_lis(int *arr, int len, int n);
 void select_move1(t_push **stack_a, t_push **stack_b, int *pos);
 void select_move2(t_push **stack_a, t_push **stack_b, int *pos);
 void select_move3(t_push **stack_a, t_push **stack_b, int *pos);
-void stack_recovery(t_push **stack_a, t_push **stack_b);
+void	stack_recovery(t_push **stack_a, t_push **stack_b, int a_len, int b_len);
+int	push_node(t_push **stack_a, t_push **stack_b, int a_len, char *flag);  
 void ft_lstdelone(t_push **lst);
 int *get_min(t_push *stack);
+int	ft_strlen(char *str); 
 int find_max(int *arr, int len);
+int	is_sorted(t_push *stack);
+int	is_descending(t_push *stack);
+void	ft_perror(t_push **lst);
+int	ft_isdigit(int c);
 int *ft_fill_arr(t_push *lst);
 void ft_lstadd_front(t_push **lst, t_push *new);
-void stack_recovery(t_push **stack_a, t_push **stack_b, int a_len, int b_len);
-int select_cheapest(t_push *stack_a, t_push *stack_b, int b_len, int target);
+int	select_cheapest(t_push *stack_a, t_push *stack_b, int b_len, int a_len);
 void fix_lst(t_push **stack, int len);
-int *count_push_price(t_push *stack_a, t_push *stack_b, int n, int target);
+int	*count_push_price(t_push *stack_a, t_push *stack_b, int n, int a_len);
 int detect_target(int *arr, int n, int a_len);
 void find_cheapest_in_a(t_push *stack, int **cheap, int target, int a_len);
 void rotate_half_stack(t_push **stack, int len, char *flag);
