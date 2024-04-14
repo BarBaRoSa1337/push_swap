@@ -6,11 +6,38 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 15:44:38 by achakour          #+#    #+#             */
-/*   Updated: 2024/04/01 23:57:03 by achakour         ###   ########.fr       */
+/*   Updated: 2024/04/14 11:37:44 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	ft_lstdelone(t_push **lst)
+{
+	t_push	*head;
+	if (lst == NULL)
+	{
+		return ;
+	}
+	head = *lst;
+	free(head);
+	head = NULL;
+}
+
+void	ft_lstadd_front(t_push **lst, t_push *new)
+{
+	if (!new || lst == NULL)
+	{
+		return ;
+	}
+	if (*lst == NULL)
+	{
+		*lst = new;
+		return ;
+	}
+	new->next = *(lst);
+	*lst = new;
+}
 
 void	ft_lstadd_back(t_push **lst, t_push *new)
 {

@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 08:58:13 by achakour          #+#    #+#             */
-/*   Updated: 2024/04/01 23:47:08 by achakour         ###   ########.fr       */
+/*   Updated: 2024/04/14 11:46:27 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,6 +180,8 @@ int main(int ac, char **ar)
         ft_perror(&stack_a);
     else if (ac == 1 || is_sorted(stack_a))
         return (ft_lstclear(&stack_a), 0);
+    else if (stack_len == 2)
+        sa_sb(&stack_a, "sa");
     else if (stack_len == 3)
         sort_three(&stack_a);
     else if (stack_len == 5)
