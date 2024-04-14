@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 08:58:13 by achakour          #+#    #+#             */
-/*   Updated: 2024/04/14 12:34:39 by achakour         ###   ########.fr       */
+/*   Updated: 2024/04/14 14:47:51 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,8 @@ void	sort_five(t_push **stack_a, t_push **stack_b)
 	sort_three(stack_a);
 	while (len)
 	{
-		stack_recovery(stack_a, stack_b, ft_lstsize(*stack_a), ft_lstsize(*stack_b));
+		stack_recovery(stack_a, stack_b,
+			ft_lstsize(*stack_a), ft_lstsize(*stack_b));
 		--len;
 	}
 }
@@ -117,7 +118,8 @@ void	push_swap(t_push **stack_a, t_push **stack_b)
 	}
 	stack_len = ft_lstsize(*stack_b);
 	while (stack_len--)
-		stack_recovery(stack_a, stack_b, ft_lstsize(*stack_a), ft_lstsize(*stack_b));
+		stack_recovery(stack_a, stack_b,
+			ft_lstsize(*stack_a), ft_lstsize(*stack_b));
 	free(lis);
 }
 
