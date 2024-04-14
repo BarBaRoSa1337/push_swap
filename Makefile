@@ -6,7 +6,7 @@
 #    By: achakour <achakour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/15 14:53:03 by achakour          #+#    #+#              #
-#    Updated: 2024/03/10 11:51:48 by achakour         ###   ########.fr        #
+#    Updated: 2024/04/14 12:15:14 by achakour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ SRCS	=	push_swap_utils.c	push_swap.c	stack_recovery.c	moves.c	lst_utils.c	ft_lbf
 
 OBJ = $(SRCS:.c=.o)
 
-CFLAGS = -Wall -Wextra -Werror #-fsanitize=address -g3
+CFLAGS = -Wall -Wextra -Werror
 NAME = push_swap
 AR = ar rcs
 RM = rm -f

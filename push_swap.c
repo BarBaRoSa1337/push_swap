@@ -6,26 +6,11 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 08:58:13 by achakour          #+#    #+#             */
-/*   Updated: 2024/04/14 11:49:39 by achakour         ###   ########.fr       */
+/*   Updated: 2024/04/14 12:22:50 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int is_sorted(t_push *stack)
-{
-    t_push *head = stack;
-    int len = ft_lstsize(stack) - 1;
-    
-    while (head && head->next && head->data < head->next->data)
-    {
-        head = head->next;
-        --len;
-    }
-    if (len == 0)
-        return (1);
-    return (0);
-}
 
 void	sort_three(t_push **stack_a)
 {
@@ -93,7 +78,7 @@ void	sort_five(t_push **stack_a, t_push **stack_b)
 	len = ft_lstsize(head);
 	while (len > 3)
 	{
-		min = get_min(head); 
+		min = get_min(head);
 		push_node_to_b(stack_a, stack_b, min[0], ft_lstsize(*stack_a));
 		head = *stack_a;
 		free(min);
@@ -108,80 +93,58 @@ void	sort_five(t_push **stack_a, t_push **stack_b)
 	}
 }
 
-void    push_swap(t_push **stack_a, t_push **stack_b)
+void	push_swap(t_push **stack_a, t_push **stack_b)
 {
-    int     stack_len;
-    t_push    *head;
-    int     *lis;
-    int     tmp;
+	int		stack_len;
+	t_push	*head;
+	int		*lis;
+	int		tmp;
 
-    if (!stack_a || !*stack_a)
-        return ;
-    head = *stack_a;
-    stack_len = ft_lstsize(head);
-    tmp = stack_len;
-    lis = ft_lis(head, &stack_len);
-    while (tmp-- && lis && stack_len > 0)
-    {
-        head = *stack_a;
-        if (!is_lis(lis, stack_len, head->data))
-        {
-            pa_pb (stack_a, stack_b, "pb");
-        }
-        rra_rrb_rrr(stack_a, "rra");
-    }
-    stack_len = ft_lstsize(*stack_b);
-    while (stack_len--)
-        stack_recovery(stack_a, stack_b);
-    free (lis);
+	if (!stack_a || !*stack_a)
+		return ;
+	head = *stack_a;
+	stack_len = ft_lstsize(head);
+	tmp = stack_len;
+	lis = ft_lis(head, &stack_len);
+	while (tmp-- && lis && stack_len > 0)
+	{
+		head = *stack_a;
+		if (!is_lis(lis, stack_len, head->data))
+		{
+			pa_pb(stack_a, stack_b, "pb");
+		}
+		rra_rrb_rrr(stack_a, "rra");
+	}
+	stack_len = ft_lstsize(*stack_b);
+	while (stack_len--)
+		stack_recovery(stack_a, stack_b);
+	free(lis);
 }
 
-int is_descending(t_push *stack)
+int	main(int ac, char **ar)
 {
-    t_push *head = stack;
-    int len = ft_lstsize(stack) - 1;
-    
-    while (head && head->next && head->data > head->next->data)
-    {
-        head = head->next;
-        --len;
-    }
-    if (len == 0)
-        return (1);
-    return (0);
-}
-void ft_perror(t_push **lst)
-{
-    ft_putchar("Error");
-    ft_lstclear(lst);
-    return ;
-}
+	int		stack_len;
+	t_push	*stack_b;
+	t_push	*stack_a;
 
-int main(int ac, char **ar)
-{
-    int         stack_len;
-    t_push        *stack_b;
-    t_push        *stack_a;
-
-    stack_a = get_args(ac, ar);
-    stack_len = ft_lstsize(stack_a);
-    if (!check_doubles(ac ,ar) || !is_valid_args(ac ,ar))
-        ft_perror(&stack_a);
-    else if (ac == 1 || is_sorted(stack_a))
-        return (ft_lstclear(&stack_a), 0);
-    else if (stack_len == 2)
-        sa_sb(&stack_a, "sa");
-    else if (stack_len == 3)
-        sort_three(&stack_a);
-    else if (stack_len == 5)
-        sort_five(&stack_a, &stack_b);
-    else
-    {
-        if (is_descending(stack_a))
-            rotate_half_stack(&stack_a, stack_len, "rra");
-        push_swap(&stack_a, &stack_b);
-        fix_lst(&stack_a, ft_lstsize(stack_a));
-    }
-    return (ft_lstclear(&stack_a), 0);
+	stack_a = get_args(ac, ar);
+	stack_len = ft_lstsize(stack_a);
+	if (!check_doubles(ac, ar) || !is_valid_args(ac, ar))
+		ft_perror(&stack_a);
+	else if (ac == 1 || is_sorted(stack_a))
+		return (ft_lstclear(&stack_a), 0);
+	else if (stack_len == 2)
+		sa_sb(&stack_a, "sa");
+	else if (stack_len == 3)
+		sort_three(&stack_a);
+	else if (stack_len == 5)
+		sort_five(&stack_a, &stack_b);
+	else
+	{
+		if (is_descending(stack_a))
+			rotate_half_stack(&stack_a, stack_len, "rra");
+		push_swap(&stack_a, &stack_b);
+		fix_lst(&stack_a, ft_lstsize(stack_a));
+	}
+	return (ft_lstclear(&stack_a), 0);
 }
-
