@@ -6,22 +6,11 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 08:58:13 by achakour          #+#    #+#             */
-/*   Updated: 2024/04/14 11:46:27 by achakour         ###   ########.fr       */
+/*   Updated: 2024/04/14 11:49:39 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void    print_stack(t_push *stack)
-{
-    t_push *head;
-    head = stack;
-    while (head)
-    {
-        printf("||%d||\n", head->data);
-        head = head->next;
-    }
-}
 
 int is_sorted(t_push *stack)
 {
