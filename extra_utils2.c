@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 12:32:03 by achakour          #+#    #+#             */
-/*   Updated: 2024/04/14 12:51:36 by achakour         ###   ########.fr       */
+/*   Updated: 2024/04/15 12:21:16 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,27 @@ int	is_descending(t_push *stack)
 	if (len == 0)
 		return (1);
 	return (0);
+}
+
+int	find_max_small(int *arr, int len)
+{
+	int	tmp;
+	int	i;
+
+	if (len < 1)
+	{
+		return (0);
+	}
+	i = 0;
+	tmp = arr[i++];
+	while (i < len)
+	{
+		if (arr[i] > tmp)
+		{
+			tmp = arr[i];
+		}
+		++i;
+	}
+	free (arr);
+	return (tmp);
 }

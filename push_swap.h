@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:07:56 by achakour          #+#    #+#             */
-/*   Updated: 2024/04/14 14:53:48 by achakour         ###   ########.fr       */
+/*   Updated: 2024/04/15 12:23:10 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ int					push_node(t_push **stack_a, t_push **stack_b, int a_len,
 void				ft_lstdelone(t_push **lst);
 int					*get_min(t_push *stack);
 int					ft_strlen(char *str);
-int					find_max(int *arr, int len);
+int					find_max_small(int *arr, int len);
+int					find_max_big(int *arr, int len);
 int					is_sorted(t_push *stack);
 int					is_descending(t_push *stack);
 void				ft_perror(t_push **lst);

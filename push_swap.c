@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 08:58:13 by achakour          #+#    #+#             */
-/*   Updated: 2024/04/14 14:47:51 by achakour         ###   ########.fr       */
+/*   Updated: 2024/04/15 12:05:14 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	sort_three(t_push **stack_a)
 
 	head = *stack_a;
 	min = get_min(head);
-	max = find_max(ft_fill_arr(head), ft_lstsize(*stack_a));
+	max = find_max_small(ft_fill_arr(head), ft_lstsize(*stack_a));
 	if (head->data == max)
 	{
 		ra_rb_rr(stack_a, "ra");
@@ -148,5 +148,7 @@ int	main(int ac, char **ar)
 		push_swap(&stack_a, &stack_b);
 		fix_lst(&stack_a, ft_lstsize(stack_a));
 	}
-	return (ft_lstclear(&stack_a), 0);
+	ft_lstclear(&stack_a);
+	system("leaks push_swap");
+	return (0);
 }

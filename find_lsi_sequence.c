@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 12:08:43 by achakour          #+#    #+#             */
-/*   Updated: 2024/04/14 12:03:31 by achakour         ###   ########.fr       */
+/*   Updated: 2024/04/15 12:23:35 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	*ft_find_sequence(int *arr, int *lis, int max, int *len)
 	return (seq);
 }
 
-int	find_max(int *arr, int len)
+int	find_max_big(int *arr, int len)
 {
 	int	tmp;
 	int	i;
@@ -115,5 +115,5 @@ int	*ft_lis(t_push *lst, int *len)
 		}
 		++i;
 	}
-	return (ft_find_sequence(arr, lis, find_max(lis, tmp), len));
+	return (ft_find_sequence(arr, lis, find_max_big(lis, tmp), len));
 }
