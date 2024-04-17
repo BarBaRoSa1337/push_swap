@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 12:31:57 by achakour          #+#    #+#             */
-/*   Updated: 2024/04/14 12:51:26 by achakour         ###   ########.fr       */
+/*   Updated: 2024/04/17 12:30:35 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,4 +85,23 @@ int	is_sorted(t_push *stack)
 	if (len == 0)
 		return (1);
 	return (0);
+}
+
+size_t	ft_strlcpy(char *dst, char *src, size_t dstsize)
+{
+	size_t	srclen;
+	size_t	i;
+
+	srclen = ft_strlen(src);
+	if (dstsize != 0)
+	{
+		i = 0;
+		while (*(src + i) != '\0' && --dstsize)
+		{
+			*(dst + i) = *(src + i);
+			++i;
+		}
+		*(dst + i) = '\0';
+	}
+	return (srclen);
 }

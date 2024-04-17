@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 12:32:03 by achakour          #+#    #+#             */
-/*   Updated: 2024/04/15 12:21:16 by achakour         ###   ########.fr       */
+/*   Updated: 2024/04/17 12:41:42 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,48 @@ int	find_max_small(int *arr, int len)
 	}
 	free (arr);
 	return (tmp);
+}
+
+char	*ft_strdup(char *str)
+{
+	char	*p;
+	int		len;
+
+	len = ft_strlen(str);
+	p = (char *)malloc(sizeof(char) * len + 1);
+	if (p == NULL)
+	{
+		return (NULL);
+	}
+	ft_strlcpy(p, (char *)str, len + 1);
+	return (p);
+}
+
+char	*ft_strjoin(char *s1, char *s2)
+{
+	size_t	buffer_size;
+	char	*buffer;
+	size_t	s1len;
+	size_t	s2len;
+
+	if (!s1 || !s2)
+	{
+		return (NULL);
+	}
+	if (!s1 && s2)
+	{
+		return (ft_strdup(s2));
+	}
+	s1len = ft_strlen(s1);
+	s2len = ft_strlen(s2);
+	buffer_size = s1len + s2len + 1;
+	buffer = (char *)malloc(buffer_size);
+	if (!buffer)
+	{
+		return (NULL);
+	}
+	ft_strlcpy(buffer, (char *)s1, buffer_size);
+	ft_strlcpy(buffer + ft_strlen(s1), (char *)s2, buffer_size);
+	// free (s1);
+	return (buffer);
 }
