@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:07:56 by achakour          #+#    #+#             */
-/*   Updated: 2024/04/17 12:32:34 by achakour         ###   ########.fr       */
+/*   Updated: 2024/04/17 17:43:20 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,12 @@ int					detect_target(int *arr, int n, int a_len);
 void				find_cheapest_in_a(t_push *stack, int **cheap, int target,
 						int a_len);
 void				rotate_half_stack(t_push **stack, int len, char *flag);
+char				**get_chars(int ac, char **ar);
 char				**ft_split(char const *s, char c);
 int					is_valid_args(int ac, char **ar);
 int					check_doubles(int ac, char **ar);
 void				ft_putchar(char *flag);
-t_push				*get_args(int ac, char **ar);
+t_push				*get_args(char **ar);
 void				ft_lstclear(t_push **lst);
 void				ft_lstadd_back(t_push **lst, t_push *new);
 int					ft_lstsize(t_push *lst);

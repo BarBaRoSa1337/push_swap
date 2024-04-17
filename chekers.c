@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 19:16:50 by achakour          #+#    #+#             */
-/*   Updated: 2024/04/14 12:17:09 by achakour         ###   ########.fr       */
+/*   Updated: 2024/04/17 17:39:29 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,19 +86,23 @@ int	check_doubles(int ac, char **ar)
 	return (1);
 }
 
-t_push	*get_args(int ac, char **ar)
+t_push	*get_args(char **ar)
 {
 	t_push	*lst;
 	int		i;
 
-	if (ac < 2)
+	if (!ar || !*ar)
 		return (NULL);
-	i = 1;
+	i = 0;
 	lst = NULL;
-	while (i < ac)
+	while (ar[i])
 	{
 		ft_lstadd_back(&lst, ft_lstnew(ft_atoi(ar[i])));
 		++i;
 	}
+	i = -1;
+	while (ar[++i])
+		free (ar[i]);
+	free(ar);
 	return (lst);
 }

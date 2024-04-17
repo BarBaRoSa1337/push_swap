@@ -6,7 +6,7 @@
 #    By: achakour <achakour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/15 14:53:03 by achakour          #+#    #+#              #
-#    Updated: 2024/04/17 12:38:50 by achakour         ###   ########.fr        #
+#    Updated: 2024/04/17 17:36:26 by achakour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ SRCS = push_swap_utils.c push_swap.c stack_recovery.c moves.c lst_utils.c find_l
 
 OBJ = $(SRCS:.c=.o)
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = #-Wall -Wextra -Werror
 NAME = push_swap
 AR = ar rcs
 RM = rm -f

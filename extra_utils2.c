@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 12:32:03 by achakour          #+#    #+#             */
-/*   Updated: 2024/04/17 12:41:42 by achakour         ###   ########.fr       */
+/*   Updated: 2024/04/17 17:29:58 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,21 +70,19 @@ char	*ft_strdup(char *str)
 	{
 		return (NULL);
 	}
-	ft_strlcpy(p, (char *)str, len + 1);
+	ft_strlcpy(p, str, len + 1);
 	return (p);
 }
 
 char	*ft_strjoin(char *s1, char *s2)
 {
-	size_t	buffer_size;
+	int		buffer_size;
 	char	*buffer;
-	size_t	s1len;
-	size_t	s2len;
+	int		s1len;
+	int		s2len;
 
-	if (!s1 || !s2)
-	{
-		return (NULL);
-	}
+	// if (!s1 && !s2)
+	// 	return (NULL);
 	if (!s1 && s2)
 	{
 		return (ft_strdup(s2));
@@ -97,8 +95,8 @@ char	*ft_strjoin(char *s1, char *s2)
 	{
 		return (NULL);
 	}
-	ft_strlcpy(buffer, (char *)s1, buffer_size);
-	ft_strlcpy(buffer + ft_strlen(s1), (char *)s2, buffer_size);
-	// free (s1);
+	ft_strlcpy(buffer, s1, buffer_size);
+	ft_strlcpy(buffer + s1len, s2, buffer_size);
+	free (s1);
 	return (buffer);
 }

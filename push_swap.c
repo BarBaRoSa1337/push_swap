@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 08:58:13 by achakour          #+#    #+#             */
-/*   Updated: 2024/04/17 12:40:32 by achakour         ###   ########.fr       */
+/*   Updated: 2024/04/17 17:43:36 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,57 +123,31 @@ void	push_swap(t_push **stack_a, t_push **stack_b)
 	free(lis);
 }
 
-char    *get_chars(int ac, char **ar)
-{
-    // char    **buff;
-    char    *tmp;
-    int     i;
-
-    i = 1;
-    while (i < ac)
-    {
-        tmp = ft_strjoin(tmp, ar[i]);
-        ++i;
-    }
-    // buff = ft_split(tmp, ' ');
-    return (tmp);
-}
-
 int	main(int ac, char **ar)
 {
-	// int		stack_len;
-	// t_push	*stack_b;
-	// t_push	*stack_a;
+	int		stack_len;
+	t_push	*stack_b;
+	t_push	*stack_a;
 
-	 char *buff = get_chars(ac, ar);
-	 printf("%s\n", buff);
-    // int i = 0;
-    // while (buff[i])
-    // {
-    //     printf("%s\n", buff[i]);
-    //     ++i;
-    //     /* code */
-    // }
-
-	// stack_a = get_args(ac, ar);
-	// stack_len = ft_lstsize(stack_a);
-	// if (!check_doubles(ac, ar) || !is_valid_args(ac, ar))
-	// 	ft_perror(&stack_a);
-	// else if (ac == 1 || is_sorted(stack_a))
-	// 	return (ft_lstclear(&stack_a), 0);
-	// else if (stack_len == 2)
-	// 	sa_sb(&stack_a, "sa");
-	// else if (stack_len == 3)
-	// 	sort_three(&stack_a);
-	// else if (stack_len == 5)
-	// 	sort_five(&stack_a, &stack_b);
-	// else
-	// {
-	// 	if (is_descending(stack_a))
-	// 		rotate_half_stack(&stack_a, stack_len, "rra");
-	// 	push_swap(&stack_a, &stack_b);
-	// 	fix_lst(&stack_a, ft_lstsize(stack_a));
-	// }
-	// ft_lstclear(&stack_a);
+	stack_a = get_args(get_chars(ac, ar));
+	stack_len = ft_lstsize(stack_a);
+	if (!check_doubles(ac, ar) || !is_valid_args(ac, ar))
+		ft_perror(&stack_a);
+	else if (ac == 1 || is_sorted(stack_a))
+		return (ft_lstclear(&stack_a), 0);
+	else if (stack_len == 2)
+		sa_sb(&stack_a, "sa");
+	else if (stack_len == 3)
+		sort_three(&stack_a);
+	else if (stack_len == 5)
+		sort_five(&stack_a, &stack_b);
+	else
+	{
+		if (is_descending(stack_a))
+			rotate_half_stack(&stack_a, stack_len, "rra");
+		push_swap(&stack_a, &stack_b);
+		fix_lst(&stack_a, ft_lstsize(stack_a));
+	}
+	ft_lstclear(&stack_a);
 	return (0);
 }

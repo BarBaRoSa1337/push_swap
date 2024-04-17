@@ -6,11 +6,28 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 10:35:28 by achakour          #+#    #+#             */
-/*   Updated: 2024/04/17 12:37:07 by achakour         ###   ########.fr       */
+/*   Updated: 2024/04/17 17:43:48 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+char    **get_chars(int ac, char **ar)
+{
+    char    **buff;
+    char    *tmp;
+    int     i;
+
+    i = 1;
+    while (i < ac)
+    {
+        tmp = ft_strjoin(tmp, ar[i]);
+		tmp = ft_strjoin(tmp, " ");
+        ++i;
+    }
+    buff = ft_split(tmp, ' ');
+    return (free (tmp), buff);
+}
 
 void	select_move3(t_push **stack_a, t_push **stack_b, int *pos)
 {
