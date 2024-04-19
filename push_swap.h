@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:07:56 by achakour          #+#    #+#             */
-/*   Updated: 2024/04/17 17:43:20 by achakour         ###   ########.fr       */
+/*   Updated: 2024/04/19 16:25:39 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void				find_cheapest_in_a(t_push *stack, int **cheap, int target,
 void				rotate_half_stack(t_push **stack, int len, char *flag);
 char				**get_chars(int ac, char **ar);
 char				**ft_split(char const *s, char c);
-int					is_valid_args(int ac, char **ar);
+int					is_alldigit(int ac, char **ar);
 int					check_doubles(int ac, char **ar);
 void				ft_putchar(char *flag);
 t_push				*get_args(char **ar);

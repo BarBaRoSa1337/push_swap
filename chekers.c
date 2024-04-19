@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 19:16:50 by achakour          #+#    #+#             */
-/*   Updated: 2024/04/17 17:39:29 by achakour         ###   ########.fr       */
+/*   Updated: 2024/04/19 16:27:32 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ ssize_t	ft_atoi(const char *str)
 	return (num * sign);
 }
 
-int	is_valid_args(int ac, char **ar)
+int	is_alldigit(int ac, char **ar)
 {
 	int	i;
 	int	j;
@@ -48,14 +48,7 @@ int	is_valid_args(int ac, char **ar)
 		j = 0;
 		while (ar[i][j])
 		{
-			if (ar[i][j + 1] && (ar[i][j] == '-' || ar[i][j] == '+') && (ar[i][j
-					+ 1] == '+' || ar[i][j + 1] == '-'))
-				return (0);
-			else if (ar[i][j + 1] && ft_isdigit(ar[i][j]) && !ft_isdigit(ar[i][j
-					+ 1]))
-				return (0);
-			else if (!ft_isdigit(ar[i][j]) && (ar[i][j] != '-'
-					&& ar[i][j] != '+'))
+			if (!ft_isdigit(ar[i][j]) && ar[i][j] != '+' && ar[i][j] != '-' && ar[i][j] != ' ')
 				return (0);
 			++j;
 		}
