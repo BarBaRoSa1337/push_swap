@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 10:35:28 by achakour          #+#    #+#             */
-/*   Updated: 2024/04/17 17:43:48 by achakour         ###   ########.fr       */
+/*   Updated: 2024/04/20 14:40:08 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ char    **get_chars(int ac, char **ar)
     int     i;
 
     i = 1;
+	tmp = NULL;
     while (i < ac)
     {
         tmp = ft_strjoin(tmp, ar[i]);

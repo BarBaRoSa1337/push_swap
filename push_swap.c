@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 08:58:13 by achakour          #+#    #+#             */
-/*   Updated: 2024/04/19 16:28:52 by achakour         ###   ########.fr       */
+/*   Updated: 2024/04/20 14:42:50 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,7 @@ int	main(int ac, char **ar)
 
 	stack_a = get_args(get_chars(ac, ar));
 	stack_len = ft_lstsize(stack_a);
-	if (!check_doubles(ac, ar) || !is_alldigit(ac, ar))
+	if (!check_doubles(get_chars(ac, ar)) || !is_valid_args(get_chars(ac, ar)))
 		ft_perror(&stack_a);
 	if (ac == 1 || is_sorted(stack_a))
 		return (ft_lstclear(&stack_a), 0);
@@ -148,6 +148,5 @@ int	main(int ac, char **ar)
 		push_swap(&stack_a, &stack_b);
 		fix_lst(&stack_a, ft_lstsize(stack_a));
 	}
-	ft_lstclear(&stack_a);
-	return (0);
+	return (ft_lstclear(&stack_a), 0);
 }

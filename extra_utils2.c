@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 12:32:03 by achakour          #+#    #+#             */
-/*   Updated: 2024/04/17 17:29:58 by achakour         ###   ########.fr       */
+/*   Updated: 2024/04/20 14:40:16 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_perror(t_push **lst)
 {
 	ft_putchar("Error");
 	ft_lstclear(lst);
-	return ;
+	exit(1);
 }
 
 int	is_descending(t_push *stack)
@@ -81,8 +81,6 @@ char	*ft_strjoin(char *s1, char *s2)
 	int		s1len;
 	int		s2len;
 
-	// if (!s1 && !s2)
-	// 	return (NULL);
 	if (!s1 && s2)
 	{
 		return (ft_strdup(s2));
