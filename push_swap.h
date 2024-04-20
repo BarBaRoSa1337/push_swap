@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:07:56 by achakour          #+#    #+#             */
-/*   Updated: 2024/04/20 13:45:53 by achakour         ###   ########.fr       */
+/*   Updated: 2024/04/20 14:56:45 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,7 @@ int					ft_lstsize(t_push *lst);
 t_push				*ft_lstnew(int content);
 int					*ft_lis(t_push *lst, int *len);
 int					*ft_fill_arr(t_push *lst);
+void				ft_freebuff(char **buff);
+int					is_all_spaces(char *str);
 
 #endif
