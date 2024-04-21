@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   extra_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amohdi <amohdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 12:31:57 by achakour          #+#    #+#             */
-/*   Updated: 2024/04/17 12:30:35 by achakour         ###   ########.fr       */
+/*   Updated: 2024/04/21 15:14:35 by amohdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ int	push_node(t_push **stack_a, t_push **stack_b, int a_len, char *flag)
 	int		b_len;
 	int		tmp;
 
+	if (!*stack_b)
+		return 0;
 	b_len = ft_lstsize(*stack_b);
 	if (flag[1] == 'b' && a_len == 1)
 	{

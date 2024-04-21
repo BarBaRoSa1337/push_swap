@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amohdi <amohdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 08:58:13 by achakour          #+#    #+#             */
-/*   Updated: 2024/04/21 13:41:40 by achakour         ###   ########.fr       */
+/*   Updated: 2024/04/21 15:16:46 by amohdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,10 +129,14 @@ int	main(int ac, char **ar)
 	t_push	*stack_b;
 	t_push	*stack_a;
 
+	stack_b = NULL;
 	stack_a = get_args(get_chars(ac, ar));
 	stack_len = ft_lstsize(stack_a);
 	if (stack_a == NULL || !check_doubles(get_chars(ac, ar)) || !is_valid_args(get_chars(ac, ar)))
+	{
+		printf("Error is here\n"); 
 		ft_perror(&stack_a);
+	}
 	if (ac == 1 || is_sorted(stack_a))
 		return (ft_lstclear(&stack_a), 0);
 	else if (stack_len == 2)

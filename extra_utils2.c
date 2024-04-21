@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   extra_utils2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amohdi <amohdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 12:32:03 by achakour          #+#    #+#             */
-/*   Updated: 2024/04/21 13:30:43 by achakour         ###   ########.fr       */
+/*   Updated: 2024/04/21 14:56:03 by amohdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,6 @@ char	*ft_strjoin(char *s1, char *s2)
 	}
 	ft_strlcpy(buffer, s1, buffer_size);
 	ft_strlcpy(buffer + s1len, s2, buffer_size);
-	free (s1);
+	free(s1);
 	return (buffer);
 }

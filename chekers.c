@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   chekers.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amohdi <amohdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 19:16:50 by achakour          #+#    #+#             */
-/*   Updated: 2024/04/21 13:51:29 by achakour         ###   ########.fr       */
+/*   Updated: 2024/04/21 15:06:27 by amohdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-size_t	ft_atoi(const char *str)
+ssize_t	ft_atoi(const char *str)
 {
 	ssize_t	sign;
-	size_t	num;
+	ssize_t	num;
 	int	i;
 
 	i = 0;
@@ -23,7 +23,7 @@ size_t	ft_atoi(const char *str)
 	sign = 1;
 	while (str[i] && str[i] == ' ')
 		++i;
-	if (str[i] && str[i] == '+' || str[i] == '-')
+	if (str[i] && (str[i] == '+' || str[i] == '-'))
 	{
 		if (str[i] == '-')
 			sign = -1;
@@ -75,7 +75,7 @@ int	check_doubles(char **ar)
 	while (ar[++i])
 	{
 		if (ft_atoi(ar[i]) > INT_MAX || ft_atoi(ar[i]) < INT_MIN)
-		return (0);
+			return (ft_freebuff(ar), 0);
 	}
 	i = 0;
 	while (ar[i])
@@ -84,16 +84,12 @@ int	check_doubles(char **ar)
 		while (ar[j])
 		{
 			if ((i != j) && (ft_atoi(ar[i]) == ft_atoi(ar[j])))
-				return (0);
+				return (ft_freebuff(ar), 0);
 			++j;
 		}
 		++i;
 	}
-	i = -1;
-	while (ar[++i])
-		free(ar[i]);
-	free(ar);
-	return (1);
+	return (ft_freebuff(ar), 1);
 }
 
 t_push	*get_args(char **ar)
