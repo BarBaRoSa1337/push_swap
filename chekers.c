@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 19:16:50 by achakour          #+#    #+#             */
-/*   Updated: 2024/04/21 13:47:04 by achakour         ###   ########.fr       */
+/*   Updated: 2024/04/21 13:51:29 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int	check_doubles(char **ar)
 	i = -1;
 	while (ar[++i])
 	{
-		if (ft_atoi(ar[i]) > INT_MAX || ft_atoi(ar[i]) < INT_MAX)
+		if (ft_atoi(ar[i]) > INT_MAX || ft_atoi(ar[i]) < INT_MIN)
 		return (0);
 	}
 	i = 0;
