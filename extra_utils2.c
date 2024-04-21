@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 12:32:03 by achakour          #+#    #+#             */
-/*   Updated: 2024/04/20 14:40:16 by achakour         ###   ########.fr       */
+/*   Updated: 2024/04/21 13:30:43 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	ft_perror(t_push **lst)
 {
-	ft_putchar("Error");
 	ft_lstclear(lst);
+	ft_putchar("Error");
 	exit(1);
 }
 
