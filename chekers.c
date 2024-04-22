@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   chekers.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amohdi <amohdi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 19:16:50 by achakour          #+#    #+#             */
-/*   Updated: 2024/04/21 15:06:27 by amohdi           ###   ########.fr       */
+/*   Updated: 2024/04/22 10:49:22 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,23 +50,20 @@ int	is_valid_args(char **ar)
         {
 			if (ar[i][j + 1] && (ar[i][j] == '-' || ar[i][j] == '+') && (ar[i][j
 					+ 1] == '+' || ar[i][j + 1] == '-'))
-				return (0);
+				return (ft_freebuff(ar), 0);
 			else if (ar[i][j + 1] && ft_isdigit(ar[i][j]) && !ft_isdigit(ar[i][j
 					+ 1]))
-				return (0);
+				return (ft_freebuff(ar), 0);
 			else if (!ft_isdigit(ar[i][j]) && (ar[i][j] != '-'
 					&& ar[i][j] != '+'))
-				return (0);
+				return (ft_freebuff(ar), 0);
 		}
 	}
-	i = -1;
-	while (ar[++i])
-		free(ar[i]);
-	free(ar);
+	ft_freebuff(ar);
 	return (1);
 }
 
-int	check_doubles(char **ar)
+int	check_doubles( char **ar)
 {
 	int	i;
 	int	j;

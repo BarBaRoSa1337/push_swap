@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amohdi <amohdi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:07:56 by achakour          #+#    #+#             */
-/*   Updated: 2024/04/21 14:35:45 by amohdi           ###   ########.fr       */
+/*   Updated: 2024/04/22 10:56:06 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,9 @@ int					is_valid_args(char **ar);
 int					check_doubles(char **ar);
 void				ft_putchar(char *flag);
 t_push				*get_args(char **ar);
+void    select_sort(t_push **stack_a, t_push **stack_b, int stack_len);
+void	sort_five(t_push **stack_a, t_push **stack_b);
+void	sort_three(t_push **stack_a);
 void				ft_lstclear(t_push **lst);
 void				ft_lstadd_back(t_push **lst, t_push *new);
 int					ft_lstsize(t_push *lst);

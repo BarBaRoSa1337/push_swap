@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: amohdi <amohdi@student.42.fr>              +#+  +:+       +#+         #
+#    By: achakour <achakour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/15 14:53:03 by achakour          #+#    #+#              #
-#    Updated: 2024/04/21 14:48:12 by amohdi           ###   ########.fr        #
+#    Updated: 2024/04/22 10:57:25 by achakour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ SRCS = push_swap_utils.c \
 		extra_utils2.c \
 		extra_utils3.c
 OBJ = $(SRCS:.c=.o)
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror #-fsanitize=address -g
 NAME = push_swap
 RM = rm -rf
 CC = cc

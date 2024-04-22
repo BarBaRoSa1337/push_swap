@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_recovery.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amohdi <amohdi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 10:35:28 by achakour          #+#    #+#             */
-/*   Updated: 2024/04/21 14:55:48 by amohdi           ###   ########.fr       */
+/*   Updated: 2024/04/22 10:48:12 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ char    **get_chars(int ac, char **ar)
     char    *tmp;
     int     i;
 
+	if (ac == 1)
+		return (NULL);
     i = 1;
 	tmp = NULL;
     while (i < ac)
