@@ -6,18 +6,11 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 12:31:57 by achakour          #+#    #+#             */
-/*   Updated: 2024/04/22 10:34:34 by achakour         ###   ########.fr       */
+/*   Updated: 2024/04/22 11:05:41 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int	ft_isdigit(int c)
-{
-	if (c >= '0' && c <= '9')
-		return (1);
-	return (0);
-}
 
 int	ft_strlen(char *str)
 {

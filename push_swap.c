@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 08:58:13 by achakour          #+#    #+#             */
-/*   Updated: 2024/04/22 10:55:37 by achakour         ###   ########.fr       */
+/*   Updated: 2024/04/22 11:04:39 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,8 @@ void	sort_five(t_push **stack_a, t_push **stack_b)
 	sort_three(stack_a);
 	while (len)
 	{
-		stack_recovery(stack_a, stack_b,
-			ft_lstsize(*stack_a), ft_lstsize(*stack_b));
+		stack_recovery(stack_a, stack_b, ft_lstsize(*stack_a),
+			ft_lstsize(*stack_b));
 		--len;
 	}
 }
@@ -118,8 +118,8 @@ void	push_swap(t_push **stack_a, t_push **stack_b)
 	}
 	stack_len = ft_lstsize(*stack_b);
 	while (stack_len--)
-		stack_recovery(stack_a, stack_b,
-			ft_lstsize(*stack_a), ft_lstsize(*stack_b));
+		stack_recovery(stack_a, stack_b, ft_lstsize(*stack_a),
+			ft_lstsize(*stack_b));
 	free(lis);
 }
 
@@ -133,7 +133,7 @@ int	main(int ac, char **ar)
 	stack_a = get_args(get_chars(ac, ar));
 	stack_len = ft_lstsize(stack_a);
 	if (ac > 1 && (!stack_a || !check_doubles(get_chars(ac, ar))
-		|| !is_valid_args(get_chars(ac, ar))))
+			|| !is_valid_args(get_chars(ac, ar))))
 		ft_perror(&stack_a);
 	if (ac == 1 || is_sorted(stack_a))
 		return (ft_lstclear(&stack_a), 0);

@@ -6,32 +6,32 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 10:35:28 by achakour          #+#    #+#             */
-/*   Updated: 2024/04/22 10:48:12 by achakour         ###   ########.fr       */
+/*   Updated: 2024/04/22 11:05:18 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-char    **get_chars(int ac, char **ar)
+char	**get_chars(int ac, char **ar)
 {
-    char    **buff;
-    char    *tmp;
-    int     i;
+	char	**buff;
+	char	*tmp;
+	int		i;
 
 	if (ac == 1)
 		return (NULL);
-    i = 1;
+	i = 1;
 	tmp = NULL;
-    while (i < ac)
-    {
+	while (i < ac)
+	{
 		if (!ar[i][0] || is_all_spaces(ar[i]))
 			return (free(tmp), NULL);
-        tmp = ft_strjoin(tmp, ar[i]);
+		tmp = ft_strjoin(tmp, ar[i]);
 		tmp = ft_strjoin(tmp, " ");
-        ++i;
-    }
-    buff = ft_split(tmp, ' ');
-    return (free (tmp), buff);
+		++i;
+	}
+	buff = ft_split(tmp, ' ');
+	return (free(tmp), buff);
 }
 
 void	select_move3(t_push **stack_a, t_push **stack_b, int *pos)

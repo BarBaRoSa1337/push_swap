@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 19:16:50 by achakour          #+#    #+#             */
-/*   Updated: 2024/04/22 10:49:22 by achakour         ###   ########.fr       */
+/*   Updated: 2024/04/22 11:04:58 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ ssize_t	ft_atoi(const char *str)
 {
 	ssize_t	sign;
 	ssize_t	num;
-	int	i;
+	int		i;
 
 	i = 0;
 	num = 0;
@@ -46,8 +46,8 @@ int	is_valid_args(char **ar)
 	while (ar[++i])
 	{
 		j = -1;
-        while (ar[i][++j])
-        {
+		while (ar[i][++j])
+		{
 			if (ar[i][j + 1] && (ar[i][j] == '-' || ar[i][j] == '+') && (ar[i][j
 					+ 1] == '+' || ar[i][j + 1] == '-'))
 				return (ft_freebuff(ar), 0);
@@ -63,7 +63,7 @@ int	is_valid_args(char **ar)
 	return (1);
 }
 
-int	check_doubles( char **ar)
+int	check_doubles(char **ar)
 {
 	int	i;
 	int	j;
@@ -105,7 +105,7 @@ t_push	*get_args(char **ar)
 	}
 	i = -1;
 	while (ar[++i])
-		free (ar[i]);
+		free(ar[i]);
 	free(ar);
 	return (lst);
 }
