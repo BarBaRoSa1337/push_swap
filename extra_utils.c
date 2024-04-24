@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 12:31:57 by achakour          #+#    #+#             */
-/*   Updated: 2024/04/22 11:05:41 by achakour         ###   ########.fr       */
+/*   Updated: 2024/04/24 10:52:30 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	push_node(t_push **stack_a, t_push **stack_b, int a_len, char *flag)
 		tmp = head->data;
 		ft_lstadd_front(stack_b, ft_lstnew(tmp));
 		ft_lstdelone(&head);
-		ft_putchar(flag);
+		ft_putchar(flag, 1);
 		return (1);
 	}
 	else if (*stack_b && flag[1] == 'a' && b_len == 1)
@@ -57,7 +57,7 @@ int	push_node(t_push **stack_a, t_push **stack_b, int a_len, char *flag)
 		tmp = head->data;
 		ft_lstadd_front(stack_a, ft_lstnew(tmp));
 		ft_lstdelone(&head);
-		ft_putchar(flag);
+		ft_putchar(flag, 1);
 		return (1);
 	}
 	return (0);

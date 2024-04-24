@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 18:07:51 by achakour          #+#    #+#             */
-/*   Updated: 2024/04/14 12:17:52 by achakour         ###   ########.fr       */
+/*   Updated: 2024/04/24 10:51:13 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,17 @@ void	rotate_half_stack(t_push **stack, int len, char *flag)
 	}
 }
 
-void	ft_putchar(char *flag)
+void	ft_putchar(char *flag, int fd)
 {
 	int	i;
 
 	i = 0;
 	while (flag[i])
 	{
-		write(1, &flag[i], 1);
+		write(fd, &flag[i], 1);
 		++i;
 	}
-	write(1, "\n", 1);
+	write(fd, "\n", 1);
 }
 
 int	is_lis(int *arr, int len, int n)

@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 19:16:50 by achakour          #+#    #+#             */
-/*   Updated: 2024/04/22 11:04:58 by achakour         ###   ########.fr       */
+/*   Updated: 2024/04/24 11:54:35 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ int	is_valid_args(char **ar)
 				return (ft_freebuff(ar), 0);
 			else if (!ft_isdigit(ar[i][j]) && (ar[i][j] != '-'
 					&& ar[i][j] != '+'))
+				return (ft_freebuff(ar), 0);
+			else if ((ar[i][j] == '+' || ar[i][j] == '-') && !ar[i][j + 1])
 				return (ft_freebuff(ar), 0);
 		}
 	}

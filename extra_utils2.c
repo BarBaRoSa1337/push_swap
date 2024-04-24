@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   extra_utils2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amohdi <amohdi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 12:32:03 by achakour          #+#    #+#             */
-/*   Updated: 2024/04/21 14:56:03 by amohdi           ###   ########.fr       */
+/*   Updated: 2024/04/24 12:00:59 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_perror(t_push **lst)
 {
 	ft_lstclear(lst);
-	ft_putchar("Error");
+	ft_putchar("Error", 2);
 	exit(1);
 }
 
@@ -24,6 +24,8 @@ int	is_descending(t_push *stack)
 	t_push	*head;
 	int		len;
 
+	if (!stack)
+		return (0);
 	head = stack;
 	len = ft_lstsize(stack) - 1;
 	while (head && head->next && head->data > head->next->data)

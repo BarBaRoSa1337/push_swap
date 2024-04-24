@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:07:56 by achakour          #+#    #+#             */
-/*   Updated: 2024/04/22 11:05:08 by achakour         ###   ########.fr       */
+/*   Updated: 2024/04/24 10:51:30 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ char				**get_chars(int ac, char **ar);
 char				**ft_split(char const *s, char c);
 int					is_valid_args(char **ar);
 int					check_doubles(char **ar);
-void				ft_putchar(char *flag);
+void				ft_putchar(char *flag, int fd);
 t_push				*get_args(char **ar);
 void				select_sort(t_push **stack_a, t_push **stack_b,
 						int stack_len);

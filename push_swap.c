@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 08:58:13 by achakour          #+#    #+#             */
-/*   Updated: 2024/04/22 11:04:39 by achakour         ###   ########.fr       */
+/*   Updated: 2024/04/24 12:02:56 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,7 +137,7 @@ int	main(int ac, char **ar)
 		ft_perror(&stack_a);
 	if (ac == 1 || is_sorted(stack_a))
 		return (ft_lstclear(&stack_a), 0);
-	else if (stack_len < 5 && stack_len != 4)
+	else if (stack_len <= 5 && stack_len != 4)
 		select_sort(&stack_a, &stack_b, stack_len);
 	else
 	{

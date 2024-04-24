@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   moves.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amohdi <amohdi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 15:44:14 by achakour          #+#    #+#             */
-/*   Updated: 2024/04/21 15:18:27 by amohdi           ###   ########.fr       */
+/*   Updated: 2024/04/24 10:51:59 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	rra_rrb_rrr(t_push **stack, char *flag)
 	tmp->next = NULL;
 	if (flag[2] != 'p')
 	{
-		ft_putchar(flag);
+		ft_putchar(flag, 1);
 	}
 }
 
@@ -48,7 +48,7 @@ void	ra_rb_rr(t_push **stack, char *flag)
 	head->next->next = NULL;
 	if (flag[2] != 'p')
 	{
-		ft_putchar(flag);
+		ft_putchar(flag, 1);
 	}
 }
 
@@ -91,7 +91,7 @@ void	pa_pb(t_push **stack_a, t_push **stack_b, char *flag)
 		ft_lstadd_front(stack_a, ft_lstnew(tmp));
 		ft_lstdelone(&head);
 	}
-	ft_putchar(flag);
+	ft_putchar(flag, 1);
 }
 
 void	sa_sb(t_push **stack, char *flag)
@@ -111,5 +111,5 @@ void	sa_sb(t_push **stack, char *flag)
 	tmp = head->data;
 	head->data = head->next->data;
 	head->next->data = tmp;
-	ft_putchar(flag);
+	ft_putchar(flag, 1);
 }
