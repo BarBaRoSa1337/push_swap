@@ -6,7 +6,7 @@
 #    By: achakour <achakour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/15 14:53:03 by achakour          #+#    #+#              #
-#    Updated: 2024/04/24 11:57:43 by achakour         ###   ########.fr        #
+#    Updated: 2024/04/25 15:41:39 by achakour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,8 @@ SRCS = push_swap_utils.c \
 		extra_utils.c \
 		ft_split.c \
 		extra_utils2.c \
-		extra_utils3.c
+		extra_utils3.c checker_linux.c
+
 OBJ = $(SRCS:.c=.o)
 CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g3
 NAME = push_swap
