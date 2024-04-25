@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:07:56 by achakour          #+#    #+#             */
-/*   Updated: 2024/04/24 10:51:30 by achakour         ###   ########.fr       */
+/*   Updated: 2024/04/25 16:01:30 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,10 @@
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
+
+#ifndef BUFFER_SIZE
+#define BUFFER_SIZE 13
+#endif
 
 typedef struct t_push
 {
@@ -31,6 +35,7 @@ void				rr_rrr(t_push **stack_a, t_push **stack_b, char *flag);
 void				sa_sb(t_push **stack, char *flag);
 void				pa_pb(t_push **a, t_push **b, char *flag);
 int					is_lis(int *arr, int len, int n);
+char				*ft_strdup(char *str);
 void				select_move1(t_push **stack_a, t_push **stack_b, int *pos);
 void				select_move2(t_push **stack_a, t_push **stack_b, int *pos);
 void				select_move3(t_push **stack_a, t_push **stack_b, int *pos);
@@ -41,6 +46,7 @@ int					push_node(t_push **stack_a, t_push **stack_b, int a_len,
 void				ft_lstdelone(t_push **lst);
 int					*get_min(t_push *stack);
 int					ft_strlen(char *str);
+char				*get_next_line(int fd);
 int					find_max_small(int *arr, int len);
 int					find_max_big(int *arr, int len);
 int					is_sorted(t_push *stack);
