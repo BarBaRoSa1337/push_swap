@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 08:58:13 by achakour          #+#    #+#             */
-/*   Updated: 2024/04/25 15:49:47 by achakour         ###   ########.fr       */
+/*   Updated: 2024/04/25 18:42:31 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,28 +123,28 @@ void	push_swap(t_push **stack_a, t_push **stack_b)
 	free(lis);
 }
 
-// int	main(int ac, char **ar)
-// {
-// 	int		stack_len;
-// 	t_push	*stack_b;
-// 	t_push	*stack_a;
+int	main(int ac, char **ar)
+{
+	int		stack_len;
+	t_push	*stack_b;
+	t_push	*stack_a;
 
-// 	stack_b = NULL;
-// 	stack_a = get_args(get_chars(ac, ar));
-// 	stack_len = ft_lstsize(stack_a);
-// 	if (ac > 1 && (!stack_a || !check_doubles(get_chars(ac, ar))
-// 			|| !is_valid_args(get_chars(ac, ar))))
-// 		ft_perror(&stack_a);
-// 	if (ac == 1 || is_sorted(stack_a))
-// 		return (ft_lstclear(&stack_a), 0);
-// 	else if (stack_len <= 5 && stack_len != 4)
-// 		select_sort(&stack_a, &stack_b, stack_len);
-// 	else
-// 	{
-// 		if (is_descending(stack_a))
-// 			rotate_half_stack(&stack_a, stack_len, "rra");
-// 		push_swap(&stack_a, &stack_b);
-// 		fix_lst(&stack_a, ft_lstsize(stack_a));
-// 	}
-// 	return (ft_lstclear(&stack_a), 0);
-// }
+	stack_b = NULL;
+	stack_a = get_args(get_chars(ac, ar));
+	stack_len = ft_lstsize(stack_a);
+	if (ac > 1 && (!stack_a || !check_doubles(get_chars(ac, ar))
+			|| !is_valid_args(get_chars(ac, ar))))
+		ft_perror(&stack_a);
+	if (ac == 1 || is_sorted(stack_a))
+		return (ft_lstclear(&stack_a), 0);
+	else if (stack_len <= 5 && stack_len != 4)
+		select_sort(&stack_a, &stack_b, stack_len);
+	else
+	{
+		if (is_descending(stack_a))
+			rotate_half_stack(&stack_a, stack_len, "rra");
+		push_swap(&stack_a, &stack_b);
+		fix_lst(&stack_a, ft_lstsize(stack_a));
+	}
+	return (ft_lstclear(&stack_a), 0);
+}

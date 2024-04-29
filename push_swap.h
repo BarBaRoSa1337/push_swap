@@ -6,7 +6,7 @@
 /*   By: achakour <achakour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:07:56 by achakour          #+#    #+#             */
-/*   Updated: 2024/04/25 16:01:30 by achakour         ###   ########.fr       */
+/*   Updated: 2024/04/25 18:41:11 by achakour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,6 @@
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
-
-#ifndef BUFFER_SIZE
-#define BUFFER_SIZE 13
-#endif
 
 typedef struct t_push
 {
@@ -46,7 +42,6 @@ int					push_node(t_push **stack_a, t_push **stack_b, int a_len,
 void				ft_lstdelone(t_push **lst);
 int					*get_min(t_push *stack);
 int					ft_strlen(char *str);
-char				*get_next_line(int fd);
 int					find_max_small(int *arr, int len);
 int					find_max_big(int *arr, int len);
 int					is_sorted(t_push *stack);
